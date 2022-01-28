@@ -23,7 +23,7 @@ const routes = [
 
 // VueRouterインスタンスを作成する
 const router = new VueRouter({
-//   mode: 'history', // ★ URL にハッシュ # がついてしまうのを防ぎ、本来の URL の形を再現する
+  mode: 'history', // ★ URL にハッシュ # がついてしまうのを防ぎ、本来の URL の形を再現する
   routes
 })
 
