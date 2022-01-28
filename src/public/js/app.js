@@ -12632,9 +12632,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
+var MyComponent = {
+  template: "\n    <div class=\"container\">\n        <p>{{msg}}</p>\n        <hr>\n        <input v-on:keyup.enter=\"doAction\" type=\"text\" v-model=\"name\">\n        <button v-on:click=\"doAction\">click</button>\n    </div>",
+  data: function data() {
+    return {
+      msg: 'please your name:',
+      name: ''
+    };
+  },
+  methods: {
+    doAction: function doAction() {
+      this.msg = 'Hello, ' + this.name + '!!';
+    }
+  }
+};
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
-  template: '<h1>Hello world</h1>'
+  components: {
+    'my-component': MyComponent
+  }
 });
 
 /***/ }),
