@@ -17,5 +17,11 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-// 会員登録
+// 会員登録のため
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
+
+// ログインのため
+Route::post('/login', 'Auth\LoginController@login')->name('login');
+
+// ログアウトのため
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
