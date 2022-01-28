@@ -2,11 +2,26 @@
 // <div id="app"></div> にこのコンポーネントが描画
 <template>
   <div>
+    <header>
+      <Navbar />
+    </header>
     <main>
       <div class="container">
-<!-- <RouterView /> が切り替わる箇所を定義します。紙芝居の枠のようなもの -->
         <RouterView />
       </div>
     </main>
+    <Footer />
   </div>
 </template>
+
+<script>
+import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
+
+export default {
+  components: {
+    Navbar,
+    Footer
+  }
+}
+</script>
