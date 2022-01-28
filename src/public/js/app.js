@@ -16240,8 +16240,7 @@ var routes = [{
 }]; // VueRouterインスタンスを作成する
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  mode: 'history',
-  // ★ URL にハッシュ # がついてしまうのを防ぎ、本来の URL の形を再現する
+  //   mode: 'history', // ★ URL にハッシュ # がついてしまうのを防ぎ、本来の URL の形を再現する
   routes: routes
 }); // VueRouterインスタンスをエクスポートする
 // app.jsでインポートするため
