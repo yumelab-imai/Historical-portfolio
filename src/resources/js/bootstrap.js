@@ -1,4 +1,7 @@
-window._ = require('lodash');
+// ここでは Ajax 通信で用いる Axios ライブラリの設定を記述している
+
+import { getCookieValue } from './util'
+// window._ = require('lodash');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -8,6 +11,7 @@ window._ = require('lodash');
 
 window.axios = require('axios');
 
+// Ajaxリクエストであることを示すヘッダーを付与する
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
@@ -15,6 +19,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
+
+window.axios.interceptors.request.use(config => {
+  // クッキーからトークンを取り出してヘッダーに添付する
+  config.headers['X-XSRF-TOKEN'] = getCookieValue('XSRF-TOKEN')
+
+  return config
+})
 
 // import Echo from 'laravel-echo';
 
