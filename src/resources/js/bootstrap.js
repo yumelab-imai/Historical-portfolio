@@ -37,3 +37,10 @@ window.axios.interceptors.request.use(config => {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+
+// axios の responseインターセプターにまとめる
+window.axios.interceptors.response.use(
+  response => response,
+  error => error.response || error
+)
