@@ -31,3 +31,6 @@ Route::get('/user', fn() => Auth::user())->name('user');
 
 // 写真投稿のため
 Route::post('/photos', 'PhotoController@create')->name('photo.create');
+
+// 写真一覧のため
+Route::get('/photos', 'PhotoController@index')->name('photo.index');
