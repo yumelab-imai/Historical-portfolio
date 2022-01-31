@@ -24,3 +24,6 @@ export const OK = 200
 export const CREATED = 201
 export const INTERNAL_SERVER_ERROR = 500
 export const UNPROCESSABLE_ENTITY = 422
+//  419 は正式には定義されていないコード、Laravel が独自で使用
+export const UNAUTHORIZED = 419
+export const NOT_FOUND = 404
