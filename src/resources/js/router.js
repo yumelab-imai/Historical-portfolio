@@ -26,6 +26,7 @@ const routes = [
   {
     path: '/photos/:id',
     component: PhotoDetail,
+    //  :id の値が <PhotoDetail> コンポーネントに props として渡される
     props: true
   },
   {
