@@ -11,6 +11,9 @@
 |
 */
 
+// 写真ダウンロード、下のindexより下に書いたらerrorになった
+Route::get('/photos/{photo}/download', 'PhotoController@download');
+
 // APIのURL以外のリクエストに対してはindexテンプレートを返す
 // 画面遷移はフロントエンドのVueRouterで制御する
 /*login という URL にアクセスがあったときでも、サーバからは上述のコードの通り index テンプレートを返却します。
@@ -25,3 +28,4 @@ Route::get('/{any?}', fn() => view('index'))->where('any', '.+');
 // Route::get('/vue', function () {
 //     return view('test');
 // });
+
