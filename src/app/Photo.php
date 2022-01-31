@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Storage;
 
 class Photo extends Model
 {
+
+    protected $perPage = 15; // この値を少なくすれば動作確認しやすいですね
+    
     /** プライマリキーの型 */
     protected $keyType = 'string';
 
