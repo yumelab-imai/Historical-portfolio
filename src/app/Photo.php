@@ -11,7 +11,7 @@ class Photo extends Model
 {
 
     protected $perPage = 15; // この値を少なくすれば動作確認しやすいですね
-    
+
     /** プライマリキーの型 */
     protected $keyType = 'string';
 
@@ -25,7 +25,7 @@ class Photo extends Model
 
     /** JSONに含める属性 */
     protected $visible = [
-        'id', 'owner', 'url',
+        'id', 'owner', 'url','comments',
     ];
 
     public function __construct(array $attributes = [])
@@ -84,4 +84,13 @@ class Photo extends Model
     {
         return Storage::cloud()->url($this->attributes['filename']);
     }
+
+    /**
+ * リレーションシップ - commentsテーブル
+ * @return \Illuminate\Database\Eloquent\Relations\HasMany
+ */
+public function comments()
+{
+    return $this->hasMany('App\Comment')->orderBy('id', 'desc');
+}
 }
