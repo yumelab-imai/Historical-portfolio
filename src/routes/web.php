@@ -11,21 +11,14 @@
 |
 */
 
-// 写真ダウンロード、下のindexより下に書いたらerrorになった
+// 写真ダウンロード、下のindexより下に書いたらerrorになったので順番大事！
 Route::get('/photos/{photo}/download', 'PhotoController@download');
 
-// APIのURL以外のリクエストに対してはindexテンプレートを返す
-// 画面遷移はフロントエンドのVueRouterで制御する
-/*login という URL にアクセスがあったときでも、サーバからは上述のコードの通り index テンプレートを返却します。
-{/login }というパスに対応したコンテンツを表示するのはあくまでフロントエンド（特に Vue Router）の役割
-{any?} で任意のパスパラメータ any を受け入れています
+
+/*
+サーバーサイド：    APIのURL以外のリクエストに対しては{any?}でindexテンプレートを返す
+フロントエンド側：  画面遷移をフロントエンドのVueRouterで制御する
+{/login }などのパスに対応したコンテンツを表示するのはフロントエンド（Vue Router）の役割
 */
 Route::get('/{any?}', fn() => view('index'))->where('any', '.+');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/vue', function () {
-//     return view('test');
-// });
 

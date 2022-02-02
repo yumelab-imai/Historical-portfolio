@@ -1,5 +1,4 @@
 // ルートコンポーネント
-// <div id="app"></div> にこのコンポーネントが描画
 <template>
   <div>
     <header>

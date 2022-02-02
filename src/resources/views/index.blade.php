@@ -19,10 +19,8 @@
 </head>
 
 <body>
-    <!-- ここに Vue アプリを描画 -->
-    <div id="app">
-        <my-component></my-component>
-    </div>
+    <!-- ここにApp.vueの内容をコンパイルする -->
+    <div id="app"></div>
 </body>
 
 </html>

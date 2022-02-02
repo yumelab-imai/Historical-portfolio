@@ -54,11 +54,12 @@ const routes = [
 
 // VueRouterインスタンスを作成する
 const router = new VueRouter({
-  mode: 'history', // ★ URL にハッシュ # がついてしまうのを防ぎ、本来の URL の形を再現する
-  routes,
-  scrollBehavior () {
-    return { x: 0, y: 0 }
-  }
+    //  URL にハッシュ # がつかないための対策
+    mode: 'history',
+    routes,
+    scrollBehavior () {
+        return { x: 0, y: 0 }
+    }
 })
 
 // VueRouterインスタンスをエクスポートする
