@@ -1,7 +1,6 @@
 # Composeファイルのバージョン
 version: '3.8'
 
-# ？？？
 volumes:
   mysql-volume:
 
@@ -27,7 +26,6 @@ services:
       dockerfile: ./docker/nginx/Dockerfile
     ports:
       - ${WEB_PORT}:80
-      # この実感が湧かない
     depends_on:
       - app
     volumes:
@@ -46,7 +44,6 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       TZ: 'Asia/Tokyo'
     volumes:
-    # ここだけ違う
       - mysql-volume:/var/lib/mysql
 
       
