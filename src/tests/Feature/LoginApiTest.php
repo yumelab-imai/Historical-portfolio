@@ -11,8 +11,10 @@ class LoginApiTest extends TestCase
 {
     use RefreshDatabase;
 
+    // voidないとエラーになる
     public function setUp(): void
     {
+        // テストに先立ち、実行したい処理があればsetUp()に書く、このワードはマスト
         parent::setUp();
 
         // テストユーザー作成
@@ -26,6 +28,7 @@ class LoginApiTest extends TestCase
     {
         $response = $this->json('POST', route('login'), [
             'email' => $this->user->email,
+            // $this->user->password,でもいいけどね〜
             'password' => 'password',
         ]);
 
