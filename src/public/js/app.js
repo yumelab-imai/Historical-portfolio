@@ -1948,7 +1948,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
  // import { INTERNAL_SERVER_ERROR } from './util'
@@ -22237,8 +22236,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_vue_vue_type_template_id_f348271a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=f348271a& */ "./resources/js/App.vue?vue&type=template&id=f348271a&");
 /* harmony import */ var _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js& */ "./resources/js/App.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-/* harmony import */ var _App_vue_vue_type_custom_index_0_blockType_div__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.vue?vue&type=custom&index=0&blockType=div */ "./resources/js/App.vue?vue&type=custom&index=0&blockType=div");
-/* harmony import */ var _App_vue_vue_type_custom_index_0_blockType_div__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_App_vue_vue_type_custom_index_0_blockType_div__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -22257,25 +22254,10 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   
 )
 
-/* custom blocks */
-
-if (typeof _App_vue_vue_type_custom_index_0_blockType_div__WEBPACK_IMPORTED_MODULE_3___default.a === 'function') _App_vue_vue_type_custom_index_0_blockType_div__WEBPACK_IMPORTED_MODULE_3___default()(component)
-
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/App.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/App.vue?vue&type=custom&index=0&blockType=div":
-/*!********************************************************************!*\
-  !*** ./resources/js/App.vue?vue&type=custom&index=0&blockType=div ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
 
 /***/ }),
 
@@ -22334,36 +22316,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-// import Vue from 'vue'
-// var MyComponent = {
-//     template:`
-//     <div class="container">
-//         <p>{{msg}}</p>
-//         <hr>
-//         <input v-on:keyup.enter="doAction" type="text" v-model="name">
-//         <button v-on:click="doAction">click</button>
-//     </div>`,
-//     data: function(){
-//         return{
-//         msg:'please your name:',
-//         name:'',
-//         }
-//     },
-//     methods:{
-//         doAction:function(){
-//             this.msg = 'Hello, ' + this.name + '!!';
-//     },
-//     },
-// }
-// new Vue({
-//     el: '#app',
-//     components:{
-//         'my-component':MyComponent
-// },
-// })
- // ルーティングの定義をインポートする
 
- // ルートコンポーネントをインポートする
 
 
 
@@ -23301,8 +23254,8 @@ var routes = [{
 }]; // VueRouterインスタンスを作成する
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  //  URL にハッシュ # がつかないための対策
   mode: 'history',
-  // ★ URL にハッシュ # がついてしまうのを防ぎ、本来の URL の形を再現する
   routes: routes,
   scrollBehavior: function scrollBehavior() {
     return {
@@ -23733,26 +23686,14 @@ var NOT_FOUND = 404;
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!***********************************!*\
+  !*** multi ./resources/js/app.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /var/www/html/resources/js/app.js */"./resources/js/app.js");
 
 
 /***/ })
