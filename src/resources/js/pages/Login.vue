@@ -1,6 +1,7 @@
 <template>
   <div class="container--small">
     <ul class="tab">
+        <!-- tabで切り替えないでnumberで切り替えたほうがよかったかも -->
       <li
         class="tab__item"
         :class="{'tab__item--active': tab === 1 }"
@@ -14,6 +15,7 @@
     </ul>
     <div class="panel" v-show="tab === 1">
         <form class="form" @submit.prevent="login">
+            <!-- エラー表示 -->
             <div v-if="loginErrors" class="errors">
             <ul v-if="loginErrors.email">
             <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>
@@ -22,6 +24,7 @@
             <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
             </ul>
             </div>
+            <!-- 登録フォーム一覧 -->
             <label for="login-email">Email</label>
             <input type="text" class="form__item" id="login-email" v-model="loginForm.email">
             <label for="login-password">Password</label>
@@ -57,7 +60,7 @@
             <input type="password" class="form__item" id="password-confirmation" v-model="registerForm.password_confirmation">
             <div class="form__button">
             <button type="submit" class="button button--inverse">register</button>
-            
+
             </div>
         </form>
         </div>
