@@ -21,3 +21,13 @@ const createApp = async () => {
 }
 
 createApp()
+
+
+// 元はこんな感じ
+// new Vue({
+//   el: '#app',
+//   router,
+//   store,
+//   components: { App },
+//   template: '<App />'
+// })

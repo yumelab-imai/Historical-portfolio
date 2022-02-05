@@ -22358,7 +22358,14 @@ var createApp = /*#__PURE__*/function () {
   };
 }();
 
-createApp();
+createApp(); // 元はこんな感じ
+// new Vue({
+//   el: '#app',
+//   router,
+//   store,
+//   components: { App },
+//   template: '<App />'
+// })
 
 /***/ }),
 
