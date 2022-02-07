@@ -1,8 +1,10 @@
 <template>
   <div v-show="value" class="photo-form">
     <h2 class="title">Submit a photo</h2>
-    <form class="form" @submit.prevent="submit">
-        <!--のちに API の通信中にローディングを表示,投稿が完了したら「投稿されました」のようなサクセスメッセージを表示 -->
+        <div v-show="loading" class="panel">
+      <Loader>Loading...(Sending your photo...)</Loader>
+    </div>
+    <form v-show="! loading" class="form" @submit.prevent="submit">
         <div class="errors" v-if="errors">
         <ul v-if="errors.photo">
         <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
