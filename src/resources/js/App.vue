@@ -10,21 +10,20 @@
         <RouterView />
       </div>
     </main>
-    <Footer />
   </div>
 </template>
 
 <script>
 import Message from './components/Message.vue'
 import Navbar from './components/Navbar.vue'
-import Footer from './components/Footer.vue'
+// import Footer from './Footer.vue'
 import { NOT_FOUND, UNAUTHORIZED, INTERNAL_SERVER_ERROR } from './util'
 
 export default {
   components: {
     Message,
     Navbar,
-    Footer
+    // Footer
   },
   computed: {
     errorCode () {

@@ -1924,8 +1924,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Message_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Message.vue */ "./resources/js/components/Message.vue");
 /* harmony import */ var _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue");
-/* harmony import */ var _components_Footer_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./resources/js/util.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./resources/js/util.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1947,16 +1946,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
-
+ // import Footer from './Footer.vue'
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Message: _components_Message_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Navbar: _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Footer: _components_Footer_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    Navbar: _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_2__["default"] // Footer
+
   },
   computed: {
     errorCode: function errorCode() {
@@ -1973,7 +1971,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_4__["INTERNAL_SERVER_ERROR"])) {
+                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_3__["INTERNAL_SERVER_ERROR"])) {
                     _context.next = 4;
                     break;
                   }
@@ -1984,7 +1982,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
 
                 case 4:
-                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_4__["UNAUTHORIZED"])) {
+                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_3__["UNAUTHORIZED"])) {
                     _context.next = 11;
                     break;
                   }
@@ -2001,7 +1999,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
 
                 case 11:
-                  if (val === _util__WEBPACK_IMPORTED_MODULE_4__["NOT_FOUND"]) {
+                  if (val === _util__WEBPACK_IMPORTED_MODULE_3__["NOT_FOUND"]) {
                     _this.$router.push('/not-found');
                   }
 
@@ -2145,6 +2143,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PhotoForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhotoForm.vue */ "./resources/js/components/PhotoForm.vue");
+/* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Footer.vue */ "./resources/js/components/Footer.vue");
+//
+//
 //
 //
 //
@@ -2171,9 +2172,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    PhotoForm: _PhotoForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    PhotoForm: _PhotoForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Footer: _Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -4467,25 +4470,18 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "back" },
-    [
-      _c("header", [_c("Navbar")], 1),
-      _vm._v(" "),
-      _c("main", [
-        _c(
-          "div",
-          { staticClass: "container" },
-          [_c("Message"), _vm._v(" "), _c("RouterView")],
-          1
-        ),
-      ]),
-      _vm._v(" "),
-      _c("Footer"),
-    ],
-    1
-  )
+  return _c("div", { staticClass: "back" }, [
+    _c("header", [_c("Navbar")], 1),
+    _vm._v(" "),
+    _c("main", [
+      _c(
+        "div",
+        { staticClass: "container" },
+        [_c("Message"), _vm._v(" "), _c("RouterView")],
+        1
+      ),
+    ]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -4509,24 +4505,15 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "footer",
-    { staticClass: "footer" },
-    [
-      _vm.isLogin
-        ? _c(
-            "button",
-            { staticClass: "button button--link", on: { click: _vm.logout } },
-            [_vm._v("\n      Logout\n  ")]
-          )
-        : _c(
-            "RouterLink",
-            { staticClass: "button button--link", attrs: { to: "/login" } },
-            [_vm._v("\n      Login / Register\n  ")]
-          ),
-    ],
-    1
-  )
+  return _c("footer", { staticClass: "footer" }, [
+    _vm.isLogin
+      ? _c(
+          "button",
+          { staticClass: "button button--link", on: { click: _vm.logout } },
+          [_vm._v("\n      Logout\n  ")]
+        )
+      : _vm._e(),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -4639,8 +4626,15 @@ var render = function () {
     { staticClass: "navbar" },
     [
       _c("RouterLink", { staticClass: "navbar__brand", attrs: { to: "/" } }, [
-        _vm._v("\n    LaraVueApp\n  "),
+        _c("i", { staticClass: "fa fa-home" }),
       ]),
+      _vm._v(" "),
+      _c(
+        "RouterLink",
+        { staticClass: "navbar__brand", attrs: { to: "/" } },
+        [_c("Footer")],
+        1
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "navbar__menu" }, [
         _vm.isLogin
@@ -4648,24 +4642,23 @@ var render = function () {
               _c(
                 "button",
                 {
-                  staticClass: "button",
+                  staticClass: "button write",
                   on: {
                     click: function ($event) {
                       _vm.showForm = !_vm.showForm
                     },
                   },
                 },
-                [
-                  _c("i", { staticClass: "icon ion-md-add" }),
-                  _vm._v("\n        Submit a photo\n      "),
-                ]
+                [_c("i", { staticClass: "fa-solid fa-feather" })]
               ),
             ])
           : _vm._e(),
         _vm._v(" "),
         _vm.isLogin
-          ? _c("span", { staticClass: "navbar__item" }, [
-              _vm._v("\n      " + _vm._s(_vm.username) + "\n    "),
+          ? _c("span", { staticClass: "navbar__item name" }, [
+              _vm._v("\n      Name:"),
+              _c("br"),
+              _vm._v(_vm._s(_vm.username) + "\n    "),
             ])
           : _c(
               "div",
@@ -4677,7 +4670,7 @@ var render = function () {
                     staticClass: "button button--link",
                     attrs: { to: "/login" },
                   },
-                  [_vm._v("\n        Login / Register\n      ")]
+                  [_c("i", { staticClass: "fa-solid fa-door-open login" })]
                 ),
               ],
               1
