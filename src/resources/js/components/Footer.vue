@@ -1,11 +1,11 @@
 <template>
   <footer class="footer">
     <button v-if="isLogin" class="button button--link" @click="logout">
-        Logout
+        <i class="fa-solid fa-door-closed logout"></i>
     </button>
-    <RouterLink v-else class="button button--link" to="/login">
+    <!-- <RouterLink v-else class="button button--link" to="/login">
         Login / Register
-    </RouterLink>
+    </RouterLink> -->
   </footer>
 </template>
 

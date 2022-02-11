@@ -51,6 +51,15 @@ export default {
   this.currentPage = response.data.current_page
   this.lastPage = response.data.last_page
     },
+    // async fetchPhotosReload () {
+    //   const response = await axios.get(`/api/`)
+
+    //   if (response.status !== OK) {
+    //     this.$store.commit('error/setCode', response.status)
+    //     return false
+    //   }
+
+    // },
     onLikeClick ({ id, liked }) {
   if (! this.$store.getters['auth/check']) {
     alert('いいね機能を使うにはログインしてください。')
@@ -101,6 +110,9 @@ async unlike (id) {
       async handler () {
         await this.fetchPhotos()
       },
+    //   async handler () {
+    //     await this.fetchPhotosReload()
+    //   },
       immediate: true
     }
   }

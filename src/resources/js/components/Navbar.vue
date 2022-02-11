@@ -1,21 +1,23 @@
 <template>
   <nav class="navbar">
     <RouterLink class="navbar__brand" to="/">
-      LaraVueApp
+      <i class="fa fa-home"></i>
+    </RouterLink>
+    <RouterLink class="navbar__brand" to="/">
+      <Footer />
     </RouterLink>
     <div class="navbar__menu">
       <div v-if="isLogin" class="navbar__item">
-        <button class="button" @click="showForm = ! showForm">
-          <i class="icon ion-md-add"></i>
-          Submit a photo
+        <button class="button write" @click="showForm = ! showForm">
+          <i class="fa-solid fa-feather"></i>
         </button>
       </div>
-      <span v-if="isLogin" class="navbar__item">
-        {{ username }}
+      <span v-if="isLogin" class="navbar__item name">
+        Name:<br>{{ username }}
       </span>
       <div　v-else class="navbar__item">
         <RouterLink class="button button--link" to="/login">
-          Login / Register
+          <i class="fa-solid fa-door-open login"></i>
         </RouterLink>
       </div>
     </div>
@@ -25,10 +27,13 @@
 
 <script>
 import PhotoForm from './PhotoForm.vue'
+import Footer from './Footer.vue'
+
 
 export default {
     components: {
-    PhotoForm
+    PhotoForm,
+    Footer
   },
   data () {
     return {

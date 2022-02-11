@@ -27,12 +27,13 @@ VerifyCsrfTokenクラスで主にやってくれている
 {{-- あたかも「public」フォルダの直下にあるものとしてパスを指定できる(下線出てないけど問題ない) --}}
 <link rel="stylesheet" href="css/app.css">
 <link rel="stylesheet" href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 
 <body>
     <!-- ここにApp.vueの内容をコンパイルする -->
     <div id="app"></div>
-
+<script src="https://kit.fontawesome.com/10c86ad558.js" crossorigin="anonymous"></script>
 {{-- ここに<script   defer></script> --}}
 </body>
 
