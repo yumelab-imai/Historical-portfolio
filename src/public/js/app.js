@@ -1950,7 +1950,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 
- // import { INTERNAL_SERVER_ERROR } from './util'
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1966,24 +1965,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   watch: {
     errorCode: {
-      //   handler (val) {
-      //     if (val === INTERNAL_SERVER_ERROR) {
-      //       this.$router.push('/500')
-      //     }
-      //   },
-      //   immediate: true
-      //       async handler (val) {
-      //     if (val === INTERNAL_SERVER_ERROR) {
-      //       this.$router.push('/500')
-      //     } else if (val === UNAUTHORIZED) {
-      //       // トークンをリフレッシュ
-      //       await axios.get('/api/refresh-token')
-      //       // ストアのuserをクリア
-      //       this.$store.commit('auth/setUser', null)
-      //       // ログイン画面へ
-      //       this.$router.push('/login')
-      //     }
-      //   },
       handler: function handler(val) {
         var _this = this;
 
@@ -2369,6 +2350,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2476,9 +2459,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this2.$store.commit('message/setContent', {
                   content: '写真が投稿されました！',
                   timeout: 6000
-                });
+                }); // this.$router.push(`/photos/${response.data.id}`)
+                // this.$router.push(`/photos/:id`)
 
-                _this2.$router.push("/photos/".concat(response.data.id));
+
+                _this2.$router.push("/")["catch"](function () {});
 
               case 17:
               case "end":
@@ -3096,6 +3081,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
+    // async fetchPhotosReload () {
+    //   const response = await axios.get(`/api/`)
+    //   if (response.status !== OK) {
+    //     this.$store.commit('error/setCode', response.status)
+    //     return false
+    //   }
+    // },
     onLikeClick: function onLikeClick(_ref) {
       var id = _ref.id,
           liked = _ref.liked;
@@ -3217,6 +3209,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }, _callee4);
         }))();
       },
+      //   async handler () {
+      //     await this.fetchPhotosReload()
+      //   },
       immediate: true
     }
   }
@@ -4881,8 +4876,33 @@ var render = function () {
       _c("h2", { staticClass: "title" }, [_vm._v("Submit a photo")]),
       _vm._v(" "),
       _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.loading,
+              expression: "loading",
+            },
+          ],
+          staticClass: "panel",
+        },
+        [_c("Loader", [_vm._v("Loading...(Sending your photo...)")])],
+        1
+      ),
+      _vm._v(" "),
+      _c(
         "form",
         {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.loading,
+              expression: "! loading",
+            },
+          ],
           staticClass: "form",
           on: {
             submit: function ($event) {
@@ -5586,7 +5606,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("お探しのページは見つからなかったんだ...")])
+  return _c("p", [_vm._v("お探しのページは見つからなかったんだ...YO")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22358,14 +22378,7 @@ var createApp = /*#__PURE__*/function () {
   };
 }();
 
-createApp(); // 元はこんな感じ
-// new Vue({
-//   el: '#app',
-//   router,
-//   store,
-//   components: { App },
-//   template: '<App />'
-// })
+createApp();
 
 /***/ }),
 
@@ -23675,14 +23688,26 @@ var NOT_FOUND = 404;
 
 /***/ }),
 
+/***/ "./resources/sass/app.css":
+/*!********************************!*\
+  !*** ./resources/sass/app.css ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!***********************************!*\
-  !*** multi ./resources/js/app.js ***!
-  \***********************************/
+/*!************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.css ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/html/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /var/www/html/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/resources/sass/app.css */"./resources/sass/app.css");
 
 
 /***/ })
