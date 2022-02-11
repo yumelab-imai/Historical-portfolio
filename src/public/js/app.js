@@ -4510,7 +4510,7 @@ var render = function () {
       ? _c(
           "button",
           { staticClass: "button button--link", on: { click: _vm.logout } },
-          [_vm._v("\n      Logout\n  ")]
+          [_c("i", { staticClass: "fa-solid fa-door-closed logout" })]
         )
       : _vm._e(),
   ])
