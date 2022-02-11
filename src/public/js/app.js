@@ -2369,8 +2369,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4883,33 +4881,8 @@ var render = function () {
       _c("h2", { staticClass: "title" }, [_vm._v("Submit a photo")]),
       _vm._v(" "),
       _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.loading,
-              expression: "loading",
-            },
-          ],
-          staticClass: "panel",
-        },
-        [_c("Loader", [_vm._v("Loading...(Sending your photo...)")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
         "form",
         {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: !_vm.loading,
-              expression: "! loading",
-            },
-          ],
           staticClass: "form",
           on: {
             submit: function ($event) {
@@ -23702,26 +23675,14 @@ var NOT_FOUND = 404;
 
 /***/ }),
 
-/***/ "./resources/sass/app.css":
-/*!********************************!*\
-  !*** ./resources/sass/app.css ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.css ***!
-  \************************************************************/
+/*!***********************************!*\
+  !*** multi ./resources/js/app.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/resources/sass/app.css */"./resources/sass/app.css");
+module.exports = __webpack_require__(/*! /var/www/html/resources/js/app.js */"./resources/js/app.js");
 
 
 /***/ })
