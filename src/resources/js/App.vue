@@ -1,6 +1,6 @@
 // ルートコンポーネント
 <template>
-  <div>
+  <div class="back">
     <header>
       <Navbar />
     </header>

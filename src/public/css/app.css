@@ -8,15 +8,18 @@
   font-size: 14px;
 }
 
+.back{
+    background-color:darkgoldenrod;
+}
+
 body {
-  color: #222;
+  color: rgb(68, 27, 182);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
 }
 
 main {
   margin-bottom: 6rem;
-  margin-top: 7rem;
 }
 
 figure {
@@ -28,6 +31,7 @@ img {
 }
 
 .container {
+    background-color: #222;
   margin: 0 auto;
   max-width: 1200px;
   padding: 0 2%;
@@ -40,8 +44,10 @@ img {
 
 .grid {
   display: grid;
+  background-color: #117355;
+
   grid-gap: 0 2%;
-  grid-template-columns: repeat(auto-fit, 32%);
+  grid-template-columns: repeat(auto-fit, 90%);
 }
 
 .grid__item {
@@ -53,11 +59,11 @@ img {
   background: rgb(247, 74, 6);
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1);
   display: flex;
+  flex-direction: column;
   height: 100%;
-  width: 10%;
+  width: 8%;
   justify-content: space-between;
   left: 0;
-  padding: 2%;
   position: fixed;
   right: 0;
   top: 0;
@@ -68,7 +74,7 @@ img {
   color: inherit;
   font-family: Merriweather, serif;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 10%;
   text-decoration: none;
 }
 
@@ -80,14 +86,11 @@ img {
   opacity: 0.6;
 }
 
+
 .navbar__menu {
-  align-items: center;
-  display: flex;
+  display: inline-block;
 }
 
-.navbar__item {
-  margin-left: 1rem;
-}
 
 .photo {
   position: relative;
@@ -116,6 +119,7 @@ img {
 .photo__wrapper {
   overflow: hidden;
   padding-top: 75%;
+  margin-left: 15%;
   width: 90%;
   position: relative;
 }
@@ -127,7 +131,7 @@ img {
   left: 0;
   -o-object-fit: cover;
   object-fit: cover;
-  width: 80%;
+  width: 100%;
   height: 100%;
 }
 
@@ -246,9 +250,7 @@ img {
   margin: 0;
 }
 
-.photo grid__item{
-    width: 90%;
-}
+
 
 .photo-form {
   background: #fff;
@@ -274,7 +276,7 @@ img {
   font-size: 1rem;
   line-height: 1;
   outline: none;
-  padding: 0.5rem 0.75rem;
+  /* padding: 0.5rem 0.75rem; */
   text-decoration: none;
   transition: border-color 300ms ease-in-out, color 300ms ease-in-out;
 }
