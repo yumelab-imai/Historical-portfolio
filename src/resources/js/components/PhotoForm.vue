@@ -1,6 +1,8 @@
 <template>
-  <div v-show="value" class="photo-form">
-    <h2 class="title">Submit a photo</h2>
+  <div  class="photo-form">
+      <!-- v-show="show" -->
+
+    <!-- <h2 class="title">Submit a photo</h2>
         <div v-show="loading" class="panel">
       <Loader>Loading...(Sending your photo...)</Loader>
     </div>
@@ -11,14 +13,14 @@
         </ul>
         </div>
     <!-- プレビュー機能の実装方法としては HTML5 の慣用的な書き方らしい。。。 -->
-      <input class="form__item" type="file" @change="onFileChange">
+      <!-- <input class="form__item" type="file" @change="onFileChange">
       <output class="form__output" v-if="preview">
         <img :src="preview" alt="">
         </output>
       <div class="form__button">
         <button type="submit" class="button button--inverse">submit</button>
       </div>
-    </form>
+    </form> --> -->
   </div>
 </template>
 
@@ -31,12 +33,12 @@ export default {
     components: {
     Loader
   },
-  props: {
-    value: {
-      type: Boolean,
-      required: true
-    }
-  },
+//   props: {
+//     show: {
+//       type: Boolean,
+//       required: true
+//     }
+//   },
   data () {
     return {
         loading: false,

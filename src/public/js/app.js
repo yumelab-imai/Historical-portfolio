@@ -1923,8 +1923,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Message_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Message.vue */ "./resources/js/components/Message.vue");
-/* harmony import */ var _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./resources/js/util.js");
+/* harmony import */ var _components_PhotoForm_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/PhotoForm.vue */ "./resources/js/components/PhotoForm.vue");
+/* harmony import */ var _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./resources/js/util.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1946,6 +1947,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+
 
  // import Footer from './Footer.vue'
 
@@ -1953,8 +1956,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Message: _components_Message_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Navbar: _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_2__["default"] // Footer
-
+    Navbar: _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    PhotoForm: _components_PhotoForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      show: ""
+    };
+  },
+  methods: {
+    updateChildMsg: function updateChildMsg(msg) {
+      this.show = msg;
+    }
   },
   computed: {
     errorCode: function errorCode() {
@@ -1971,7 +1984,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_3__["INTERNAL_SERVER_ERROR"])) {
+                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_4__["INTERNAL_SERVER_ERROR"])) {
                     _context.next = 4;
                     break;
                   }
@@ -1982,7 +1995,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
 
                 case 4:
-                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_3__["UNAUTHORIZED"])) {
+                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_4__["UNAUTHORIZED"])) {
                     _context.next = 11;
                     break;
                   }
@@ -1999,7 +2012,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
 
                 case 11:
-                  if (val === _util__WEBPACK_IMPORTED_MODULE_3__["NOT_FOUND"]) {
+                  if (val === _util__WEBPACK_IMPORTED_MODULE_4__["NOT_FOUND"]) {
                     _this.$router.push('/not-found');
                   }
 
@@ -2142,8 +2155,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PhotoForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhotoForm.vue */ "./resources/js/components/PhotoForm.vue");
-/* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Footer.vue */ "./resources/js/components/Footer.vue");
+/* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Footer.vue */ "./resources/js/components/Footer.vue");
 //
 //
 //
@@ -2171,16 +2183,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
+//
+// import PhotoForm from './PhotoForm.vue'
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    PhotoForm: _PhotoForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Footer: _Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    // PhotoForm,
+    Footer: _Footer_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      showForm: false
+      showOn: false
     };
   },
   // computed から参照して冗長な記述を避ける
@@ -2190,6 +2206,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     username: function username() {
       return this.$store.getters['auth/username'];
+    }
+  },
+  methods: {
+    addOn: function addOn() {
+      this.showOn = !this.showOn;
+      this.$emit('show', this.showOn);
     }
   }
 });
@@ -2355,18 +2377,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  props: {
-    value: {
-      type: Boolean,
-      required: true
-    }
-  },
+  //   props: {
+  //     show: {
+  //       type: Boolean,
+  //       required: true
+  //     }
+  //   },
   data: function data() {
     return {
       loading: false,
@@ -4471,16 +4495,30 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "back" }, [
-    _c("header", [_c("Navbar")], 1),
+    _c("header", [_c("Navbar", { on: { showOn: _vm.updateChildMsg } })], 1),
     _vm._v(" "),
-    _c("main", [
-      _c(
-        "div",
-        { staticClass: "container" },
-        [_c("Message"), _vm._v(" "), _c("RouterView")],
-        1
-      ),
-    ]),
+    _c(
+      "main",
+      [
+        _c("PhotoForm", {
+          model: {
+            value: _vm.show,
+            callback: function ($$v) {
+              _vm.show = $$v
+            },
+            expression: "show",
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "container" },
+          [_c("Message"), _vm._v(" "), _c("RouterView")],
+          1
+        ),
+      ],
+      1
+    ),
   ])
 }
 var staticRenderFns = []
@@ -4641,14 +4679,7 @@ var render = function () {
           ? _c("div", { staticClass: "navbar__item" }, [
               _c(
                 "button",
-                {
-                  staticClass: "button write",
-                  on: {
-                    click: function ($event) {
-                      _vm.showForm = !_vm.showForm
-                    },
-                  },
-                },
+                { staticClass: "button write", on: { click: _vm.addOn } },
                 [_c("i", { staticClass: "fa-solid fa-feather" })]
               ),
             ])
@@ -4656,9 +4687,9 @@ var render = function () {
         _vm._v(" "),
         _vm.isLogin
           ? _c("span", { staticClass: "navbar__item name" }, [
-              _vm._v("\n      Name:"),
+              _vm._v("\n       Name:"),
               _c("br"),
-              _vm._v(_vm._s(_vm.username) + "\n    "),
+              _vm._v(_vm._s(_vm.username) + "\n     "),
             ])
           : _c(
               "div",
@@ -4676,16 +4707,6 @@ var render = function () {
               1
             ),
       ]),
-      _vm._v(" "),
-      _c("PhotoForm", {
-        model: {
-          value: _vm.showForm,
-          callback: function ($$v) {
-            _vm.showForm = $$v
-          },
-          expression: "showForm",
-        },
-      }),
     ],
     1
   )
@@ -4853,105 +4874,9 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.value,
-          expression: "value",
-        },
-      ],
-      staticClass: "photo-form",
-    },
-    [
-      _c("h2", { staticClass: "title" }, [_vm._v("Submit a photo")]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.loading,
-              expression: "loading",
-            },
-          ],
-          staticClass: "panel",
-        },
-        [_c("Loader", [_vm._v("Loading...(Sending your photo...)")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: !_vm.loading,
-              expression: "! loading",
-            },
-          ],
-          staticClass: "form",
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.submit.apply(null, arguments)
-            },
-          },
-        },
-        [
-          _vm.errors
-            ? _c("div", { staticClass: "errors" }, [
-                _vm.errors.photo
-                  ? _c(
-                      "ul",
-                      _vm._l(_vm.errors.photo, function (msg) {
-                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                      }),
-                      0
-                    )
-                  : _vm._e(),
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form__item",
-            attrs: { type: "file" },
-            on: { change: _vm.onFileChange },
-          }),
-          _vm._v(" "),
-          _vm.preview
-            ? _c("output", { staticClass: "form__output" }, [
-                _c("img", { attrs: { src: _vm.preview, alt: "" } }),
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._m(0),
-        ]
-      ),
-    ]
-  )
+  return _c("div", { staticClass: "photo-form" }, [_vm._v(" -->\n")])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form__button" }, [
-      _c(
-        "button",
-        { staticClass: "button button--inverse", attrs: { type: "submit" } },
-        [_vm._v("submit")]
-      ),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
