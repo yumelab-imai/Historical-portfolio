@@ -7,37 +7,41 @@
       <Footer />
     </RouterLink>
     <div class="navbar__menu">
+  <!-- <form @click.prevent="showForm"> -->
       <div v-if="isLogin" class="navbar__item">
-        <button class="button write" @click="showForm = ! showForm">
+          <!-- <form @submit.prevent="addOn"> -->
+        <button  class="button write" @click="onClick">
           <i class="fa-solid fa-feather"></i>
         </button>
+        <!-- </form> -->
       </div>
+ <!-- </form> -->
       <span v-if="isLogin" class="navbar__item name">
         Name:<br>{{ username }}
       </span>
-      <div　v-else class="navbar__item">
+      <div v-else class="navbar__item">
         <RouterLink class="button button--link" to="/login">
           <i class="fa-solid fa-door-open login"></i>
         </RouterLink>
       </div>
     </div>
-    <PhotoForm v-model="showForm" />
+    <!-- <PhotoForm v-model="showForm" /> -->
   </nav>
 </template>
 
 <script>
-import PhotoForm from './PhotoForm.vue'
+// import PhotoForm from './PhotoForm.vue'
 import Footer from './Footer.vue'
 
 
 export default {
     components: {
-    PhotoForm,
+    // PhotoForm,
     Footer
   },
   data () {
     return {
-      showForm: false
+      showOn: false
     }
   },
   // computed から参照して冗長な記述を避ける
@@ -48,6 +52,12 @@ export default {
         username () {
         return this.$store.getters['auth/username']
         }
+  },
+
+  methods: {
+    onClick() {
+        this.$store.commit('turn/change')
+    }
   }
 }
 </script>

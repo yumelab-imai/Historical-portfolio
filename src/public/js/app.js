@@ -1923,8 +1923,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Message_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Message.vue */ "./resources/js/components/Message.vue");
-/* harmony import */ var _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./resources/js/util.js");
+/* harmony import */ var _components_PhotoForm_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/PhotoForm.vue */ "./resources/js/components/PhotoForm.vue");
+/* harmony import */ var _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./resources/js/util.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1946,6 +1947,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+
 
  // import Footer from './Footer.vue'
 
@@ -1953,9 +1956,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Message: _components_Message_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Navbar: _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_2__["default"] // Footer
-
+    Navbar: _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    PhotoForm: _components_PhotoForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
+  //   data() {
+  //     return {
+  //       show: "",
+  //     }
+  //   },
+  //    methods: {
+  //     updateChildMsg(msg) {
+  //       this.show = msg;
+  //     }
+  //   },
   computed: {
     errorCode: function errorCode() {
       return this.$store.state.error.code;
@@ -1971,7 +1984,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_3__["INTERNAL_SERVER_ERROR"])) {
+                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_4__["INTERNAL_SERVER_ERROR"])) {
                     _context.next = 4;
                     break;
                   }
@@ -1982,7 +1995,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
 
                 case 4:
-                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_3__["UNAUTHORIZED"])) {
+                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_4__["UNAUTHORIZED"])) {
                     _context.next = 11;
                     break;
                   }
@@ -1999,7 +2012,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
 
                 case 11:
-                  if (val === _util__WEBPACK_IMPORTED_MODULE_3__["NOT_FOUND"]) {
+                  if (val === _util__WEBPACK_IMPORTED_MODULE_4__["NOT_FOUND"]) {
                     _this.$router.push('/not-found');
                   }
 
@@ -2142,8 +2155,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PhotoForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhotoForm.vue */ "./resources/js/components/PhotoForm.vue");
-/* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Footer.vue */ "./resources/js/components/Footer.vue");
+/* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Footer.vue */ "./resources/js/components/Footer.vue");
 //
 //
 //
@@ -2171,16 +2183,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
+//
+// import PhotoForm from './PhotoForm.vue'
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    PhotoForm: _PhotoForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Footer: _Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    // PhotoForm,
+    Footer: _Footer_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      showForm: false
+      showOn: false
     };
   },
   // computed から参照して冗長な記述を避ける
@@ -2190,6 +2206,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     username: function username() {
       return this.$store.getters['auth/username'];
+    }
+  },
+  methods: {
+    onClick: function onClick() {
+      this.$store.commit('turn/change');
     }
   }
 });
@@ -2325,6 +2346,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ "./resources/js/util.js");
 /* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Loader.vue */ "./resources/js/components/Loader.vue");
+/* harmony import */ var _Navbar_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Navbar.vue */ "./resources/js/components/Navbar.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2355,17 +2377,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-  },
-  props: {
-    value: {
-      type: Boolean,
-      required: true
-    }
+    Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Navbar: _Navbar_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
@@ -2373,9 +2392,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // previewはsrcを表す
       preview: null,
       photo: null,
-      errors: null
+      errors: null //   ここさえ上手くいけば全て終わる！！
+      //   showOn:  this.$store.state.turn.showOn
+
     };
   },
+  computed: {
+    showOn: function showOn() {
+      return this.$store.state.turn.showOn;
+    }
+  },
+  //    watch: {
+  //     showOn: function() {
+  //       this.showOn = this.$store.state.turn.showOn
+  //     },
   methods: {
     // フォームでファイルが選択されたら実行される
     onFileChange: function onFileChange(event) {
@@ -4473,14 +4503,20 @@ var render = function () {
   return _c("div", { staticClass: "back" }, [
     _c("header", [_c("Navbar")], 1),
     _vm._v(" "),
-    _c("main", [
-      _c(
-        "div",
-        { staticClass: "container" },
-        [_c("Message"), _vm._v(" "), _c("RouterView")],
-        1
-      ),
-    ]),
+    _c(
+      "main",
+      [
+        _c("PhotoForm"),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "container" },
+          [_c("Message"), _vm._v(" "), _c("RouterView")],
+          1
+        ),
+      ],
+      1
+    ),
   ])
 }
 var staticRenderFns = []
@@ -4641,14 +4677,7 @@ var render = function () {
           ? _c("div", { staticClass: "navbar__item" }, [
               _c(
                 "button",
-                {
-                  staticClass: "button write",
-                  on: {
-                    click: function ($event) {
-                      _vm.showForm = !_vm.showForm
-                    },
-                  },
-                },
+                { staticClass: "button write", on: { click: _vm.onClick } },
                 [_c("i", { staticClass: "fa-solid fa-feather" })]
               ),
             ])
@@ -4656,9 +4685,9 @@ var render = function () {
         _vm._v(" "),
         _vm.isLogin
           ? _c("span", { staticClass: "navbar__item name" }, [
-              _vm._v("\n      Name:"),
+              _vm._v("\n       Name:"),
               _c("br"),
-              _vm._v(_vm._s(_vm.username) + "\n    "),
+              _vm._v(_vm._s(_vm.username) + "\n     "),
             ])
           : _c(
               "div",
@@ -4676,16 +4705,6 @@ var render = function () {
               1
             ),
       ]),
-      _vm._v(" "),
-      _c("PhotoForm", {
-        model: {
-          value: _vm.showForm,
-          callback: function ($$v) {
-            _vm.showForm = $$v
-          },
-          expression: "showForm",
-        },
-      }),
     ],
     1
   )
@@ -4860,8 +4879,8 @@ var render = function () {
         {
           name: "show",
           rawName: "v-show",
-          value: _vm.value,
-          expression: "value",
+          value: _vm.showOn,
+          expression: "showOn",
         },
       ],
       staticClass: "photo-form",
@@ -23570,6 +23589,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth */ "./resources/js/store/auth.js");
 /* harmony import */ var _error__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./error */ "./resources/js/store/error.js");
 /* harmony import */ var _message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./message */ "./resources/js/store/message.js");
+/* harmony import */ var _turn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./turn */ "./resources/js/store/turn.js");
+
 
 
 
@@ -23580,7 +23601,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     auth: _auth__WEBPACK_IMPORTED_MODULE_2__["default"],
     error: _error__WEBPACK_IMPORTED_MODULE_3__["default"],
-    message: _message__WEBPACK_IMPORTED_MODULE_4__["default"]
+    message: _message__WEBPACK_IMPORTED_MODULE_4__["default"],
+    turn: _turn__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (store);
@@ -23618,6 +23640,40 @@ var mutations = {
   namespaced: true,
   state: state,
   mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/turn.js":
+/*!************************************!*\
+  !*** ./resources/js/store/turn.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var state = {
+  showOn: false
+}; // ステートそのものではなくステートを元に演算した結果が欲しい場合はゲッターのちょうど良い使いどころ
+
+var getters = {}; // 同期処理でなければいけない
+// ミューテーションを呼び出すときの実引数は仮引数では第二引数以降として渡される
+
+var mutations = {
+  change: function change(state) {
+    state.showOn = !state.showOn;
+  }
+}; // 非同期処理でなければいけなく、その後ミューテーションを呼び出してステートを更新する
+// 「アクション→コミットでミューテーション呼び出し→ステート更新」というパターンはよく使う
+
+var actions = {};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
 });
 
 /***/ }),
