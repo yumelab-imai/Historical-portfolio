@@ -49,7 +49,7 @@ export default {
       showOn() {
       return this.$store.state.turn.showOn;
     }
-  }
+  },
 //    watch: {
 //     showOn: function() {
 
