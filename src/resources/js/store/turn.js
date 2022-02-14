@@ -1,6 +1,6 @@
 
 const state = {
-    showOn:true
+    showOn:false
 }
 
 // ステートそのものではなくステートを元に演算した結果が欲しい場合はゲッターのちょうど良い使いどころ
