@@ -1,8 +1,7 @@
 <template>
-  <div  class="photo-form">
-      <!-- v-show="show" -->
+  <div v-show="showOn" class="photo-form">
 
-    <!-- <h2 class="title">Submit a photo</h2>
+    <h2 class="title">Submit a photo</h2>
         <div v-show="loading" class="panel">
       <Loader>Loading...(Sending your photo...)</Loader>
     </div>
@@ -13,41 +12,49 @@
         </ul>
         </div>
     <!-- プレビュー機能の実装方法としては HTML5 の慣用的な書き方らしい。。。 -->
-      <!-- <input class="form__item" type="file" @change="onFileChange">
+       <input class="form__item" type="file" @change="onFileChange">
       <output class="form__output" v-if="preview">
         <img :src="preview" alt="">
         </output>
       <div class="form__button">
         <button type="submit" class="button button--inverse">submit</button>
       </div>
-    </form> --> -->
+    </form>
   </div>
 </template>
 
 <script>
 import { CREATED, UNPROCESSABLE_ENTITY } from '../util'
 import Loader from './Loader.vue'
+import Navbar from './Navbar.vue'
 
 export default {
 
     components: {
-    Loader
+    Loader,
+    Navbar
   },
-//   props: {
-//     show: {
-//       type: Boolean,
-//       required: true
-//     }
-//   },
   data () {
     return {
         loading: false,
         // previewはsrcを表す
       preview: null,
       photo: null,
-      errors: null
+      errors: null,
+    //   ここさえ上手くいけば全て終わる！！
+    //   showOn:  this.$store.state.turn.showOn
     }
   },
+  computed:{
+      showOn() {
+      return this.$store.state.turn.showOn;
+    }
+  }
+//    watch: {
+//     showOn: function() {
+
+//       this.showOn = this.$store.state.turn.showOn
+//     },
   methods: {
     // フォームでファイルが選択されたら実行される
     onFileChange (event) {

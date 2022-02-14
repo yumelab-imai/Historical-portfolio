@@ -2,10 +2,10 @@
 <template>
   <div class="back">
     <header>
-      <Navbar @showOn="updateChildMsg" />
+      <Navbar />
     </header>
     <main>
-        <PhotoForm v-model="show" />
+        <PhotoForm />
       <div class="container">
         <Message />
         <RouterView />
@@ -27,16 +27,16 @@ export default {
     Navbar,
     PhotoForm
   },
-  data() {
-    return {
-      show: "",
-    }
-  },
-   methods: {
-    updateChildMsg(msg) {
-      this.show = msg;
-    }
-  },
+//   data() {
+//     return {
+//       show: "",
+//     }
+//   },
+//    methods: {
+//     updateChildMsg(msg) {
+//       this.show = msg;
+//     }
+//   },
   computed: {
     errorCode () {
       return this.$store.state.error.code

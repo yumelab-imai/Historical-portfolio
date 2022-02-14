@@ -10,7 +10,7 @@
   <!-- <form @click.prevent="showForm"> -->
       <div v-if="isLogin" class="navbar__item">
           <!-- <form @submit.prevent="addOn"> -->
-        <button  class="button write" @click="addOn">
+        <button  class="button write" @click="onClick">
           <i class="fa-solid fa-feather"></i>
         </button>
         <!-- </form> -->
@@ -55,9 +55,8 @@ export default {
   },
 
   methods: {
-    addOn() {
-        this.showOn =! this.showOn;
-      this.$emit('show',this.showOn);
+    onClick() {
+        this.$store.commit('turn/change')
     }
   }
 }
