@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/', function () {
+//     return env('APP_NAME');
+// });
 
 // 写真ダウンロード、下のindexより下に書いたらerrorになったので順番大事！
 Route::get('/photos/{photo}/download', 'PhotoController@download');
