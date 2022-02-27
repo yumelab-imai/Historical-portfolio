@@ -27,7 +27,9 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // ログインユーザーのため
-Route::get('/user', function(){ Auth::user() })->name('user');
+Route::get('/user', function () {
+    Auth::user();
+})->name('user');
 
 // 写真投稿のため
 Route::post('/photos', 'PhotoController@create')->name('photo.create');
