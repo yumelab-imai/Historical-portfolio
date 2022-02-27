@@ -6,7 +6,9 @@ jobs:
     steps:
       - checkout
       - run: sudo composer
-      - run: composer update
+      - run:
+          working_directory: src
+          command: composer update
       - run:
           working_directory: src
           command: composer install -n --prefer-dist
