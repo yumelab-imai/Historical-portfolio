@@ -6,7 +6,9 @@ jobs:
     steps:
       - checkout
       - run: sudo composer
-      - run: composer install --prefer-dist
+      - run:
+          working_directory: src
+          command: composer install -n --prefer-dist
       - run: npm ci
       - run: npm run dev
       - run:
