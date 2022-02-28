@@ -23,7 +23,5 @@ Route::get('/photos/{photo}/download', 'PhotoController@download');
 フロントエンド側：  画面遷移をフロントエンドのVueRouterで制御する
 {/login }などのパスに対応したコンテンツを表示するのはフロントエンド（Vue Router）の役割
 */
-Route::get('/{any?}', function () {
-    view('index');
-})->where('any', '.+');
+Route::get('/{any?}', fn () => view('index'))->where('any', '.+');
 
