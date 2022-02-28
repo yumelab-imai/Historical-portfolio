@@ -22,3 +22,33 @@ jobs:
           name: php test
           working_directory: src
           command: vendor/bin/phpunit
+  
+  deploy:
+    docker:
+      - image: circleci/php:7.4-zts-buster-node-browsers-legacy
+    steps:
+      - add_ssh_keys
+      - run:
+          name: deploy
+          working_directory: src
+          command: |
+            ssh -o StrictHostKeyChecking=no -t ec2-user@46.51.248.13 "cd laravel-ci && \
+              git pull origin master && \
+              composer install -n --no-dev --prefer-dist && \
+              npm ci && \
+              npm run prod && \
+              php artisan migrate --force && \
+              php artisan config:cache"
+
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
