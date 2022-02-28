@@ -1,5 +1,7 @@
 import Vue from 'vue'
 
+Vue.config.devtools = true
+
 import router from './router'
 
 import App from './App.vue'
