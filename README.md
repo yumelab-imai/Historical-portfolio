@@ -76,9 +76,7 @@ $ git clone
 $cd ~/portfolio
 $docker-compose up -d
 $docker-compose exec app bash
-$conposer install 
+$conposer install
 $composer install
 $ php artisan config:cache & php artisan cache:clear &   php artisan migrate:refresh
 
-
-conposer install
