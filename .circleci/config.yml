@@ -29,7 +29,7 @@ jobs:
       - add_ssh_keys
       - run:
           name: deploy
-          working_directory: src
+          working_directory: ~/src
           command: |
             ssh -o StrictHostKeyChecking=no -t ec2-user@46.51.248.13 "cd portfolio && \
               git pull origin master && \
