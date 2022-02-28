@@ -35,11 +35,7 @@ jobs:
               git pull origin master && \
               cd src && \
               composer update && \
-              composer install -n --no-dev --prefer-dist && \
-              npm ci && \
-              npm run prod && \
-              php artisan migrate --force && \
-              php artisan config:cache"
+              composer install -n --no-dev --prefer-dist
 
 workflows:
   version: 2
