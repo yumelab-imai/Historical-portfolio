@@ -22,7 +22,6 @@ jobs:
           name: php test
           working_directory: src
           command: vendor/bin/phpunit
-  
   deploy:
     docker:
       - image: circleci/php:7.4-zts-buster-node-browsers-legacy
