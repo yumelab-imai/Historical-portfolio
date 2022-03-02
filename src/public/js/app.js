@@ -2173,6 +2173,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 // import PhotoForm from './PhotoForm.vue'
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2802,7 +2807,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       photo: null,
-      fullWidth: false,
+      fullWidth: true,
       commentContent: '',
       commentErrors: null
     };
@@ -4649,9 +4654,25 @@ var render = function () {
     "nav",
     { staticClass: "navbar" },
     [
-      _c("RouterLink", { staticClass: "navbar__brand", attrs: { to: "/" } }, [
-        _c("i", { staticClass: "fa fa-home" }),
-      ]),
+      _c(
+        "div",
+        [
+          _c(
+            "RouterLink",
+            { staticClass: "navbar__brand home-name", attrs: { to: "/" } },
+            [_c("i", { staticClass: "fa fa-home" })]
+          ),
+          _vm._v(" "),
+          _vm.isLogin
+            ? _c("div", [
+                _vm._v("\n   Name:"),
+                _c("br"),
+                _vm._v(_vm._s(_vm.username) + "\n   "),
+              ])
+            : _vm._e(),
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "RouterLink",
@@ -4672,11 +4693,7 @@ var render = function () {
           : _vm._e(),
         _vm._v(" "),
         _vm.isLogin
-          ? _c("span", { staticClass: "navbar__item name" }, [
-              _vm._v("\n       Name:"),
-              _c("br"),
-              _vm._v(_vm._s(_vm.username) + "\n     "),
-            ])
+          ? _c("span", { staticClass: "navbar__item name" })
           : _c(
               "div",
               { staticClass: "navbar__item" },
@@ -5373,24 +5390,8 @@ var render = function () {
           class: { "photo-detail--column": _vm.fullWidth },
         },
         [
-          _c(
-            "figure",
-            {
-              staticClass: "photo-detail__pane photo-detail__image",
-              on: {
-                click: function ($event) {
-                  _vm.fullWidth = !_vm.fullWidth
-                },
-              },
-            },
-            [
-              _c("img", { attrs: { src: _vm.photo.url, alt: "" } }),
-              _vm._v(" "),
-              _c("figcaption", [
-                _vm._v("Posted by " + _vm._s(_vm.photo.owner.name)),
-              ]),
-            ]
-          ),
+          _vm._v("\n    >\n      "),
+          _c("img", { attrs: { src: _vm.photo.url } }),
           _vm._v(" "),
           _c("div", { staticClass: "photo-detail__pane" }, [
             _c(

@@ -6,10 +6,10 @@
   >
     <figure
     class="photo-detail__pane photo-detail__image"
-    @click="fullWidth = ! fullWidth"
+    <!-- @click="fullWidth = ! fullWidth" -->
     >
-      <img :src="photo.url" alt="">
-      <figcaption>Posted by {{ photo.owner.name }}</figcaption>
+      <img :src="photo.url">
+      <!-- <figcaption>Posted by {{ photo.owner.name }}</figcaption> -->
     </figure>
     <div class="photo-detail__pane">
       <button
@@ -73,7 +73,7 @@ export default {
   data () {
     return {
       photo: null,
-    fullWidth: false,
+    fullWidth: true,
     commentContent: '',
     commentErrors: null
     }

@@ -1,8 +1,14 @@
 <template>
+
   <nav class="navbar">
-    <RouterLink class="navbar__brand" to="/">
+      <div>
+    <RouterLink class="navbar__brand home-name" to="/">
       <i class="fa fa-home"></i>
     </RouterLink>
+    <div v-if="isLogin" >
+    Name:<br>{{ username }}
+    </div>
+    </div>
     <RouterLink class="navbar__brand" to="/">
       <Footer />
     </RouterLink>
@@ -17,7 +23,6 @@
       </div>
  <!-- </form> -->
       <span v-if="isLogin" class="navbar__item name">
-        Name:<br>{{ username }}
       </span>
       <div v-else class="navbar__item">
         <RouterLink class="button button--link" to="/login">

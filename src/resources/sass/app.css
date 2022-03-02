@@ -9,7 +9,7 @@
 }
 
 .back{
-    background-color:darkgoldenrod;
+    background-color:rgba(223, 223, 223, 0.486);
 }
 
 body {
@@ -31,8 +31,9 @@ img {
 }
 
 .container {
+    width: 92%;
     background-color: rgb(253, 249, 249);
-  margin: 0 auto;
+  margin-left: 3.5rem;
   max-width: 1200px;
   padding: 0 2%;
 }
@@ -685,4 +686,9 @@ img {
     height: 4rem;
     font-size: 1rem;
     text-align: center;
+}
+
+.home-name
+{
+    font-size: 3rem;
 }
