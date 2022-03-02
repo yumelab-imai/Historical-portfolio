@@ -2178,6 +2178,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 // import PhotoForm from './PhotoForm.vue'
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4539,7 +4540,7 @@ var render = function () {
       ? _c(
           "button",
           { staticClass: "button button--link", on: { click: _vm.logout } },
-          [_c("i", { staticClass: "fa-solid fa-door-closed logout" })]
+          [_c("i", { staticClass: "fa-solid fa-door-open login" })]
         )
       : _vm._e(),
   ])
@@ -4674,42 +4675,37 @@ var render = function () {
         1
       ),
       _vm._v(" "),
+      _vm.isLogin
+        ? _c("div", { staticClass: "navbar__item" }, [
+            _c(
+              "button",
+              { staticClass: "button write", on: { click: _vm.onClick } },
+              [_c("i", { staticClass: "fa-solid fa-feather" })]
+            ),
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.isLogin
+        ? _c("span", { staticClass: "navbar__item name" })
+        : _c(
+            "div",
+            { staticClass: "navbar__item" },
+            [
+              _c(
+                "RouterLink",
+                { staticClass: "button button--link", attrs: { to: "/login" } },
+                [_c("i", { staticClass: "fa-solid fa-door-closed logout" })]
+              ),
+            ],
+            1
+          ),
+      _vm._v(" "),
       _c(
         "RouterLink",
         { staticClass: "navbar__brand", attrs: { to: "/" } },
         [_c("Footer")],
         1
       ),
-      _vm._v(" "),
-      _c("div", { staticClass: "navbar__menu" }, [
-        _vm.isLogin
-          ? _c("div", { staticClass: "navbar__item" }, [
-              _c(
-                "button",
-                { staticClass: "button write", on: { click: _vm.onClick } },
-                [_c("i", { staticClass: "fa-solid fa-feather" })]
-              ),
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.isLogin
-          ? _c("span", { staticClass: "navbar__item name" })
-          : _c(
-              "div",
-              { staticClass: "navbar__item" },
-              [
-                _c(
-                  "RouterLink",
-                  {
-                    staticClass: "button button--link",
-                    attrs: { to: "/login" },
-                  },
-                  [_c("i", { staticClass: "fa-solid fa-door-open login" })]
-                ),
-              ],
-              1
-            ),
-      ]),
     ],
     1
   )
@@ -5419,7 +5415,7 @@ var render = function () {
               },
               [
                 _c("i", { staticClass: "icon ion-md-arrow-round-down" }),
-                _vm._v("Download\n      "),
+                _vm._v("Download Photo\n      "),
               ]
             ),
             _vm._v(" "),
@@ -5437,18 +5433,18 @@ var render = function () {
                         staticClass: "photo-detail__commentItem",
                       },
                       [
-                        _c("p", { staticClass: "photo-detail__commentBody" }, [
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(comment.content) +
-                              "\n            "
-                          ),
-                        ]),
-                        _vm._v(" "),
                         _c("p", { staticClass: "photo-detail__commentInfo" }, [
                           _vm._v(
                             "\n            " +
                               _vm._s(comment.author.name) +
+                              "\n            "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "photo-detail__commentBody" }, [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(comment.content) +
                               "\n            "
                           ),
                         ]),
@@ -5528,7 +5524,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Comments\n        "),
+      _vm._v("Review\n        "),
     ])
   },
   function () {

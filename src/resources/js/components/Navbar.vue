@@ -9,10 +9,8 @@
     Name:<br>{{ username }}
     </div>
     </div>
-    <RouterLink class="navbar__brand" to="/">
-      <Footer />
-    </RouterLink>
-    <div class="navbar__menu">
+
+
   <!-- <form @click.prevent="showForm"> -->
       <div v-if="isLogin" class="navbar__item">
           <!-- <form @submit.prevent="addOn"> -->
@@ -26,10 +24,13 @@
       </span>
       <div v-else class="navbar__item">
         <RouterLink class="button button--link" to="/login">
-          <i class="fa-solid fa-door-open login"></i>
+          
+          <i class="fa-solid fa-door-closed logout"></i>
         </RouterLink>
       </div>
-    </div>
+    <RouterLink class="navbar__brand" to="/">
+      <Footer />
+    </RouterLink>
     <!-- <PhotoForm v-model="showForm" /> -->
   </nav>
 </template>
