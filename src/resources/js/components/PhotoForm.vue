@@ -1,15 +1,19 @@
 <template>
   <div v-show="showOn" class="photo-form">
-
-    <h2 class="title">Submit a photo</h2>
+    <div>
+        <h2 class="title">Submit a photo</h2>
         <div v-show="loading" class="panel">
-      <Loader>Loading...(Sending your photo...)</Loader>
+        <Loader>Loading...(Sending your photo...)</Loader>
+        </div>
     </div>
     <form v-show="! loading" class="form" @submit.prevent="submit">
         <div class="errors" v-if="errors">
         <ul v-if="errors.photo">
         <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
         </ul>
+        </div>
+        <div>
+            <Message />
         </div>
     <!-- プレビュー機能の実装方法としては HTML5 の慣用的な書き方らしい。。。 -->
        <input class="form__item" type="file" @change="onFileChange">
@@ -24,6 +28,7 @@
 </template>
 
 <script>
+import Message from './Message.vue'
 import { CREATED, UNPROCESSABLE_ENTITY } from '../util'
 import Loader from './Loader.vue'
 import Navbar from './Navbar.vue'
@@ -31,6 +36,7 @@ import Navbar from './Navbar.vue'
 export default {
 
     components: {
+    Message,
     Loader,
     Navbar
   },
