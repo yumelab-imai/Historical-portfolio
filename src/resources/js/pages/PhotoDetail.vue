@@ -6,10 +6,10 @@
   >
     <figure
     class="photo-detail__pane photo-detail__image"
-    @click="fullWidth = ! fullWidth"
+    <!-- @click="fullWidth = ! fullWidth" -->
     >
-      <img :src="photo.url" alt="">
-      <figcaption>Posted by {{ photo.owner.name }}</figcaption>
+      <img :src="photo.url">
+      <!-- <figcaption>Posted by {{ photo.owner.name }}</figcaption> -->
     </figure>
     <div class="photo-detail__pane">
       <button
@@ -25,10 +25,10 @@
         class="button"
         title="Download photo"
       >
-        <i class="icon ion-md-arrow-round-down"></i>Download
+        <i class="icon ion-md-arrow-round-down"></i>Download Photo
       </a>
         <h2 class="photo-detail__title">
-            <i class="icon ion-md-chatboxes"></i>Comments
+            <i class="icon ion-md-chatboxes"></i>Review
         </h2>
         <ul v-if="photo.comments.length > 0" class="photo-detail__comments">
         <li
@@ -36,11 +36,11 @@
             :key="comment.content"
             class="photo-detail__commentItem"
         >
-            <p class="photo-detail__commentBody">
-            {{ comment.content }}
-            </p>
             <p class="photo-detail__commentInfo">
             {{ comment.author.name }}
+            </p>
+            <p class="photo-detail__commentBody">
+            {{ comment.content }}
             </p>
         </li>
         </ul>
@@ -73,7 +73,7 @@ export default {
   data () {
     return {
       photo: null,
-    fullWidth: false,
+    fullWidth: true,
     commentContent: '',
     commentErrors: null
     }

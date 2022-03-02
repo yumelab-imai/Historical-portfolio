@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <button v-if="isLogin" class="button button--link" @click="logout">
-        <i class="fa-solid fa-door-closed logout"></i>
+        <i class="fa-solid fa-door-open login"></i>
     </button>
     <!-- <RouterLink v-else class="button button--link" to="/login">
         Login / Register
