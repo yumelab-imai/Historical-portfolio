@@ -130,6 +130,24 @@ public function show(string $id)
         return response($new_comment, 201);
     }
 
+    // /**
+    //  * コメント投稿の削除
+    //  * @param Photo $photo
+    //  * @param StoreComment $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function deleteComment(Photo $photo, StoreComment $request)
+    // {
+    //     // ここが違う
+    //     $request->delete('id');
+    //     $photo->comments()->save(???);
+
+    //     // authorリレーションをロードするためにコメントを取得しなおす
+    //     $new_comment = Comment::where('id', $comment->id)->with('author')->first();
+
+    //     return response($new_comment, 201);
+    // }
+
     /**
  * いいね
  * @param string $id

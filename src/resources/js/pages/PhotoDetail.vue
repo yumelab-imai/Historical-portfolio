@@ -7,7 +7,6 @@
     <figure
     class="photo-detail__pane photo-detail__image"
     <!-- @click="fullWidth = ! fullWidth" -->
-    >
       <img :src="photo.url">
       <!-- <figcaption>Posted by {{ photo.owner.name }}</figcaption> -->
     </figure>
@@ -36,6 +35,11 @@
             :key="comment.content"
             class="photo-detail__commentItem"
         >
+            <span class="pull-right">
+                <button class="btn btn-xs btn-warning" v-on:click="remove(todo.created_at,index);"> <!--todo.id は undefined になる-->
+                    <span class="glyphicon glyphicon-trash">ゴミ箱マーク</span>
+                </button>
+            </span>
             <p class="photo-detail__commentInfo">
             {{ comment.author.name }}
             </p>
@@ -94,12 +98,18 @@ export default {
 
       this.photo = response.data
     },
+    // async remove (created_at,index) {  // created_at は id の代わり
+    //     removeMessage(created_at);         // Ajax でデータベース削除
+    //     this.list.splice(index, 1);        // フロント側で削除
+    // },
   async addComment () {
     // const response = await axios.post(`/api/photos/${this.id}/comments`, {
     //   content: this.commentContent
     // })
 
     // this.commentContent = ''
+
+    // この時点でほぼ完了
     const response = await axios.post(`/api/photos/${this.id}/comments`, {
     content: this.commentContent
   })
@@ -110,8 +120,9 @@ export default {
     return false
   }
 
+// 入力していたメッセージをクリアして
   this.commentContent = ''
-  // エラーメッセージをクリア
+//入力メッセージのエラーをリセット
   this.commentErrors = null
 
   // その他のエラー
@@ -121,7 +132,9 @@ export default {
   }
 
   this.photo.comments = [
+    // 結果反映
     response.data,
+//上書き
     ...this.photo.comments
   ]
   },
