@@ -1,15 +1,17 @@
-// ここでは Ajax 通信で用いる Axios ライブラリの設定を記述している
+//  Ajax 通信で用いる Axios ライブラリの設定を記述
 
 import { getCookieValue } from './util'
 
+// axiosは、HTTP通信を簡単に行うことができるJavascriptライブラリ
 window.axios = require('axios');
 
-// Ajaxリクエストであることを示すヘッダーを付与する
+// Ajaxリクエストであることを示すように変更（ヘッダーを付与することによって）
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 window.axios.interceptors.request.use(config => {
-  // クッキーからトークンを取り出してヘッダーに添付する
+    // config.headersを編集
+  // クッキーからトークンを取り出してヘッダーに付与
   config.headers['X-XSRF-TOKEN'] = getCookieValue('XSRF-TOKEN')
 
   return config
