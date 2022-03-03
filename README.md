@@ -312,3 +312,5 @@ URL	内容
 /login	ログイン・会員登録ページ
 
 複数のミドルウェア（今回だとNginx、MySQL、PHP）のコンテナを作成・管理する場合はDocker Composeを使います。
+
+axios・・・Javascriptライブラリ

@@ -2,7 +2,44 @@
  * クッキーの値を取得する
  * @param {String} searchKey 検索するキー
  * @returns {String} キーに対応する値
+ *
+ *
+ *クッキーの値を取得するまでの流れ（例）
+ *
+// document.cookie　＝　☆name=12345;token=67890;key=abcde☆
+
+document.cookie.split(';').forEach(cookie => {
+
+// document.cookie　＝　
+//
+//　{
+//　name=12345,
+//　token=67890,
+//　key=abcde
+//　}
+
+    const [key, value] = cookie.split('=')
+
+// document.cookie　＝　
+
+{
+name  =>  12345,
+token  =>  67890,
+key  =>  abcde
+}
+
+    if (key === searchKey) {
+      return val = value
+    }
+  })
+
+  return val
+}
+ *
+ *
  */
+
+
 export function getCookieValue (searchKey) {
   if (typeof searchKey === 'undefined') {
     return ''

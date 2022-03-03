@@ -4,16 +4,16 @@
         <!-- tabで切り替えないでnumberで切り替えたほうがよかったかも -->
       <li
         class="tab__item"
-        :class="{'tab__item--active': tab === 1 }"
-        @click="tab = 1"
+        :class="{'tab__item--active': typeNumber === 1 }"
+        @click="typeNumber = 1"
       >Login</li>
       <li
         class="tab__item"
-        :class="{'tab__item--active': tab === 2 }"
-        @click="tab = 2"
+        :class="{'tab__item--active': typeNumber === 2 }"
+        @click="typeNumber = 2"
       >Register</li>
     </ul>
-    <div class="panel" v-show="tab === 1">
+    <div class="panel" v-show="typeNumber === 1">
         <form class="form" @submit.prevent="login">
             <!-- エラー表示 -->
             <div v-if="loginErrors" class="errors">
@@ -34,8 +34,8 @@
             </div>
         </form>
     </div>
-    <div class="panel" v-show="tab === 2">
-        <div class="panel" v-show="tab === 2">
+    <div class="panel" v-show="typeNumber === 2">
+        <div class="panel" v-show="typeNumber === 2">
         <form class="form" @submit.prevent="register">
             <!-- エラー表示 -->
             <div v-if="registerErrors" class="errors">
@@ -74,7 +74,7 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      tab: 1,
+      typeNumber: 1,
       loginForm: {
         email: '',
         password: ''

@@ -23,26 +23,22 @@
       <span v-if="isLogin" class="navbar__item name">
       </span>
       <div v-else class="navbar__item">
-        <RouterLink class="button button--link" to="/login">
-          
+        <RouterLink class="button button--link" to="/LoginAndRegister">
+
           <i class="fa-solid fa-door-closed logout"></i>
         </RouterLink>
       </div>
-    <RouterLink class="navbar__brand" to="/">
-      <Footer />
-    </RouterLink>
-    <!-- <PhotoForm v-model="showForm" /> -->
+      <RouterLink class="navbar__brand" to="/">
+       <Footer />
+     </RouterLink>
   </nav>
 </template>
 
 <script>
-// import PhotoForm from './PhotoForm.vue'
 import Footer from './Footer.vue'
-
 
 export default {
     components: {
-    // PhotoForm,
     Footer
   },
   data () {

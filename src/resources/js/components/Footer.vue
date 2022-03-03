@@ -3,21 +3,24 @@
     <button v-if="isLogin" class="button button--link" @click="logout">
         <i class="fa-solid fa-door-open login"></i>
     </button>
-    <!-- <RouterLink v-else class="button button--link" to="/login">
-        Login / Register
-    </RouterLink> -->
   </footer>
 </template>
+
+
+
 
 <script>
 import { mapState, mapGetters } from 'vuex'
 
 export default {
+
 //     computed: {
 //   isLogin () {
 //     return this.$store.getters['auth/check']
 //   }
-// },
+// }
+// をmapで実行
+
     computed: {
     ...mapState({
       apiStatus: state => state.auth.apiStatus
@@ -31,7 +34,7 @@ export default {
         await this.$store.dispatch('auth/logout')
 
         if (this.apiStatus) {
-        this.$router.push('/login')
+        this.$router.push('/LoginAndRegister')
       }
     }
     }

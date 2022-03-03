@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 // ページコンポーネントをインポートする
 import PhotoList from './pages/PhotoList.vue'
-import Login from './pages/Login.vue'
+import LoginAndRegister from './pages/LoginAndRegister.vue'
 import SystemError from './pages/errors/System.vue'
 import PhotoDetail from './pages/PhotoDetail.vue'
 import NotFound from './pages/errors/NotFound.vue'
@@ -31,8 +31,8 @@ const routes = [
     props: true
   },
   {
-    path: '/login',
-    component: Login,
+    path: '/LoginAndRegister',
+    component: LoginAndRegister,
     beforeEnter (to, from, next) {
         if (store.getters['auth/check']) {
         next('/')

@@ -33,19 +33,16 @@ const mutations = {
 // 非同期処理でなければいけなく、その後ミューテーションを呼び出してステートを更新する
 // 「アクション→コミットでミューテーション呼び出し→ステート更新」というパターンはよく使う
 const actions = {
-    // 会員登録
-//     async register (context, data) {
-//     const response = await axios.post('/api/register', data)
-//     context.commit('setUser', response.data)
-//   },
-  async register (context, data) {
+// 会員登録
+    async register (context, data) {
     context.commit('setApiStatus', null)
+// dataを登録
     const response = await axios.post('/api/register', data)
 
     if (response.status === CREATED) {
-      context.commit('setApiStatus', true)
-      context.commit('setUser', response.data)
-      return false
+        context.commit('setApiStatus', true)
+        context.commit('setUser', response.data)
+        return false
     }
 
     context.commit('setApiStatus', false)
