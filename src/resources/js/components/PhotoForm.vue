@@ -31,14 +31,12 @@
 import Message from './Message.vue'
 import { CREATED, UNPROCESSABLE_ENTITY } from '../util'
 import Loader from './Loader.vue'
-import Navbar from './Navbar.vue'
 
 export default {
 
     components: {
     Message,
     Loader,
-    Navbar
   },
   data () {
     return {

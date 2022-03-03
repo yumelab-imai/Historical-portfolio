@@ -9,13 +9,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 {{-- 説明： https://qiita.com/Hidenatsu/items/708769159cdb7618e208
-axiosがCookieからCSRFトークン(を暗号化したもののようです)を自動的に取得して送信してくれる
+axiosがCookieからCSRFトークン(暗号化したもの)を自動的に取得して送信してくれる
 - フロント側：ログインしてもHTMLが再読み込みされるわけではないので、headタグ内のCSRFトークンの値は更新されない
 - サーバ側：ログインによってトークンが更新される(ログインとかSign Upをしない場合などはトークンの値は一緒)
 優先順位はこうなっていて、
 高：HTMLのheadタグに埋め込まれたX-CSRF-TOKENの値
 低：Cookieから取得したX-XSRF-TOKENの値（axiosが『自動で』送信してくれる値）
-なので、どちらも送られている場合はX-CSRF-TOKENの値が参照され、不一致エラーとなっていました。
+なので、どちらも送られている場合はX-CSRF-TOKENの値が参照されるので、不一致エラーとなってしまう。
 VerifyCsrfTokenクラスで主にやってくれている
 <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 

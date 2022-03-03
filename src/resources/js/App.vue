@@ -2,7 +2,7 @@
 <template>
   <div class="back">
     <header>
-      <Navbar />
+      <Sidebar />
     </header>
     <main>
         <PhotoForm />
@@ -15,13 +15,13 @@
 
 <script>
 import PhotoForm from './components/PhotoForm.vue'
-import Navbar from './components/Navbar.vue'
+import Sidebar from './components/Sidebar.vue'
 // import Footer from './Footer.vue'
 import { NOT_FOUND, UNAUTHORIZED, INTERNAL_SERVER_ERROR } from './util'
 
 export default {
   components: {
-    Navbar,
+    Sidebar,
     PhotoForm
   },
 

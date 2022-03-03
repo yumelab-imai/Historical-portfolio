@@ -285,3 +285,30 @@ https://qiita.com/nasuB7373/items/0e507abad2017976c407
 
 ※朝活アプリなので、もともとは目標起床時間04:00~10:00の間しか設定できない仕様ですが、
 現在は「早起き達成判定」機能を好きな時間にお試しいただけるよう、時間設定を自由にできるようにしています。
+
+API
+URL	メソッド	認証	内容
+/api/photos	GET		写真 一覧取得
+/api/photos	POST		写真 投稿
+/api/photos/{写真ID}	GET		写真 詳細取得
+/api/photos/{写真ID}/like	PUT		写真 いいね追加
+/api/photos/{写真ID}/like	DELETE		写真 いいね解除
+/api/photos/{写真ID}/comments	POST		写真 コメント追加
+/api/register	POST		会員登録
+/api/login	POST		ログイン
+/api/logout	POST		ログアウト
+/api/user	GET		認証ユーザー取得
+
+バックエンド
+API 以外のサーバサイドで用意する必要がある URL 
+URL	メソッド	認証	内容
+/	GET		最初に HTML を返却する
+/photos/{写真ID}/download	GET		写真ダウンロード
+フロントエンド
+Vue Routerで実現します。
+URL	内容
+/	写真一覧ページ
+/photos/{写真ID}	写真詳細ページ
+/login	ログイン・会員登録ページ
+
+複数のミドルウェア（今回だとNginx、MySQL、PHP）のコンテナを作成・管理する場合はDocker Composeを使います。
