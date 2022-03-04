@@ -14,18 +14,19 @@ class Photo extends Model
 
     protected $perPage = 15; // この値を少なくすれば動作確認しやすいですね
 
-    /** プライマリキーの型 */
+// プライマリキーの型を決定
     protected $keyType = 'string';
 
-    /** IDの桁数 */
+// IDの桁数を決定
     const ID_LENGTH = 12;
 
-    /** JSONに含める属性 */
+// デフォルトでは含まれないが$appends などで明示的に追加
     protected $appends = [
         'url', 'likes_count', 'liked_by_user',
     ];
 
-    /** JSONに含める属性 */
+    // 登録項目だけを JSON に含める
+    // 逆に$hiddenはJSONに含めない
     protected $visible = [
         'id', 'owner', 'url', 'comments',
     'likes_count', 'liked_by_user',
