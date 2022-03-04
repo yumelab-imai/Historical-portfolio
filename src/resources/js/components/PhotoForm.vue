@@ -17,8 +17,8 @@
         </div>
     <!-- プレビュー機能の実装方法としては HTML5 の慣用的な書き方らしい。。。 -->
        <input class="form__item" type="file" @change="onFileChange">
-      <output class="form__output" v-if="image_data_url">
-        <img :src="image_data_url" alt="">
+      <output class="form__output" v-if="display_image_data_url">
+        <img :src="display_image_data_url">
         </output>
       <div class="form__button">
         <button type="submit" class="button button--inverse">submit</button>
@@ -40,9 +40,9 @@ export default {
   },
   data () {
     return {
-        loading: false,
-        // image_data_urlはsrcを表す
-      image_data_url: null,
+    loading: false,
+    // display_image_data_urlはsrcを表す
+      display_image_data_url: null,
       photo: null,
       errors: null,
     //   ここさえ上手くいけば全て終わる！！
@@ -78,23 +78,21 @@ export default {
       const reader = new FileReader()
 
       // ファイルを読み込み終わったタイミングで実行する処理
+    //   reader.onloadにdisplay_image_data_urlを入れて
       reader.onload = e => {
-        // image_data_urlに読み込み結果（データURL）を代入する
-        // image_data_urlに値が入ると<output>につけたv-ifがtrueと判定される
-        // また<output>内部の<img>のsrc属性はimage_data_urlの値を参照しているので
-        // 結果として画像が表示される
-        this.image_data_url = e.target.result
+        // display_image_data_urlに読み込んだデータURLを代入
+        this.display_image_data_url = e.target.result
       }
 
       // ファイルを読み込む
-      // 読み込まれたファイルはデータURL形式で受け取れる（上記onload参照）
+      // 読み込まれたファイルはデータURL形式で受け取れる
       reader.readAsDataURL(event.target.files[0])
 
       this.photo = event.target.files[0]
     },
-    // 入力欄の値とプレビュー表示をクリア
+    // クリア
     reset () {
-    this.image_data_url = ''
+    this.display_image_data_url = ''
     this.photo = null
     this.$el.querySelector('input[type="file"]').value = null
   },
@@ -103,6 +101,11 @@ export default {
     this.loading = true
 
     const formData = new FormData()
+    //コードの説明(詳細)
+    // this.photo = event.target.files[0]
+    // formData={
+    //     photo => event.target.files[0]
+    // }
     formData.append('photo', this.photo)
     const response = await axios.post('/api/photos', formData)
 
