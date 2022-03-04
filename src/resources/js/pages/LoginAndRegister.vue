@@ -87,15 +87,7 @@ export default {
       }
     }
   },
-//   computed: {
-//   apiStatus () {
-//     return this.$store.state.auth.apiStatus
-//   },
-//   loginErrors () {
-//     return this.$store.state.auth.loginErrorMessages
-//   }
-// },
-// 改良
+
 computed: {
   ...mapState({
     apiStatus: state => state.auth.apiStatus,

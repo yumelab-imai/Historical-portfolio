@@ -314,3 +314,7 @@ URL	内容
 複数のミドルウェア（今回だとNginx、MySQL、PHP）のコンテナを作成・管理する場合はDocker Composeを使います。
 
 axios・・・Javascriptライブラリ
+
+id => mHAoeS-GOBpf
+
+FileReader API 

@@ -17,17 +17,17 @@ const getters = {
 // ミューテーションを呼び出すときの実引数は仮引数では第二引数以降として渡される
 const mutations = {
     setUser (state, user) {
-    state.user = user
-  },
-  setApiStatus (state, status) {
-    state.apiStatus = status
-  },
-  setLoginErrorMessages (state, messages) {
-    state.loginErrorMessages = messages
-  },
-  setRegisterErrorMessages (state, messages) {
-    state.registerErrorMessages = messages
-  }
+        state.user = user
+    },
+    setApiStatus (state, status) {
+        state.apiStatus = status
+    },
+    setLoginErrorMessages (state, messages) {
+        state.loginErrorMessages = messages
+    },
+    setRegisterErrorMessages (state, messages) {
+        state.registerErrorMessages = messages
+    }
 }
 
 // 非同期処理でなければいけなく、その後ミューテーションを呼び出してステートを更新する

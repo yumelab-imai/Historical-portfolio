@@ -17,8 +17,8 @@
         </div>
     <!-- プレビュー機能の実装方法としては HTML5 の慣用的な書き方らしい。。。 -->
        <input class="form__item" type="file" @change="onFileChange">
-      <output class="form__output" v-if="preview">
-        <img :src="preview" alt="">
+      <output class="form__output" v-if="image_data_url">
+        <img :src="image_data_url" alt="">
         </output>
       <div class="form__button">
         <button type="submit" class="button button--inverse">submit</button>
@@ -41,8 +41,8 @@ export default {
   data () {
     return {
         loading: false,
-        // previewはsrcを表す
-      preview: null,
+        // image_data_urlはsrcを表す
+      image_data_url: null,
       photo: null,
       errors: null,
     //   ここさえ上手くいけば全て終わる！！
@@ -79,11 +79,11 @@ export default {
 
       // ファイルを読み込み終わったタイミングで実行する処理
       reader.onload = e => {
-        // previewに読み込み結果（データURL）を代入する
-        // previewに値が入ると<output>につけたv-ifがtrueと判定される
-        // また<output>内部の<img>のsrc属性はpreviewの値を参照しているので
+        // image_data_urlに読み込み結果（データURL）を代入する
+        // image_data_urlに値が入ると<output>につけたv-ifがtrueと判定される
+        // また<output>内部の<img>のsrc属性はimage_data_urlの値を参照しているので
         // 結果として画像が表示される
-        this.preview = e.target.result
+        this.image_data_url = e.target.result
       }
 
       // ファイルを読み込む
@@ -94,7 +94,7 @@ export default {
     },
     // 入力欄の値とプレビュー表示をクリア
     reset () {
-    this.preview = ''
+    this.image_data_url = ''
     this.photo = null
     this.$el.querySelector('input[type="file"]').value = null
   },

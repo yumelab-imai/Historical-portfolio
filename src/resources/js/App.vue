@@ -26,20 +26,21 @@ export default {
 
   computed: {
     errorCode () {
+//errorモジュールにあるstate.code
       return this.$store.state.error.code
     }
   },
+  
   watch: {
     errorCode: {
-
-     async handler (val) {
-    if (val === INTERNAL_SERVER_ERROR) {
+     async handler (value) {
+    if (value === INTERNAL_SERVER_ERROR) {
       this.$router.push('/500')
-    } else if (val === UNAUTHORIZED) {
+    } else if (value === UNAUTHORIZED) {
       await axios.get('/api/refresh-token')
       this.$store.commit('auth/setUser', null)
       this.$router.push('/login')
-    } else if (val === NOT_FOUND) {
+    } else if (value === NOT_FOUND) {
       this.$router.push('/not-found')
     }
   },
