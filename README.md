@@ -318,3 +318,5 @@ axios・・・Javascriptライブラリ
 id => mHAoeS-GOBpf
 
 FileReader API 
+
+FormData API
