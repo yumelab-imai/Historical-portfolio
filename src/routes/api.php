@@ -49,6 +49,7 @@ Route::delete('/photos/{id}/like', 'PhotoController@unlike');
 
 // トークンリフレッシュ
 Route::get('/reflesh-token', function (Illuminate\Http\Request $request) {
+    // トークンを再生成
     $request->session()->regenerateToken();
 
     return response()->json();

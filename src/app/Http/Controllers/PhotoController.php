@@ -38,13 +38,13 @@ class PhotoController extends Controller
         // 本来の拡張子を組み合わせてファイル名とする
         $photo->filename = $photo->id . '.' . $extension;
 
-        // S3にファイルを保存する
+        // S3にファイルを保存
         // 第三引数の'public'はファイルを公開状態で保存するため
         Storage::cloud()
             ->putFileAs('', $request->photo, $photo->filename, 'public');
 
-        // データベースエラー時にファイル削除を行うため
-        // トランザクションを利用する
+        // データベースエラー時にファイル削除を行う
+        // トランザクション
         DB::beginTransaction();
 
         try {
@@ -57,8 +57,8 @@ class PhotoController extends Controller
             throw $exception;
         }
 
-        // リソースの新規作成なので
-        // レスポンスコードは201(CREATED)を返却する
+        // 写真の新規作成
+        // レスポンスコードは201(CREATED)を返却
         return response($photo, 201);
     }
 
