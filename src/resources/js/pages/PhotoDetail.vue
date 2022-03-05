@@ -37,7 +37,10 @@
         >
             <span class="pull-right">
                 <button class="btn btn-xs btn-warning" v-on:click="remove(todo.created_at,index);"> <!--todo.id は undefined になる-->
-                    <span class="glyphicon glyphicon-trash">ゴミ箱マーク</span>
+                    <span class="glyphicon glyphicon-trash"><i class="fa-solid fa-trash-can"></i></span>
+                </button>
+                <button class="btn btn-xs btn-warning" v-on:click="remove(todo.created_at,index);"> <!--todo.id は undefined になる-->
+                    <span class="glyphicon glyphicon-trash"><i class="fa-solid fa-ellipsis"></i></span>
                 </button>
             </span>
             <p class="photo-detail__commentInfo">

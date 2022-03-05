@@ -1956,12 +1956,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     errorCode: function errorCode() {
+      //errorモジュールにあるstate.code
       return this.$store.state.error.code;
     }
   },
   watch: {
     errorCode: {
-      handler: function handler(val) {
+      handler: function handler(value) {
         var _this = this;
 
         return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -1969,7 +1970,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_3__["INTERNAL_SERVER_ERROR"])) {
+                  if (!(value === _util__WEBPACK_IMPORTED_MODULE_3__["INTERNAL_SERVER_ERROR"])) {
                     _context.next = 4;
                     break;
                   }
@@ -1980,7 +1981,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
 
                 case 4:
-                  if (!(val === _util__WEBPACK_IMPORTED_MODULE_3__["UNAUTHORIZED"])) {
+                  if (!(value === _util__WEBPACK_IMPORTED_MODULE_3__["UNAUTHORIZED"])) {
                     _context.next = 11;
                     break;
                   }
@@ -1997,7 +1998,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
 
                 case 11:
-                  if (val === _util__WEBPACK_IMPORTED_MODULE_3__["NOT_FOUND"]) {
+                  if (value === _util__WEBPACK_IMPORTED_MODULE_3__["NOT_FOUND"]) {
                     _this.$router.push('/not-found');
                   }
 
@@ -2308,8 +2309,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       loading: false,
-      // previewはsrcを表す
-      preview: null,
+      // display_image_data_urlはsrcを表す
+      display_image_data_url: null,
       photo: null,
       errors: null //   ここさえ上手くいけば全て終わる！！
       //   showOn:  this.$store.state.turn.showOn
@@ -2344,23 +2345,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
       var reader = new FileReader(); // ファイルを読み込み終わったタイミングで実行する処理
+      //   reader.onloadにdisplay_image_data_urlを入れて
 
       reader.onload = function (e) {
-        // previewに読み込み結果（データURL）を代入する
-        // previewに値が入ると<output>につけたv-ifがtrueと判定される
-        // また<output>内部の<img>のsrc属性はpreviewの値を参照しているので
-        // 結果として画像が表示される
-        _this.preview = e.target.result;
+        // display_image_data_urlに読み込んだデータURLを代入
+        _this.display_image_data_url = e.target.result;
       }; // ファイルを読み込む
-      // 読み込まれたファイルはデータURL形式で受け取れる（上記onload参照）
+      // 読み込まれたファイルはデータURL形式で受け取れる
 
 
       reader.readAsDataURL(event.target.files[0]);
       this.photo = event.target.files[0];
     },
-    // 入力欄の値とプレビュー表示をクリア
+    // クリア
     reset: function reset() {
-      this.preview = '';
+      this.display_image_data_url = '';
       this.photo = null;
       this.$el.querySelector('input[type="file"]').value = null;
     },
@@ -2375,7 +2374,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _this2.loading = true;
-                formData = new FormData();
+                formData = new FormData(); //コードの説明(詳細)
+                // this.photo = event.target.files[0]
+                // formData={
+                //     photo => event.target.files[0]
+                // }
+
                 formData.append('photo', _this2.photo);
                 _context.next = 5;
                 return axios.post('/api/photos', formData);
@@ -2615,15 +2619,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  //   computed: {
-  //   apiStatus () {
-  //     return this.$store.state.auth.apiStatus
-  //   },
-  //   loginErrors () {
-  //     return this.$store.state.auth.loginErrorMessages
-  //   }
-  // },
-  // 改良
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])({
     apiStatus: function apiStatus(state) {
       return state.auth.apiStatus;
@@ -2729,6 +2724,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -4873,9 +4871,9 @@ var render = function () {
             on: { change: _vm.onFileChange },
           }),
           _vm._v(" "),
-          _vm.preview
+          _vm.display_image_data_url
             ? _c("output", { staticClass: "form__output" }, [
-                _c("img", { attrs: { src: _vm.preview, alt: "" } }),
+                _c("img", { attrs: { src: _vm.display_image_data_url } }),
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -5453,13 +5451,23 @@ var render = function () {
                                 },
                               },
                             },
-                            [
-                              _c(
-                                "span",
-                                { staticClass: "glyphicon glyphicon-trash" },
-                                [_vm._v("ゴミ箱マーク")]
-                              ),
-                            ]
+                            [_vm._m(1, true)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-xs btn-warning",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.remove(
+                                    _vm.todo.created_at,
+                                    _vm.index
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._m(2, true)]
                           ),
                         ]),
                         _vm._v(" "),
@@ -5538,7 +5546,7 @@ var render = function () {
                       },
                     }),
                     _vm._v(" "),
-                    _vm._m(1),
+                    _vm._m(3),
                   ]
                 )
               : _vm._e(),
@@ -5555,6 +5563,22 @@ var staticRenderFns = [
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
       _vm._v("Review\n        "),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "glyphicon glyphicon-trash" }, [
+      _c("i", { staticClass: "fa-solid fa-trash-can" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "glyphicon glyphicon-trash" }, [
+      _c("i", { staticClass: "fa-solid fa-ellipsis" }),
     ])
   },
   function () {
@@ -23239,7 +23263,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _pages_PhotoList_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/PhotoList.vue */ "./resources/js/pages/PhotoList.vue");
-/* harmony import */ var _pages_LoginAndRegister_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/LoginAndRegister.vue */ "./resources/js/pages/LoginAndRegister.vue");
+/* harmony import */ var _pages_LoginAndRegister_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/LoginAndRegister.vue */ "./resources/js/pages/LoginAndRegister.vue");
 /* harmony import */ var _pages_errors_System_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/errors/System.vue */ "./resources/js/pages/errors/System.vue");
 /* harmony import */ var _pages_PhotoDetail_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/PhotoDetail.vue */ "./resources/js/pages/PhotoDetail.vue");
 /* harmony import */ var _pages_errors_NotFound_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/errors/NotFound.vue */ "./resources/js/pages/errors/NotFound.vue");
@@ -23273,7 +23297,7 @@ var routes = [{
   props: true
 }, {
   path: '/LoginAndRegister',
-  component: _pages_LoginAndRegister_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
+  component: _pages_LoginAndRegister_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
   beforeEnter: function beforeEnter(to, from, next) {
     if (_store__WEBPACK_IMPORTED_MODULE_7__["default"].getters['auth/check']) {
       next('/');
