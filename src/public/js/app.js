@@ -2228,6 +2228,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     item: {
@@ -2443,6 +2445,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Footer.vue */ "./resources/js/components/Footer.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4535,13 +4548,15 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("footer", { staticClass: "footer" }, [
-    _vm.isLogin
-      ? _c(
-          "button",
-          { staticClass: "button button--link", on: { click: _vm.logout } },
-          [_c("i", { staticClass: "fa-solid fa-door-open login" })]
-        )
-      : _vm._e(),
+    _c(
+      "button",
+      { staticClass: "button button--link", on: { click: _vm.logout } },
+      [
+        _c("i", { staticClass: "fa-solid fa-door-open login" }),
+        _c("br"),
+        _vm._v("Logout\n    "),
+      ]
+    ),
   ])
 }
 var staticRenderFns = []
@@ -4716,10 +4731,7 @@ var render = function () {
         "RouterLink",
         {
           staticClass: "photo__overlay",
-          attrs: {
-            to: "/photos/" + _vm.item.id,
-            title: "View the photo by " + _vm.item.owner.name,
-          },
+          attrs: { to: "/photos/" + _vm.item.id },
         },
         [
           _c("div", { staticClass: "photo__controls" }, [
@@ -4915,69 +4927,109 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "nav",
-    { staticClass: "navbar" },
-    [
-      _c(
-        "div",
-        [
-          _c(
-            "RouterLink",
-            { staticClass: "navbar__brand home-name", attrs: { to: "/" } },
-            [_c("i", { staticClass: "fa fa-home" })]
-          ),
-          _vm._v(" "),
-          _vm.isLogin
-            ? _c("div", [
-                _vm._v("\n        Name:"),
-                _c("br"),
-                _vm._v(_vm._s(_vm.username) + "\n    "),
-              ])
-            : _vm._e(),
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm.isLogin
-        ? _c("div", { staticClass: "navbar__item" }, [
+  return _c("nav", { staticClass: "navbar" }, [
+    _vm.isLogin
+      ? _c(
+          "div",
+          { staticClass: "navbar__item" },
+          [
+            _c(
+              "div",
+              { staticClass: "arrangement" },
+              [
+                _c(
+                  "RouterLink",
+                  {
+                    staticClass: "navbar__brand home-name",
+                    attrs: { to: "/" },
+                  },
+                  [_c("i", { staticClass: "fa fa-home" })]
+                ),
+                _vm._v(" "),
+                _vm.isLogin
+                  ? _c("div", [
+                      _vm._v("\n                Name:"),
+                      _c("br"),
+                      _vm._v(_vm._s(_vm.username) + "\n            "),
+                    ])
+                  : _vm._e(),
+              ],
+              1
+            ),
+            _vm._v(" "),
             _c(
               "button",
-              { staticClass: "button write", on: { click: _vm.onClick } },
-              [_c("i", { staticClass: "fa-solid fa-feather" })]
+              {
+                staticClass: "button  arrangement large",
+                on: { click: _vm.onClick },
+              },
+              [
+                _c("i", { staticClass: "fa-solid fa-feather write" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "big" }, [_vm._v("Post")]),
+              ]
             ),
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.isLogin
-        ? _c("span", { staticClass: "navbar__item name" })
-        : _c(
-            "div",
-            { staticClass: "navbar__item" },
-            [
-              _c(
-                "RouterLink",
-                {
-                  staticClass: "button button--link",
-                  attrs: { to: "/LoginAndRegister" },
-                },
-                [_c("i", { staticClass: "fa-solid fa-door-closed logout" })]
-              ),
-            ],
-            1
-          ),
-      _vm._v(" "),
-      _c(
-        "RouterLink",
-        { staticClass: "navbar__brand", attrs: { to: "/" } },
-        [_c("Footer")],
-        1
-      ),
-    ],
-    1
-  )
+            _vm._v(" "),
+            _c(
+              "RouterLink",
+              { staticClass: "navbar__brand", attrs: { to: "/" } },
+              [_c("Footer")],
+              1
+            ),
+          ],
+          1
+        )
+      : _c(
+          "div",
+          { staticClass: "navbar__item" },
+          [
+            _c(
+              "div",
+              { staticClass: "upspace" },
+              [
+                _c(
+                  "RouterLink",
+                  {
+                    staticClass: "navbar__brand home-name",
+                    attrs: { to: "/" },
+                  },
+                  [_c("i", { staticClass: "fa fa-home" })]
+                ),
+                _vm._v(" "),
+                _vm._m(0),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "RouterLink",
+              {
+                staticClass: "button button--link bigupspace",
+                attrs: { to: "/LoginAndRegister" },
+              },
+              [
+                _c("i", { staticClass: "fa-solid fa-door-closed logout" }),
+                _c("br"),
+                _vm._v("Login/Register\n        "),
+              ]
+            ),
+          ],
+          1
+        ),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _vm._v("\n                Home"),
+      _c("br"),
+      _vm._v("(一部の機能制限)\n            "),
+    ])
+  },
+]
 render._withStripped = true
 
 

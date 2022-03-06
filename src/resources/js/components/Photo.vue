@@ -1,16 +1,18 @@
 <template>
 <div class="photo">
+    <!-- figure要素で、写真、挿絵、図表、などのまとまりを表す -->
     <figure class="photo__wrapper">
-    <img
-        class="photo__image"
-        :src="item.url"
-        :alt="`Photo by ${item.owner.name}`"
-    >
+    <!-- :alt は画像が表示できないブラウザなどでアクセスした際、画像の代わりにテキストで内容が表示 -->
+        <img
+            class="photo__image"
+            :src="item.url"
+            :alt="`Photo by ${item.owner.name}`"
+        >
     </figure>
+    <!-- 写真にルーターを貼り付ける -->
     <RouterLink
         class="photo__overlay"
         :to="`/photos/${item.id}`"
-        :title="`View the photo by ${item.owner.name}`"
     >
         <div class="photo__controls">
         <button
