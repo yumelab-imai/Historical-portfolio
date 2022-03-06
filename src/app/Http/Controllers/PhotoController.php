@@ -22,8 +22,13 @@ class PhotoController extends Controller
         $this->middleware('auth')->except(['index', 'download', 'show']);
     }
 
+
+    /** コメント機能*/
+
+
+
     /**
-     * 写真投稿
+     * PhotoForm.vue から s3 に写真を送る
      * @param StorePhoto $request
      * @return \Illuminate\Http\Response
      */
@@ -34,16 +39,20 @@ class PhotoController extends Controller
 
         $photo = new Photo();
 
-        // インスタンス生成時に割り振られたランダムなID値と
-        // 本来の拡張子を組み合わせてファイル名とする
+        // $photo->id は Photo() 生成時に既に存在
+        // $photo->filename = Bi7HdiAxAL3I.jpg
         $photo->filename = $photo->id . '.' . $extension;
 
-        // S3にファイルを保存
-        // 第三引数の'public'はファイルを公開状態で保存するため
+        /**
+         * S3に出力してファイルを保存
+         * 第1引数にディレクトリのパス、第２引数にファイルインスタンス、第3引数にファイル名、第4引数で'public'->ファイルを公開状態で保存するため
+         * Storage::putFileAs('path', $file, 'sample.txt');
+         * laravel/config/filesystems.phpの 'cloud' => 's3' を利用している
+         * 'disks' => ['local' =>  ] の場合は Storage::disk('local'); のように書く
+         */
         Storage::cloud()
             ->putFileAs('', $request->photo, $photo->filename, 'public');
 
-        // データベースエラー時にファイル削除を行う
         // トランザクション
         DB::beginTransaction();
 
@@ -52,13 +61,12 @@ class PhotoController extends Controller
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();
-            // DBとの不整合を避けるためアップロードしたファイルを削除
+            // アップロードする予定だったファイルを削除
             Storage::cloud()->delete($photo->filename);
             throw $exception;
         }
 
-        // 写真の新規作成
-        // レスポンスコードは201(CREATED)を返却
+        // 201(CREATED)を返却(成功)
         return response($photo, 201);
     }
 

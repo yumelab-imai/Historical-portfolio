@@ -1,32 +1,35 @@
+// ログイン後の写真一覧ページ（ページネーション機能を含む）
 <template>
-  <div class="photo-list">
+<div class="photo-list">
     <div class="grid">
-      <Photo
-        class="grid__item"
-        v-for="photo in photos"
-        :key="photo.id"
-        :item="photo"
-        @like="onLikeClick"
-      />
+        <!-- photo (in photos) を item として送る -->
+        <Photo
+            class="grid__item"
+            v-for="photo in photos"
+            :key="photo.id"
+            :item="photo"
+            @like="onLikeClick"
+        />
     </div>
-    <Pagination :current-page="currentPage" :last-page="lastPage" />
-  </div>
+        <Pagination :current-page="currentPage" :last-page="lastPage" />
+</div>
 </template>
 
 <script>
-// pages側ではcomponentsを利用してviewを作っていく！！
 import { OK } from '../util'
 import Photo from '../components/Photo.vue'
 import Pagination from '../components/Pagination.vue'
 
 export default {
+    // ルーターから渡される page プロパティを受け取るため
     props: {
-  page: {
-    type: Number,
-    required: false,
-    default: 1
-  }
-},
+        page: {
+        type: Number,
+        // false->true に変更
+        required: true,
+        default: 1
+                        }
+    },
   components: {
     Photo,
     Pagination

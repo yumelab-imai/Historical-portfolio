@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class Photo extends Model
 {
 
-    protected $perPage = 15; // この値を少なくすれば動作確認しやすいですね
+    protected $perPage = 5; // この値を少なくすれば動作確認しやすい
 
 // プライマリキーの型を決定
     protected $keyType = 'string';
@@ -28,8 +28,8 @@ class Photo extends Model
     // 登録項目だけを JSON に含める
     // 逆に$hiddenはJSONに含めない
     protected $visible = [
-        'id', 'owner', 'url', 'comments',
-    'likes_count', 'liked_by_user',
+        'id', 'owner', 'comments',
+        'url', 'likes_count', 'liked_by_user',
     ];
 
     public function __construct(array $attributes = [])
@@ -50,8 +50,9 @@ class Photo extends Model
     }
 
     /**
-     * ランダムなID値を生成する
+     * ランダムなID値を生成
      * @return string
+     * 例、Bi7HdiAxAL3I
      */
     private function getRandomId()
     {

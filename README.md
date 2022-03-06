@@ -300,7 +300,7 @@ URL	メソッド	認証	内容
 /api/user	GET		認証ユーザー取得
 
 バックエンド
-API 以外のサーバサイドで用意する必要がある URL 
+API 以外のサーバサイドで用意する必要がある URL
 URL	メソッド	認証	内容
 /	GET		最初に HTML を返却する
 /photos/{写真ID}/download	GET		写真ダウンロード
@@ -320,3 +320,13 @@ id => mHAoeS-GOBpf
 FileReader API 
 
 FormData API
+
+import { OK } from '../util'
+
+// トランザクション
+
+フォームリクエストクラスを作成
+
+アクセサ
+
+ページ遷移時にページ先頭を表示

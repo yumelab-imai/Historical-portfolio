@@ -2057,12 +2057,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  //     computed: {
-  //   isLogin () {
-  //     return this.$store.getters['auth/check']
-  //   }
-  // }
-  // をmapで実行
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])({
     apiStatus: function apiStatus(state) {
       return state.auth.apiStatus;
@@ -2159,6 +2153,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     currentPage: {
@@ -2170,6 +2168,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
+  // data を元に bool を判別するので computed
   computed: {
     isFirstPage: function isFirstPage() {
       return this.currentPage === 1;
@@ -2191,7 +2190,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -2269,6 +2267,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -2475,11 +2474,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2608,8 +2602,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       typeNumber: 1,
       loginForm: {
-        email: '',
-        password: ''
+        email: 'aaa@example.com',
+        password: 'qwsaqwsa'
       },
       registerForm: {
         name: '',
@@ -3054,15 +3048,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-// pages側ではcomponentsを利用してviewを作っていく！！
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  // ルーターから渡される page プロパティを受け取るため
   props: {
     page: {
       type: Number,
-      required: false,
+      // false->true に変更
+      required: true,
       "default": 1
     }
   },
@@ -4664,7 +4661,7 @@ var render = function () {
               staticClass: "button",
               attrs: { to: "/?page=" + (_vm.currentPage - 1) },
             },
-            [_vm._v("« prev")]
+            [_vm._v("\n        « prev\n    ")]
           )
         : _vm._e(),
       _vm._v(" "),
@@ -4675,7 +4672,7 @@ var render = function () {
               staticClass: "button",
               attrs: { to: "/?page=" + (_vm.currentPage + 1) },
             },
-            [_vm._v("next »")]
+            [_vm._v("\n        next »\n    ")]
           )
         : _vm._e(),
     ],
@@ -4741,7 +4738,7 @@ var render = function () {
               },
               [
                 _c("i", { staticClass: "icon ion-md-heart" }),
-                _vm._v(_vm._s(_vm.item.likes_count) + "\n  "),
+                _vm._v(_vm._s(_vm.item.likes_count) + "\n        "),
               ]
             ),
             _vm._v(" "),
@@ -4749,22 +4746,22 @@ var render = function () {
               "a",
               {
                 staticClass: "photo__action",
-                attrs: {
-                  title: "Download photo",
-                  href: "/photos/" + _vm.item.id + "/download",
-                },
+                attrs: { href: "/photos/" + _vm.item.id + "/download" },
                 on: {
                   click: function ($event) {
                     $event.stopPropagation()
                   },
                 },
               },
-              [_c("i", { staticClass: "icon ion-md-arrow-round-down" })]
+              [
+                _c("i", { staticClass: "icon ion-md-arrow-round-down" }),
+                _vm._v("Download Photo\n        "),
+              ]
             ),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "photo__username" }, [
-            _vm._v("\n  " + _vm._s(_vm.item.owner.name) + "\n  "),
+            _vm._v("\n        " + _vm._s(_vm.item.owner.name) + "\n        "),
           ]),
         ]
       ),
@@ -4933,9 +4930,9 @@ var render = function () {
           _vm._v(" "),
           _vm.isLogin
             ? _c("div", [
-                _vm._v("\n   Name:"),
+                _vm._v("\n        Name:"),
                 _c("br"),
-                _vm._v(_vm._s(_vm.username) + "\n   "),
+                _vm._v(_vm._s(_vm.username) + "\n    "),
               ])
             : _vm._e(),
         ],
@@ -5686,7 +5683,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("システムエラーが発生しました。")])
+  return _c("p", [_vm._v("システムエラーが発生してしまった...")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -23284,10 +23281,18 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 var routes = [{
   path: '/',
   component: _pages_PhotoList_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+  // propsで関数（function）を指定してその返却値を PhotoList.vue に渡す。
+
+  /**
+   * @param route
+   * @return array { page: 7 }
+   */
   props: function props(route) {
-    var page = route.query.page;
+    // route.query = ?page=7
+    var page = route.query.page; // test()メソッド・・・正規表現の文字列との一致を調べるため
+
     return {
-      page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1
+      page: /^[1-9][0-9]*$/.test(page) ? page : 1
     };
   }
 }, {

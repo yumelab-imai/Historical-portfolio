@@ -76,8 +76,8 @@ export default {
     return {
       typeNumber: 1,
       loginForm: {
-        email: '',
-        password: ''
+        email: 'aaa@example.com',
+        password: 'qwsaqwsa'
       },
       registerForm: {
         name: '',
