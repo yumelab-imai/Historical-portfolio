@@ -1,27 +1,22 @@
 <template>
-
-  <nav class="navbar">
-      <div>
+<nav class="navbar">
+    <div>
+    <!-- ホーム画面 -->
     <RouterLink class="navbar__brand home-name" to="/">
-      <i class="fa fa-home"></i>
+        <i class="fa fa-home"></i>
     </RouterLink>
     <div v-if="isLogin" >
-    Name:<br>{{ username }}
+        Name:<br>{{ username }}
     </div>
     </div>
-
-
-  <!-- <form @click.prevent="showForm"> -->
-      <div v-if="isLogin" class="navbar__item">
-          <!-- <form @submit.prevent="addOn"> -->
+    <div v-if="isLogin" class="navbar__item">
+        <!-- 羽根マーク、PhotoForm.vueを開く -->
         <button  class="button write" @click="onClick">
-          <i class="fa-solid fa-feather"></i>
+            <i class="fa-solid fa-feather"></i>
         </button>
-        <!-- </form> -->
-      </div>
- <!-- </form> -->
-      <span v-if="isLogin" class="navbar__item name">
-      </span>
+    </div>
+    <span v-if="isLogin" class="navbar__item name">
+    </span>
       <div v-else class="navbar__item">
         <RouterLink class="button button--link" to="/LoginAndRegister">
 

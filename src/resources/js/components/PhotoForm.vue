@@ -7,24 +7,25 @@
         </div>
     </div>
     <form v-show="! loading" class="form" @submit.prevent="submit">
+        <!-- エラー表示 -->
         <div class="errors" v-if="errors">
         <ul v-if="errors.photo">
-        <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
+            <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
         </ul>
         </div>
         <div>
             <Message />
         </div>
-    <!-- プレビュー機能の実装方法としては HTML5 の慣用的な書き方らしい。。。 -->
-       <input class="form__item" type="file" @change="onFileChange">
-      <output class="form__output" v-if="display_image_data_url">
-        <img :src="display_image_data_url">
+        <!-- API(FileReader API FormData API)を使用してファイルの読み込み、データの送信、プレビュー機能を実装 -->
+        <input class="form__item" type="file" @change="onFileChange">
+        <output class="form__output" v-if="display_image_data_url">
+            <img :src="display_image_data_url">
         </output>
-      <div class="form__button">
-        <button type="submit" class="button button--inverse">submit</button>
-      </div>
+        <div class="form__button">
+            <button type="submit" class="button button--inverse">submit</button>
+        </div>
     </form>
-  </div>
+    </div>
 </template>
 
 <script>

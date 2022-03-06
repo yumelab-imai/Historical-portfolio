@@ -14,13 +14,6 @@ import { mapState, mapGetters } from 'vuex'
 
 export default {
 
-//     computed: {
-//   isLogin () {
-//     return this.$store.getters['auth/check']
-//   }
-// }
-// をmapで実行
-
     computed: {
     ...mapState({
       apiStatus: state => state.auth.apiStatus

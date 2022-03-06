@@ -19,9 +19,16 @@ const routes = [
   {
     path: '/',
     component: PhotoList,
+    // propsで関数（function）を指定してその返却値を PhotoList.vue に渡す。
+    /**
+     * @param route
+     * @return array { page: 7 }
+     */
     props: route => {
+    // route.query = ?page=7
     const page = route.query.page
-    return { page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1 }
+    // test()メソッド・・・正規表現の文字列との一致を調べるため
+    return { page: /^[1-9][0-9]*$/.test(page) ? page  : 1 }
   }
   },
   {
