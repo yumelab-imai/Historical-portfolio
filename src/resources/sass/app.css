@@ -67,7 +67,6 @@ img {
   align-items: center;
   background: rgb(252, 250, 249);
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1);
-  display: -webkit-box;
   display: flex;
   flex-direction: column;
   border-right: 1px solid #0f0000;
@@ -133,8 +132,7 @@ img {
 .photo__wrapper {
   overflow: hidden;
   padding-top: 75%;
-  margin-left: 15%;
-  width: 90%;
+  width: 100%;
   position: relative;
 }
 
@@ -694,3 +692,16 @@ img {
     font-size: 3rem;
 }
 
+.arrangement{
+    margin-bottom:18rem;
+}
+
+.big{
+    font-size:2rem;
+}
+.upspace{
+    margin-top:5rem;
+}
+.bigupspace{
+    margin-top:24rem;
+}
