@@ -1,18 +1,21 @@
 <template>
-  <div class="container--small">
+<div class="container--small">
+    <!-- タイトル -->
     <ul class="tab">
-        <!-- tabで切り替えないでnumberで切り替えたほうがよかったかも -->
-      <li
+        <!-- ログイン画面のタイトル -->
+        <li
         class="tab__item"
         :class="{'tab__item--active': typeNumber === 1 }"
         @click="typeNumber = 1"
-      >Login</li>
-      <li
+        >Login</li>
+        <!-- 登録画面のタイトル -->
+        <li
         class="tab__item"
         :class="{'tab__item--active': typeNumber === 2 }"
         @click="typeNumber = 2"
-      >Register</li>
+        >Register</li>
     </ul>
+    <!-- ログイン画面 -->
     <div class="panel" v-show="typeNumber === 1">
         <form class="form" @submit.prevent="login">
             <!-- エラー表示 -->
@@ -24,7 +27,7 @@
             <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
             </ul>
             </div>
-            <!-- 登録フォーム一覧 -->
+            <!-- ログインフォーム一覧 -->
             <label for="login-email">Email</label>
             <input type="text" class="form__item" id="login-email" v-model="loginForm.email">
             <label for="login-password">Password</label>
@@ -34,6 +37,7 @@
             </div>
         </form>
     </div>
+    <!-- 登録画面 -->
     <div class="panel" v-show="typeNumber === 2">
         <div class="panel" v-show="typeNumber === 2">
         <form class="form" @submit.prevent="register">
@@ -60,69 +64,68 @@
             <input type="password" class="form__item" id="password-confirmation" v-model="registerForm.password_confirmation">
             <div class="form__button">
             <button type="submit" class="button button--inverse">register</button>
-
             </div>
         </form>
         </div>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 
 export default {
-  data () {
+    data () {
     return {
-      typeNumber: 1,
-      loginForm: {
+        typeNumber: 1,
+        loginForm: {
         email: 'aaa@example.com',
         password: 'qwsaqwsa'
-      },
-      registerForm: {
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: ''
-      }
-    }
-  },
+                                    },
 
-computed: {
-  ...mapState({
-    apiStatus: state => state.auth.apiStatus,
-    loginErrors: state => state.auth.loginErrorMessages,
-    registerErrors: state => state.auth.registerErrorMessages
-  })
-},
-  methods: {
+        registerForm: {
+            name: '',
+            email: '',
+            password: '',
+            password_confirmation: ''
+                                        }
+                                            }
+    },
+    computed: {
+        ...mapState({
+            apiStatus: state => state.auth.apiStatus,
+            loginErrors: state => state.auth.loginErrorMessages,
+            registerErrors: state => state.auth.registerErrorMessages
+                                                                        })
+    },
+    methods: {
     async login () {
-        // authストアのloginアクションを呼び出す
+
+        // auth モジュール側でログイン処理を行う
         await this.$store.dispatch('auth/login', this.loginForm)
 
         if (this.apiStatus) {
-            // トップページに移動する
+            // ログインを完了してトップページに移動
             this.$router.push('/')
-        }
+                                    }
     },
     async register () {
-        // authストアのresigterアクションを呼び出す
+
         await this.$store.dispatch('auth/register', this.registerForm)
 
         if (this.apiStatus) {
-        // トップページに移動する
-        this.$router.push('/')
-      }
+            // 登録を完了してトップページに移動する
+            this.$router.push('/')
+                                    }
     },
     // created ライフサイクルフックでエラーをクリア
     clearError () {
-      this.$store.commit('auth/setLoginErrorMessages', null)
-      this.$store.commit('auth/setRegisterErrorMessages', null)
+        this.$store.commit('auth/setLoginErrorMessages', null)
+        this.$store.commit('auth/setRegisterErrorMessages', null)
+                                                                    }
+    },
+    created () {
+        this.clearError()
     }
-  },
-  created () {
-    this.clearError()
-
-  }
 }
 </script>

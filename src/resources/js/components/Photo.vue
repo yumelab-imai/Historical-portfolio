@@ -15,45 +15,50 @@
         :to="`/photos/${item.id}`"
     >
         <div class="photo__controls">
+        <!-- いいねボタン -->
         <button
             class="photo__action photo__action--like"
             :class="{ 'photo__action--liked': item.liked_by_user }"
-            title="Like photo"
             @click.prevent="like"
         >
             <i class="icon ion-md-heart"></i>{{ item.likes_count }}
         </button>
+        <!-- ダウンロードボタン -->
         <a
             class="photo__action"
             @click.stop
             :href="`/photos/${item.id}/download`"
         >
-        <i class="icon ion-md-arrow-round-down"></i>Download Photo
+            <i class="icon ion-md-arrow-round-down"></i>Download Photo
         </a>
         </div>
+        <!-- 画像左下にhoverで、ユーザーネーム -->
         <div class="photo__username">
         {{ item.owner.name }}
         </div>
     </RouterLink>
-  </div>
+</div>
 </template>
 
 <script>
 export default {
-  props: {
-    item: {
-      type: Object,
-      required: true
+    props: {
+        item: {
+        type: Object,
+        required: true
+                        }
+    },
+    methods: {
+        // [
+        // id => Bi7HdiAxAL3I
+        // liked => aaa
+        //                      ]
+        like () {
+            this.$emit('like', {
+                id: this.item.id,
+                liked: this.item.liked_by_user
+                                                })
+                                                    }
     }
-  },
-  methods: {
-    like () {
-      this.$emit('like', {
-        id: this.item.id,
-        liked: this.item.liked_by_user
-      })
-    }
-  }
-
 }
 </script>

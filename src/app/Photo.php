@@ -42,7 +42,7 @@ class Photo extends Model
     }
 
     /**
-     * ランダムなID値をid属性に代入する
+     * ランダムなID値をid属性に代入
      */
     private function setId()
     {
@@ -114,6 +114,7 @@ public function likes()
  */
 public function getLikesCountAttribute()
 {
+    // リレーションした likes() は likes で使える!
     return $this->likes->count();
 }
 
@@ -127,6 +128,7 @@ public function getLikedByUserAttribute()
         return false;
     }
 
+    // containsメソッドは指定したアイテムがコレクションに含まれているかどうかを判定
     return $this->likes->contains(function ($user) {
         return $user->id === Auth::user()->id;
     });

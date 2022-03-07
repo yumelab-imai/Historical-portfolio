@@ -1,31 +1,34 @@
 <template>
-  <div v-show="showOn" class="photo-form">
-    <div>
-        <h2 class="title">Submit a photo</h2>
-        <div v-show="loading" class="panel">
-        <Loader>Loading...(Sending your photo...)</Loader>
-        </div>
+<!-- オン・オフ式の写真投稿フォーム -->
+<div v-show="showOn" class="photo-form">
+    <!-- タイトル -->
+    <h2 class="title">Submit a photo</h2>
+    <!-- ローディングメッセージ -->
+    <div v-show="loading" class="panel">
+    <Loader>Loading...(Sending your photo...)</Loader>
     </div>
+    <!-- 写真投稿フォーム -->
     <form v-show="! loading" class="form" @submit.prevent="submit">
         <!-- エラー表示 -->
         <div class="errors" v-if="errors">
-        <ul v-if="errors.photo">
-            <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
-        </ul>
+            <ul v-if="errors.photo">
+                <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
+            </ul>
+                <Message />
         </div>
-        <div>
-            <Message />
-        </div>
+
         <!-- API(FileReader API FormData API)を使用してファイルの読み込み、データの送信、プレビュー機能を実装 -->
-        <input class="form__item" type="file" @change="onFileChange">
-        <output class="form__output" v-if="display_image_data_url">
-            <img :src="display_image_data_url">
-        </output>
-        <div class="form__button">
-            <button type="submit" class="button button--inverse">submit</button>
+        <div>
+                <input class="form__item" type="file" @change="onFileChange">
+            <output class="form__output" v-if="display_image_data_url">
+                <img :src="display_image_data_url">
+            </output>
+            <div class="form__button">
+                <button type="submit" class="button button--inverse">submit</button>
+            </div>
         </div>
     </form>
-    </div>
+</div>
 </template>
 
 <script>

@@ -2230,6 +2230,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     item: {
@@ -2238,6 +2240,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    // [
+    // id => Bi7HdiAxAL3I
+    // liked => aaa
+    //                      ]
     like: function like() {
       this.$emit('like', {
         id: this.item.id,
@@ -2269,6 +2275,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -2609,6 +2618,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2651,7 +2663,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 2:
                 if (_this.apiStatus) {
-                  // トップページに移動する
+                  // ログインを完了してトップページに移動
                   _this.$router.push('/');
                 }
 
@@ -2676,7 +2688,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 2:
                 if (_this2.apiStatus) {
-                  // トップページに移動する
+                  // 登録を完了してトップページに移動する
                   _this2.$router.push('/');
                 }
 
@@ -3063,6 +3075,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3113,6 +3131,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context.abrupt("return", false);
 
               case 6:
+                // ここで PhotoList.vue の次の３つのデータを得る
+                // レスポンスの下階層はステータスとかでそのままデータは取り出せないので
+                // 『response.data』みたいにクッションを挟んでからデータや現在ページを読み込む
                 _this.photos = response.data.data;
                 _this.currentPage = response.data.current_page;
                 _this.lastPage = response.data.last_page;
@@ -3125,13 +3146,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    // async fetchPhotosReload () {
-    //   const response = await axios.get(`/api/`)
-    //   if (response.status !== OK) {
-    //     this.$store.commit('error/setCode', response.status)
-    //     return false
-    //   }
-    // },
+    // 子コンポーネントから引数 id, liked を受け取った後に自動で like, unlike アクションを起こす！
+    // like, unlike アクションはこのアクションの下側に内容を記述
+    // 基本的に子コンポーネントから来た引数はメゾットの引数として使ってその後代入する流れ
     onLikeClick: function onLikeClick(_ref) {
       var id = _ref.id,
           liked = _ref.liked;
@@ -3147,6 +3164,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.like(id);
       }
     },
+    // ライクアクション
     like: function like(id) {
       var _this2 = this;
 
@@ -3189,6 +3207,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
+    // いいね取り消しアクション
     unlike: function unlike(id) {
       var _this3 = this;
 
@@ -3214,6 +3233,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context3.abrupt("return", false);
 
               case 6:
+                // いいね取り消し
                 _this3.photos = _this3.photos.map(function (photo) {
                   if (photo.id === response.data.photo_id) {
                     photo.likes_count -= 1;
@@ -3253,9 +3273,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }, _callee4);
         }))();
       },
-      //   async handler () {
-      //     await this.fetchPhotosReload()
-      //   },
       immediate: true
     }
   }
@@ -4740,7 +4757,6 @@ var render = function () {
               {
                 staticClass: "photo__action photo__action--like",
                 class: { "photo__action--liked": _vm.item.liked_by_user },
-                attrs: { title: "Like photo" },
                 on: {
                   click: function ($event) {
                     $event.preventDefault()
@@ -4817,26 +4833,24 @@ var render = function () {
       staticClass: "photo-form",
     },
     [
-      _c("div", [
-        _c("h2", { staticClass: "title" }, [_vm._v("Submit a photo")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.loading,
-                expression: "loading",
-              },
-            ],
-            staticClass: "panel",
-          },
-          [_c("Loader", [_vm._v("Loading...(Sending your photo...)")])],
-          1
-        ),
-      ]),
+      _c("h2", { staticClass: "title" }, [_vm._v("Submit a photo")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.loading,
+              expression: "loading",
+            },
+          ],
+          staticClass: "panel",
+        },
+        [_c("Loader", [_vm._v("Loading...(Sending your photo...)")])],
+        1
+      ),
       _vm._v(" "),
       _c(
         "form",
@@ -4859,34 +4873,41 @@ var render = function () {
         },
         [
           _vm.errors
-            ? _c("div", { staticClass: "errors" }, [
-                _vm.errors.photo
-                  ? _c(
-                      "ul",
-                      _vm._l(_vm.errors.photo, function (msg) {
-                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                      }),
-                      0
-                    )
-                  : _vm._e(),
-              ])
+            ? _c(
+                "div",
+                { staticClass: "errors" },
+                [
+                  _vm.errors.photo
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.errors.photo, function (msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("Message"),
+                ],
+                1
+              )
             : _vm._e(),
           _vm._v(" "),
-          _c("div", [_c("Message")], 1),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form__item",
-            attrs: { type: "file" },
-            on: { change: _vm.onFileChange },
-          }),
-          _vm._v(" "),
-          _vm.display_image_data_url
-            ? _c("output", { staticClass: "form__output" }, [
-                _c("img", { attrs: { src: _vm.display_image_data_url } }),
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._m(0),
+          _c("div", [
+            _c("input", {
+              staticClass: "form__item",
+              attrs: { type: "file" },
+              on: { change: _vm.onFileChange },
+            }),
+            _vm._v(" "),
+            _vm.display_image_data_url
+              ? _c("output", { staticClass: "form__output" }, [
+                  _c("img", { attrs: { src: _vm.display_image_data_url } }),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._m(0),
+          ]),
         ]
       ),
     ]
@@ -23516,7 +23537,8 @@ var actions = {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              context.commit('setApiStatus', null);
+              context.commit('setApiStatus', null); // デフォルトで作成されているログインアクションを起動
+
               _context2.next = 3;
               return axios.post('/api/login', data);
 
@@ -23551,11 +23573,6 @@ var actions = {
       }, _callee2);
     }))();
   },
-  // ログアウト
-  //   async logout (context) {
-  //     const response = await axios.post('/api/logout')
-  //     context.commit('setUser', null)
-  //   },
   logout: function logout(context) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
       var response;
@@ -23563,7 +23580,8 @@ var actions = {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              context.commit('setApiStatus', null);
+              context.commit('setApiStatus', null); // デフォルトで作成されている登録アクションを起動
+
               _context3.next = 3;
               return axios.post('/api/logout');
 

@@ -70,7 +70,7 @@ class PhotoController extends Controller
         return response($photo, 201);
     }
 
-        /**
+    /**
      * 写真一覧
      */
     public function index()
@@ -163,12 +163,15 @@ public function show(string $id)
  */
 public function like(string $id)
 {
+    // $photo には1つしか入らないので get() でも first() でも変わらない
     $photo = Photo::where('id', $id)->with('likes')->first();
 
     if (! $photo) {
         abort(404);
     }
 
+    // ここでユーザーとその他を分ける
+    // 写真の likes に Auth::user()->id を付加
     $photo->likes()->detach(Auth::user()->id);
     $photo->likes()->attach(Auth::user()->id);
 
@@ -187,6 +190,7 @@ public function unlike(string $id)
         abort(404);
     }
 
+    // photo モデル外なので 『likes』 ではなく、 『likes()』 でなければならない
     $photo->likes()->detach(Auth::user()->id);
 
     return ["photo_id" => $id];
