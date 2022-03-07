@@ -2322,9 +2322,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // display_image_data_urlはsrcを表す
       display_image_data_url: null,
       photo: null,
-      errors: null //   ここさえ上手くいけば全て終わる！！
-      //   showOn:  this.$store.state.turn.showOn
-
+      errors: null
     };
   },
   computed: {
@@ -2332,10 +2330,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.$store.state.turn.showOn;
     }
   },
-  //    watch: {
-  //     showOn: function() {
-  //       this.showOn = this.$store.state.turn.showOn
-  //     },
   methods: {
     // フォームでファイルが選択されたら実行される
     onFileChange: function onFileChange(event) {
@@ -2346,16 +2340,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.reset();
         return false;
       } // ファイルが画像ではなかったら処理中断
+      // event.target.files[0] は ファイル形式の画像
 
 
       if (!event.target.files[0].type.match('image.*')) {
         this.reset();
         return false;
-      } // FileReaderクラスのインスタンスを取得
+      } // その１ - URL
+      // FileReaderクラスのインスタンスを取得
 
 
       var reader = new FileReader(); // ファイルを読み込み終わったタイミングで実行する処理
-      //   reader.onloadにdisplay_image_data_urlを入れて
+      // reader.onloadにdisplay_image_data_urlを入れて
 
       reader.onload = function (e) {
         // display_image_data_urlに読み込んだデータURLを代入
@@ -2364,16 +2360,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // 読み込まれたファイルはデータURL形式で受け取れる
 
 
-      reader.readAsDataURL(event.target.files[0]);
+      reader.readAsDataURL(event.target.files[0]); // その２ - 写真データ
+
       this.photo = event.target.files[0];
     },
-    // クリア
-    reset: function reset() {
-      this.display_image_data_url = '';
-      this.photo = null;
-      this.$el.querySelector('input[type="file"]').value = null;
-    },
-    //   Ajax でファイルを送るために HTML5 の FormData API を使用,むずいよ〜
+    // Ajax でファイルを送るために HTML5 の FormData API を使用(むずい)
     submit: function submit() {
       var _this2 = this;
 
@@ -2421,12 +2412,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context.abrupt("return", false);
 
               case 15:
-                // メッセージ登録
+                // 写真投稿メッセージ
                 _this2.$store.commit('message/setContent', {
                   content: '写真が投稿されました！',
                   timeout: 6000
-                }); // this.$router.push(`/photos/${response.data.id}`)
-                // this.$router.push(`/photos/:id`)
+                }); // 完了後のルーティング
 
 
                 _this2.$router.push("/")["catch"](function () {});
@@ -2438,6 +2428,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    // クリア
+    reset: function reset() {
+      this.display_image_data_url = '';
+      this.photo = null; // querySelector の説明
+      // <li class="item1">list2-item1</li> の場合
+      // document.querySelectorAll('.item1')
+
+      this.$el.querySelector('input[type="file"]').value = null;
     }
   }
 });

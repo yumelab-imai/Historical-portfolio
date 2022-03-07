@@ -39,105 +39,106 @@ import Loader from './Loader.vue'
 export default {
 
     components: {
-    Message,
-    Loader,
-  },
-  data () {
-    return {
-    loading: false,
-    // display_image_data_urlはsrcを表す
-      display_image_data_url: null,
-      photo: null,
-      errors: null,
-    //   ここさえ上手くいけば全て終わる！！
-    //   showOn:  this.$store.state.turn.showOn
-    }
-  },
-  computed:{
-      showOn() {
-      return this.$store.state.turn.showOn;
-    }
-  },
-//    watch: {
-//     showOn: function() {
-
-//       this.showOn = this.$store.state.turn.showOn
-//     },
-  methods: {
-    // フォームでファイルが選択されたら実行される
-    onFileChange (event) {
-      // 何も選択されていなかったら処理中断
-      if (event.target.files.length === 0) {
-        this.reset()
-        return false
-      }
-
-      // ファイルが画像ではなかったら処理中断
-      if (! event.target.files[0].type.match('image.*')) {
-        this.reset()
-        return false
-      }
-
-      // FileReaderクラスのインスタンスを取得
-      const reader = new FileReader()
-
-      // ファイルを読み込み終わったタイミングで実行する処理
-    //   reader.onloadにdisplay_image_data_urlを入れて
-      reader.onload = e => {
-        // display_image_data_urlに読み込んだデータURLを代入
-        this.display_image_data_url = e.target.result
-      }
-
-      // ファイルを読み込む
-      // 読み込まれたファイルはデータURL形式で受け取れる
-      reader.readAsDataURL(event.target.files[0])
-
-      this.photo = event.target.files[0]
+        Message,
+        Loader,
     },
-    // クリア
-    reset () {
-    this.display_image_data_url = ''
-    this.photo = null
-    this.$el.querySelector('input[type="file"]').value = null
-  },
-//   Ajax でファイルを送るために HTML5 の FormData API を使用,むずいよ〜
-  async submit () {
-    this.loading = true
+    data () {
+        return {
+            loading: false,
+            // display_image_data_urlはsrcを表す
+            display_image_data_url: null,
+            photo: null,
+            errors: null,
+                                                }
+    },
+    computed:{
+        showOn() {
+            return this.$store.state.turn.showOn;
+                                                    }
+    },
+    methods: {
+        // フォームでファイルが選択されたら実行される
+        onFileChange (event) {
 
-    const formData = new FormData()
-    //コードの説明(詳細)
-    // this.photo = event.target.files[0]
-    // formData={
-    //     photo => event.target.files[0]
-    // }
-    formData.append('photo', this.photo)
-    const response = await axios.post('/api/photos', formData)
+        // 何も選択されていなかったら処理中断
+        if (event.target.files.length === 0) {
+            this.reset()
+            return false
+        }
 
-    this.loading = false
+        // ファイルが画像ではなかったら処理中断
+        // event.target.files[0] は ファイル形式の画像
+        if (! event.target.files[0].type.match('image.*')) {
+            this.reset()
+            return false
+        }
 
-    if (response.status === UNPROCESSABLE_ENTITY) {
-    this.errors = response.data.errors
-    return false
-  }
+        // その１ - URL
+        // FileReaderクラスのインスタンスを取得
+        const reader = new FileReader()
 
-    this.reset()
-    this.$emit('input', false)
+        // ファイルを読み込み終わったタイミングで実行する処理
+        // reader.onloadにdisplay_image_data_urlを入れて
+        reader.onload = e => {
+            // display_image_data_urlに読み込んだデータURLを代入
+            this.display_image_data_url = e.target.result
+        }
 
-    if (response.status !== CREATED) {
-    this.$store.commit('error/setCode', response.status)
-    return false
-  }
+        // ファイルを読み込む
+        // 読み込まれたファイルはデータURL形式で受け取れる
+        reader.readAsDataURL(event.target.files[0])
 
-  // メッセージ登録
-  this.$store.commit('message/setContent', {
-    content: '写真が投稿されました！',
-    timeout: 6000
-  })
+        // その２ - 写真データ
+        this.photo = event.target.files[0]
+                                            },
 
-    // this.$router.push(`/photos/${response.data.id}`)
-    // this.$router.push(`/photos/:id`)
-    this.$router.push(`/`).catch(() => {})
-  }
-  }
+        // Ajax でファイルを送るために HTML5 の FormData API を使用(むずい)
+        async submit () {
+
+            this.loading = true
+            const formData = new FormData()
+            //コードの説明(詳細)
+            // this.photo = event.target.files[0]
+            // formData={
+            //     photo => event.target.files[0]
+            // }
+            formData.append('photo', this.photo)
+            const response = await axios.post('/api/photos', formData)
+
+            this.loading = false
+
+            if (response.status === UNPROCESSABLE_ENTITY) {
+            this.errors = response.data.errors
+            return false
+                            }
+
+            this.reset()
+            this.$emit('input', false)
+
+            if (response.status !== CREATED) {
+            this.$store.commit('error/setCode', response.status)
+            return false
+                            }
+
+            // 写真投稿メッセージ
+            this.$store.commit('message/setContent', {
+                content: '写真が投稿されました！',
+                timeout: 6000
+                                })
+
+            // 完了後のルーティング
+            this.$router.push(`/`).catch(() => {})
+        },
+
+        // クリア
+        reset () {
+            this.display_image_data_url = ''
+            this.photo = null
+            // querySelector の説明
+            // <li class="item1">list2-item1</li> の場合
+            // document.querySelectorAll('.item1')
+            this.$el.querySelector('input[type="file"]').value = null
+                                                                        },
+    }
 }
 </script>
