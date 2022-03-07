@@ -330,3 +330,5 @@ import { OK } from '../util'
 アクセサ
 
 ページ遷移時にページ先頭を表示
+
+status

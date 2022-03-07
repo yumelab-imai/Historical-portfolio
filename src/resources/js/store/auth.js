@@ -78,41 +78,44 @@ const actions = {
 //     context.commit('error/setCode', response.status, { root: true })
 //   }
 // },
-async login (context, data) {
-    context.commit('setApiStatus', null)
-    const response = await axios.post('/api/login', data)
+    async login (context, data) {
 
-    if (response.status === OK) {
-      context.commit('setApiStatus', true)
-      context.commit('setUser', response.data)
-      return false
-    }
+        context.commit('setApiStatus', null)
 
-    context.commit('setApiStatus', false)
-    if (response.status === UNPROCESSABLE_ENTITY) {
-      context.commit('setLoginErrorMessages', response.data.errors)
-    } else {
-      context.commit('error/setCode', response.status, { root: true })
-    }
-  },
-  // ログアウト
-//   async logout (context) {
-//     const response = await axios.post('/api/logout')
-//     context.commit('setUser', null)
-//   },
-  async logout (context) {
-    context.commit('setApiStatus', null)
-    const response = await axios.post('/api/logout')
+        // デフォルトで作成されているログインアクションを起動
+        const response = await axios.post('/api/login', data)
 
-    if (response.status === OK) {
-      context.commit('setApiStatus', true)
-      context.commit('setUser', null)
-      return false
-    }
+        if (response.status === OK) {
+            context.commit('setApiStatus', true)
+            context.commit('setUser', response.data)
+            return false
+                                                        }
 
-    context.commit('setApiStatus', false)
-    context.commit('error/setCode', response.status, { root: true })
-  },
+        context.commit('setApiStatus', false)
+        if (response.status === UNPROCESSABLE_ENTITY) {
+            context.commit('setLoginErrorMessages', response.data.errors)
+        } else {
+            context.commit('error/setCode', response.status, { root: true })
+                                                                                }
+    },
+
+    async logout (context) {
+        context.commit('setApiStatus', null)
+
+        // デフォルトで作成されている登録アクションを起動
+        const response = await axios.post('/api/logout')
+
+        if (response.status === OK) {
+            context.commit('setApiStatus', true)
+            context.commit('setUser', null)
+            return false
+                                                    }
+
+        context.commit('setApiStatus', false)
+        context.commit('error/setCode', response.status, { root: true })
+    },
+
+
   // ログインユーザーチェック
 //   async currentUser (context) {
 //     const response = await axios.get('/api/user')
