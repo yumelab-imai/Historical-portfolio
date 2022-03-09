@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-// 会員登録のため
+// 会員登録
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
 
 // ログインのため
