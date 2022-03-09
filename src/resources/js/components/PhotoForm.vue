@@ -126,7 +126,13 @@ export default {
                 timeout: 6000
                                 })
 
+            // 引数の id を受け取る処理
+            // const response = await axios.get('/api/', )
             // 完了後のルーティング
+// <RouterLink
+//     class="photo__overlay"
+//     :to="`/photos/${item.id}`"
+// >
             this.$router.push(`/`).catch(() => {})
         },
 
@@ -134,6 +140,7 @@ export default {
         reset () {
             this.display_image_data_url = ''
             this.photo = null
+            // this.$el はこのコンポーネントを指す
             // querySelector の説明
             // <li class="item1">list2-item1</li> の場合
             // document.querySelectorAll('.item1')

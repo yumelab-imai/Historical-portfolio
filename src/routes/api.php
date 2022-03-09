@@ -29,6 +29,10 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 // ログインユーザーのため
 Route::get('/user', fn () => Auth::user())->name('user');
 
+// 開発中の 『コメント削除機能』
+// {id}、{index}で引数を渡す
+// Route::delete('/photos/{id}/comments/{index}', 'PhotoController@dump');
+
 // 写真投稿のため
 Route::post('/photos', 'PhotoController@create')->name('photo.create');
 
@@ -44,7 +48,7 @@ Route::post('/photos/{photo}/comments', 'PhotoController@addComment')->name('pho
 // いいね
 Route::put('/photos/{id}/like', 'PhotoController@like')->name('photo.like');
 
-// いいね解除
+// いいね解除のため
 Route::delete('/photos/{id}/like', 'PhotoController@unlike');
 
 // トークンリフレッシュ
@@ -54,3 +58,13 @@ Route::get('/reflesh-token', function (Illuminate\Http\Request $request) {
 
     return response()->json();
 });
+
+// サンプル集
+// Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
+//     //
+// });
+
+//  get “posts/:id” => “posts/#show”
+// というルーティングがあった場合、
+//  get “posts/index” => “posts/index”
+//  は:idをつかっているルーティングよりも上に書く

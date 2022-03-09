@@ -332,3 +332,5 @@ import { OK } from '../util'
 ページ遷移時にページ先頭を表示
 
 status
+
+エラー機能

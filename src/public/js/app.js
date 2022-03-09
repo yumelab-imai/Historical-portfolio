@@ -2416,7 +2416,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this2.$store.commit('message/setContent', {
                   content: '写真が投稿されました！',
                   timeout: 6000
-                }); // 完了後のルーティング
+                }); // 引数の id を受け取る処理
+                // const response = await axios.get('/api/', )
+                // 完了後のルーティング
+                // <RouterLink
+                //     class="photo__overlay"
+                //     :to="`/photos/${item.id}`"
+                // >
 
 
                 _this2.$router.push("/")["catch"](function () {});
@@ -2432,7 +2438,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     // クリア
     reset: function reset() {
       this.display_image_data_url = '';
-      this.photo = null; // querySelector の説明
+      this.photo = null; // this.$el はこのコンポーネントを指す
+      // querySelector の説明
       // <li class="item1">list2-item1</li> の場合
       // document.querySelectorAll('.item1')
 
@@ -2811,6 +2818,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2822,12 +2838,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       photo: null,
-      fullWidth: true,
       commentContent: '',
-      commentErrors: null
+      commentErrors: null,
+      send_id: null
     };
   },
   computed: {
+    // これでログインしていない場合このページに飛べないようにしている
     isLogin: function isLogin() {
       return this.$store.getters['auth/check'];
     }
@@ -2868,10 +2885,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    // async remove (created_at,index) {  // created_at は id の代わり
-    //     removeMessage(created_at);         // Ajax でデータベース削除
-    //     this.list.splice(index, 1);        // フロント側で削除
-    // },
     addComment: function addComment() {
       var _this2 = this;
 
@@ -2898,9 +2911,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 6:
-                // 入力していたメッセージをクリアして
-                _this2.commentContent = ''; //入力メッセージのエラーをリセット
-
+                // クリア
+                _this2.commentContent = '';
                 _this2.commentErrors = null; // その他のエラー
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
@@ -2913,7 +2925,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 11:
-                _this2.photo.comments = [// 結果反映
+                // 画面に結果を反映させる(コメントの上書き)
+                // ...this.photo.comments は Spread operator（スプレッドオペレータ)で
+                // これがないと配列のまま渡されてしまう
+                _this2.photo.comments = [// 追加する写真
                 response.data].concat(_toConsumableArray(_this2.photo.comments));
 
               case 12:
@@ -2924,6 +2939,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
+    // いいね機能
     onLikeClick: function onLikeClick() {
       if (!this.isLogin) {
         alert('いいね機能を使うにはログインしてください。');
@@ -2961,6 +2977,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context3.abrupt("return", false);
 
               case 6:
+                // DB側では処理は完了しているが、フロントではまだ処理されていないため、これで結果を反映させる
                 _this3.photo.likes_count = _this3.photo.likes_count + 1;
                 _this3.photo.liked_by_user = true;
 
@@ -2997,6 +3014,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context4.abrupt("return", false);
 
               case 6:
+                // DB側では処理は完了しているが、フロントではまだ処理されていないため、これで結果を反映させる
                 _this4.photo.likes_count = _this4.photo.likes_count - 1;
                 _this4.photo.liked_by_user = false;
 
@@ -3007,7 +3025,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4);
       }))();
-    }
+    } // 開発中
+    // async deleteComment (index) {
+    // DB上のコメントをaxiosで消す（delete）
+    // ${this.id} = FeHYrWpjAidq
+    // const response = await axios.delete(`/api/photos/${this.id}/comments/${index}`)
+    // const response = await axios.delete(`/api/photos/${this.id}/comments/${index}`)
+    // フロント側でも消す
+    // this.remove(index);
+    // },
+    // remove(index){
+    // this.photo.comments.splice(index,1)
+    // },
+
   },
   watch: {
     $route: {
@@ -5453,27 +5483,25 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.photo
-    ? _c(
-        "div",
-        {
-          staticClass: "photo-detail",
-          class: { "photo-detail--column": _vm.fullWidth },
-        },
-        [
-          _c("img", { attrs: { src: _vm.photo.url } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "photo-detail__pane" }, [
+    ? _c("div", { staticClass: "photo-detail photo-detail--column" }, [
+        _c(
+          "figure",
+          { staticClass: "photo-detail__pane photo-detail__image" },
+          [_c("img", { attrs: { src: _vm.photo.url } })]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "photo-detail__pane" }, [
+          _c("div", [
             _c(
               "button",
               {
                 staticClass: "button button--like",
                 class: { "button--liked": _vm.photo.liked_by_user },
-                attrs: { title: "Like photo" },
                 on: { click: _vm.onLikeClick },
               },
               [
                 _c("i", { staticClass: "icon ion-md-heart" }),
-                _vm._v(_vm._s(_vm.photo.likes_count) + "\n      "),
+                _vm._v(_vm._s(_vm.photo.likes_count) + "\n            "),
               ]
             ),
             _vm._v(" "),
@@ -5481,86 +5509,65 @@ var render = function () {
               "a",
               {
                 staticClass: "button",
-                attrs: {
-                  href: "/photos/" + _vm.photo.id + "/download",
-                  title: "Download photo",
-                },
+                attrs: { href: "/photos/" + _vm.photo.id + "/download" },
               },
               [
                 _c("i", { staticClass: "icon ion-md-arrow-round-down" }),
-                _vm._v("Download Photo\n      "),
+                _vm._v("Download Photo\n            "),
               ]
             ),
-            _vm._v(" "),
+          ]),
+          _vm._v(" "),
+          _c("div", [
             _vm._m(0),
             _vm._v(" "),
-            _vm.photo.comments.length > 0
-              ? _c(
-                  "ul",
-                  { staticClass: "photo-detail__comments" },
-                  _vm._l(_vm.photo.comments, function (comment) {
-                    return _c(
-                      "li",
-                      {
-                        key: comment.content,
-                        staticClass: "photo-detail__commentItem",
-                      },
-                      [
-                        _c("span", { staticClass: "pull-right" }, [
+            _c("div", [
+              _vm.photo.comments.length > 0
+                ? _c(
+                    "ul",
+                    { staticClass: "photo-detail__comments" },
+                    _vm._l(_vm.photo.comments, function (comment, index) {
+                      return _c(
+                        "li",
+                        {
+                          key: comment.content,
+                          staticClass: "photo-detail__commentItem",
+                        },
+                        [
+                          _c("span", { staticClass: "pull-right" }, [
+                            _c("span", [_vm._v(_vm._s(comment.updated_at))]),
+                          ]),
+                          _vm._v(" "),
                           _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-xs btn-warning",
-                              on: {
-                                click: function ($event) {
-                                  return _vm.remove(
-                                    _vm.todo.created_at,
-                                    _vm.index
-                                  )
-                                },
-                              },
-                            },
-                            [_vm._m(1, true)]
+                            "p",
+                            { staticClass: "photo-detail__commentInfo" },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(comment.author.name) +
+                                  "\n                    "
+                              ),
+                            ]
                           ),
                           _vm._v(" "),
                           _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-xs btn-warning",
-                              on: {
-                                click: function ($event) {
-                                  return _vm.remove(
-                                    _vm.todo.created_at,
-                                    _vm.index
-                                  )
-                                },
-                              },
-                            },
-                            [_vm._m(2, true)]
+                            "p",
+                            { staticClass: "photo-detail__commentBody" },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(comment.content) +
+                                  "\n                    "
+                              ),
+                            ]
                           ),
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "photo-detail__commentInfo" }, [
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(comment.author.name) +
-                              "\n            "
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "photo-detail__commentBody" }, [
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(comment.content) +
-                              "\n            "
-                          ),
-                        ]),
-                      ]
-                    )
-                  }),
-                  0
-                )
-              : _c("p", [_vm._v("No comments yet.")]),
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _c("p", [_vm._v("No comments yet.")]),
+            ]),
             _vm._v(" "),
             _vm.isLogin
               ? _c(
@@ -5615,13 +5622,13 @@ var render = function () {
                       },
                     }),
                     _vm._v(" "),
-                    _vm._m(3),
+                    _vm._m(1),
                   ]
                 )
               : _vm._e(),
           ]),
-        ]
-      )
+        ]),
+      ])
     : _vm._e()
 }
 var staticRenderFns = [
@@ -5631,23 +5638,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Review\n        "),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "glyphicon glyphicon-trash" }, [
-      _c("i", { staticClass: "fa-solid fa-trash-can" }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "glyphicon glyphicon-trash" }, [
-      _c("i", { staticClass: "fa-solid fa-ellipsis" }),
+      _vm._v("Review\n            "),
     ])
   },
   function () {
@@ -23079,14 +23070,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./resources/js/pages/PhotoDetail.vue ***!
   \********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PhotoDetail_vue_vue_type_template_id_c17cd6ac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhotoDetail.vue?vue&type=template&id=c17cd6ac& */ "./resources/js/pages/PhotoDetail.vue?vue&type=template&id=c17cd6ac&");
 /* harmony import */ var _PhotoDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PhotoDetail.vue?vue&type=script&lang=js& */ "./resources/js/pages/PhotoDetail.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _PhotoDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _PhotoDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -23116,7 +23108,7 @@ component.options.__file = "resources/js/pages/PhotoDetail.vue"
 /*!*********************************************************************!*\
   !*** ./resources/js/pages/PhotoDetail.vue?vue&type=script&lang=js& ***!
   \*********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

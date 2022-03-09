@@ -1,6 +1,6 @@
 // ルートコンポーネント
 <template>
-  <div class="back">
+<div class="back">
     <header>
       <Sidebar />
     </header>
@@ -10,7 +10,7 @@
         <RouterView />
       </div>
     </main>
-  </div>
+</div>
 </template>
 
 <script>
@@ -30,7 +30,7 @@ export default {
       return this.$store.state.error.code
     }
   },
-  
+
   watch: {
     errorCode: {
      async handler (value) {
