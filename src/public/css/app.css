@@ -171,7 +171,7 @@ img {
   border: 0;
   border-radius: 0.25rem;
   color: #222;
-  cursor: pointer;
+  /* cursor: pointer; */
   display: inline-block;
   font-family: inherit;
   font-size: 1rem;
@@ -214,7 +214,8 @@ img {
 }
 
 .photo-detail--column .photo-detail__image {
-  cursor: zoom-out;
+  /* cursor: -webkit-zoom-out;
+  cursor: zoom-out; */
 }
 
 .photo-detail__pane {
@@ -222,7 +223,8 @@ img {
 }
 
 .photo-detail__image {
-  cursor: zoom-in;
+  /* cursor: -webkit-zoom-in;
+  cursor: zoom-in; */
   margin-bottom: 1.5rem;
 }
 

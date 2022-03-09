@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 
 use App\Http\Requests\StorePhoto;
+// use App\Http\Requests\IndexComment;
 use App\Photo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -131,30 +132,15 @@ public function show(string $id)
         $comment->content = $request->get('content');
         $comment->user_id = Auth::user()->id;
         $photo->comments()->save($comment);
+        // この時点でバックエンド側の処理は完了
 
-        // authorリレーションをロードするためにコメントを取得しなおす
+
+        // フロント側に今回のデータを付け加える
         $new_comment = Comment::where('id', $comment->id)->with('author')->first();
 
         return response($new_comment, 201);
     }
 
-    // /**
-    //  * コメント投稿の削除
-    //  * @param Photo $photo
-    //  * @param StoreComment $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function deleteComment(Photo $photo, StoreComment $request)
-    // {
-    //     // ここが違う
-    //     $request->delete('id');
-    //     $photo->comments()->save(???);
-
-    //     // authorリレーションをロードするためにコメントを取得しなおす
-    //     $new_comment = Comment::where('id', $comment->id)->with('author')->first();
-
-    //     return response($new_comment, 201);
-    // }
 
     /**
  * いいね
@@ -196,5 +182,42 @@ public function unlike(string $id)
     return ["photo_id" => $id];
 }
 
+    // 開発中
+    // public function dump($photoId ,$index)
+    // {
 
+        // DB::table('comments')->where('photo_id', $photoId)->orderBy(Comment::UPDATED_AT, 'asc')->where('comment_num', $index )->delete();
+
+
+
+
+        // $number = $request->get('number');
+        // findOrFailの場合、エラーを返す
+        // $comment = Comment::where('photo_id', $id)->first();
+        // $photo = Photo::where('id', $id)->with('likes')->first();
+        // $comment = DB::table('comments')->where('photo_id', $photoId)->delete();
+
+        // $comment = DB::table('comments')->where('photo_id', $photoId)->where('id', $index)->where('user_id' , Auth::user()->id)->delete();
+        // $comment = DB::table('comments')->where('photo_id', $photoId)->where('id', ???)->delete();
+        // $comment = DB::table('comments')->where('photo_id', $photoId)->find($index)->delete();
+
+        // $comment1 = DB::table('comments')->where('photo_id', $photoId)->orderBy(Comment::UPDATED_AT, 'asc')->find($index);
+        // $comment2 = $comment1->value('id');
+        // DB::table('comments')->where('photo_id', $photoId)->orderBy(Comment::UPDATED_AT, 'asc')->where('comment_num', $index )->delete();
+        // $comment = Comment::where('photo_id', $photoId)->orderBy(Comment::CREATED_AT, 'desc');
+        // $comment = DB::table('comments')->where('photo_id', $photoId)->orderBy(Comment::UPDATED_AT, 'asc')->destroy($index);
+        // $comment = DB::table('comments')->where('photo_id', $photoId)->destroy($index);
+
+        // idの振り直し
+        // $users->truncate();
+        // dump($comment, $comment1);
+        // $comment->destroy(1);
+        // $comment->delete();
+        // $comment =\App\Comment::find($index);
+        // $comment->delete();
+        // $comment->truncate();
+
+
+        // return response($);
+    // }
 }
