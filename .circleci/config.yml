@@ -20,7 +20,7 @@ jobs:
           command: npm run dev
       - run:
           working_directory: src
-          command: touch .env
+          command: mv .env.example .env
       - run:
           working_directory: src
           command: sudo php artisan key:generate
