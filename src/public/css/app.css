@@ -18,9 +18,7 @@ body {
   margin: 0;
 }
 
-main {
-  margin-bottom: 6rem;
-}
+
 
 figure {
   margin: 0;
@@ -32,7 +30,7 @@ img {
 
 .container {
     width: 92%;
-    background-color: rgb(253, 249, 249);
+    /* background-color: rgb(253, 249, 249); */
   margin-left: 8rem;
   max-width: 1200px;
   padding: 0 2%;
@@ -40,12 +38,20 @@ img {
 
 .container--small {
   margin: 0 auto;
+  margin-top: 10rem;
   max-width: 600px;
+  background-color: rgb(253, 249, 249);
+  border-radius: 10px;
+  /* padding-top: 10rem; */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  /* padding-bottom: 30rem; */
 }
 
 .grid {
   display: grid;
-  background-color: #fcfdfdf3;
+  margin-left: 13rem;
 
   grid-gap: 0 2%;
   grid-template-columns: repeat(auto-fit, 90%);
@@ -235,6 +241,7 @@ img {
 .photo-detail__title {
   font-size: 1.2rem;
   margin: 1.5rem 0;
+  color:#353532;
 }
 
 .photo-detail__title .icon {
@@ -310,6 +317,7 @@ img {
 .button--inverse {
   background: #222;
   border-color: #222;
+  font-size: 2rem;
   color: #fff;
   transition: opacity 300ms ease-in-out;
 }
@@ -631,6 +639,7 @@ img {
     height: 3rem;
     font-size: 3rem;
     text-align: center;
+    /* margin:0 auto; */
 
 }
 
@@ -668,4 +677,54 @@ img {
 }
 .bigupspace{
     margin-top:24rem;
+}
+
+.maincss
+{
+    height:100%;
+}
+
+.backmanage{
+    background-color: #177ff5b9;
+    /* height: 100%; */
+}
+
+
+html
+{
+    background-color: #036adfb9;
+}
+
+.pagenation
+{
+    background-color: #f9fbfdb9;
+}
+
+
+.centle
+{
+    margin:0 auto;
+}
+.lay
+{
+    margin-left: 2rem;
+}
+.lay2
+{
+    margin-left: 0.5rem;
+}
+
+.lay3
+{
+    margin-left: 2rem;
+}
+
+.backC{
+    background-color: #f9fcfb;
+}
+
+.com{
+    background-color: #f9fcfb;
+    border-radius: 3px;
+    padding: 1rem 1rem 1rem 1rem;
 }

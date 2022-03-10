@@ -2,6 +2,8 @@
 <template>
 <div class="photo-list">
     <div class="grid">
+        <!-- アプリケーションメッセージ -->
+        <Message />
         <!-- photo (in photos) を item として送る -->
         <!-- @likeで Photo.vue からの出力値を受け取って onLikeClick アクションを起動 -->
         <!--
@@ -22,6 +24,7 @@
 </template>
 
 <script>
+import Message from '../components/Message.vue'
 import { OK } from '../util'
 import Photo from '../components/Photo.vue'
 import Pagination from '../components/Pagination.vue'
@@ -38,7 +41,8 @@ export default {
     },
     components: {
         Photo,
-        Pagination
+        Pagination,
+        Message
     },
     data () {
         return {

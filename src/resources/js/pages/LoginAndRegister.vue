@@ -39,7 +39,6 @@
     </div>
     <!-- 登録画面 -->
     <div class="panel" v-show="typeNumber === 2">
-        <div class="panel" v-show="typeNumber === 2">
         <form class="form" @submit.prevent="register">
             <!-- エラー表示 -->
             <div v-if="registerErrors" class="errors">
@@ -66,7 +65,6 @@
             <button type="submit" class="button button--inverse">register</button>
             </div>
         </form>
-        </div>
     </div>
 </div>
 </template>

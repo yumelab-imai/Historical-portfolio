@@ -1946,6 +1946,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -2078,7 +2079,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 2:
                 if (_this.apiStatus) {
-                  _this.$router.push('/LoginAndRegister');
+                  _this.$router.push('/login');
                 }
 
               case 3:
@@ -2308,6 +2309,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -2423,11 +2425,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 //     class="photo__overlay"
                 //     :to="`/photos/${item.id}`"
                 // >
+                // if(this.$route.path.match(/\//)){
+                //     this.fetchPhotos ()
+                // }else{
+                // this.$router.push(`/`).catch(() => {})
+                // }
 
 
+                if (true) {
+                  _context.next = 20;
+                  break;
+                }
+
+                return _context.abrupt("return", false);
+
+              case 20:
                 _this2.$router.push("/")["catch"](function () {});
 
-              case 17:
+              case 21:
               case "end":
                 return _context.stop();
             }
@@ -2460,6 +2475,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Footer.vue */ "./resources/js/components/Footer.vue");
+//
 //
 //
 //
@@ -2554,8 +2570,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -3078,9 +3092,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ "./resources/js/util.js");
-/* harmony import */ var _components_Photo_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Photo.vue */ "./resources/js/components/Photo.vue");
-/* harmony import */ var _components_Pagination_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Pagination.vue */ "./resources/js/components/Pagination.vue");
+/* harmony import */ var _components_Message_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Message.vue */ "./resources/js/components/Message.vue");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./resources/js/util.js");
+/* harmony import */ var _components_Photo_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Photo.vue */ "./resources/js/components/Photo.vue");
+/* harmony import */ var _components_Pagination_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Pagination.vue */ "./resources/js/components/Pagination.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3110,6 +3125,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+
 
 
 
@@ -3124,8 +3142,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   components: {
-    Photo: _components_Photo_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Pagination: _components_Pagination_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    Photo: _components_Photo_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    Pagination: _components_Pagination_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    Message: _components_Message_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -3150,7 +3169,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 response = _context.sent;
 
-                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_2__["OK"])) {
                   _context.next = 6;
                   break;
                 }
@@ -3209,7 +3228,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 response = _context2.sent;
 
-                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_2__["OK"])) {
                   _context2.next = 6;
                   break;
                 }
@@ -3252,7 +3271,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 response = _context3.sent;
 
-                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_2__["OK"])) {
                   _context3.next = 6;
                   break;
                 }
@@ -4562,6 +4581,7 @@ var render = function () {
     _vm._v(" "),
     _c(
       "main",
+      { staticClass: "backmanage" },
       [
         _c("PhotoForm"),
         _vm._v(" "),
@@ -4719,7 +4739,7 @@ var render = function () {
         ? _c(
             "RouterLink",
             {
-              staticClass: "button",
+              staticClass: "button pagenation",
               attrs: { to: "/?page=" + (_vm.currentPage - 1) },
             },
             [_vm._v("\n        « prev\n    ")]
@@ -4730,7 +4750,7 @@ var render = function () {
         ? _c(
             "RouterLink",
             {
-              staticClass: "button",
+              staticClass: "button pagenation",
               attrs: { to: "/?page=" + (_vm.currentPage + 1) },
             },
             [_vm._v("\n        next »\n    ")]
@@ -4902,25 +4922,20 @@ var render = function () {
         },
         [
           _vm.errors
-            ? _c(
-                "div",
-                { staticClass: "errors" },
-                [
-                  _vm.errors.photo
-                    ? _c(
-                        "ul",
-                        _vm._l(_vm.errors.photo, function (msg) {
-                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                        }),
-                        0
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("Message"),
-                ],
-                1
-              )
+            ? _c("div", { staticClass: "errors" }, [
+                _vm.errors.photo
+                  ? _c(
+                      "ul",
+                      _vm._l(_vm.errors.photo, function (msg) {
+                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                      }),
+                      0
+                    )
+                  : _vm._e(),
+              ])
             : _vm._e(),
+          _vm._v(" "),
+          _c("Message"),
           _vm._v(" "),
           _c("div", [
             _c("input", {
@@ -4937,7 +4952,8 @@ var render = function () {
             _vm._v(" "),
             _vm._m(0),
           ]),
-        ]
+        ],
+        1
       ),
     ]
   )
@@ -5022,7 +5038,7 @@ var render = function () {
             _vm._v(" "),
             _c(
               "RouterLink",
-              { staticClass: "navbar__brand", attrs: { to: "/" } },
+              { staticClass: "navbar__brand", attrs: { to: "/login" } },
               [_c("Footer")],
               1
             ),
@@ -5035,15 +5051,15 @@ var render = function () {
           [
             _c(
               "div",
-              { staticClass: "upspace" },
+              { staticClass: "upspace " },
               [
                 _c(
                   "RouterLink",
                   {
-                    staticClass: "navbar__brand home-name",
+                    staticClass: "navbar__brand home-name ",
                     attrs: { to: "/" },
                   },
-                  [_c("i", { staticClass: "fa fa-home" })]
+                  [_c("i", { staticClass: "fa fa-home lay" })]
                 ),
                 _vm._v(" "),
                 _vm._m(0),
@@ -5055,12 +5071,13 @@ var render = function () {
               "RouterLink",
               {
                 staticClass: "button button--link bigupspace",
-                attrs: { to: "/LoginAndRegister" },
+                attrs: { to: "/login" },
               },
               [
-                _c("i", { staticClass: "fa-solid fa-door-closed logout" }),
+                _c("i", { staticClass: "fa-solid fa-door-closed logout lay" }),
                 _c("br"),
-                _vm._v("Login/Register\n        "),
+                _vm._v(" "),
+                _c("div", { staticClass: "lay2" }, [_vm._v("Login/Register")]),
               ]
             ),
           ],
@@ -5074,7 +5091,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _vm._v("\n                Home"),
+      _c("div", { staticClass: "lay3" }, [_vm._v("Home")]),
       _c("br"),
       _vm._v("(一部の機能制限)\n            "),
     ])
@@ -5253,182 +5270,154 @@ var render = function () {
       },
       [
         _c(
-          "div",
+          "form",
           {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.typeNumber === 2,
-                expression: "typeNumber === 2",
+            staticClass: "form",
+            on: {
+              submit: function ($event) {
+                $event.preventDefault()
+                return _vm.register.apply(null, arguments)
               },
-            ],
-            staticClass: "panel",
+            },
           },
           [
-            _c(
-              "form",
-              {
-                staticClass: "form",
-                on: {
-                  submit: function ($event) {
-                    $event.preventDefault()
-                    return _vm.register.apply(null, arguments)
-                  },
+            _vm.registerErrors
+              ? _c("div", { staticClass: "errors" }, [
+                  _vm.registerErrors.name
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.registerErrors.name, function (msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.registerErrors.email
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.registerErrors.email, function (msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.registerErrors.password
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.registerErrors.password, function (msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "username" } }, [_vm._v("Name")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.registerForm.name,
+                  expression: "registerForm.name",
+                },
+              ],
+              staticClass: "form__item",
+              attrs: { type: "text", id: "username" },
+              domProps: { value: _vm.registerForm.name },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.registerForm, "name", $event.target.value)
                 },
               },
-              [
-                _vm.registerErrors
-                  ? _c("div", { staticClass: "errors" }, [
-                      _vm.registerErrors.name
-                        ? _c(
-                            "ul",
-                            _vm._l(_vm.registerErrors.name, function (msg) {
-                              return _c("li", { key: msg }, [
-                                _vm._v(_vm._s(msg)),
-                              ])
-                            }),
-                            0
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.registerErrors.email
-                        ? _c(
-                            "ul",
-                            _vm._l(_vm.registerErrors.email, function (msg) {
-                              return _c("li", { key: msg }, [
-                                _vm._v(_vm._s(msg)),
-                              ])
-                            }),
-                            0
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.registerErrors.password
-                        ? _c(
-                            "ul",
-                            _vm._l(_vm.registerErrors.password, function (msg) {
-                              return _c("li", { key: msg }, [
-                                _vm._v(_vm._s(msg)),
-                              ])
-                            }),
-                            0
-                          )
-                        : _vm._e(),
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "username" } }, [_vm._v("Name")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.registerForm.name,
-                      expression: "registerForm.name",
-                    },
-                  ],
-                  staticClass: "form__item",
-                  attrs: { type: "text", id: "username" },
-                  domProps: { value: _vm.registerForm.name },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.registerForm, "name", $event.target.value)
-                    },
-                  },
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.registerForm.email,
-                      expression: "registerForm.email",
-                    },
-                  ],
-                  staticClass: "form__item",
-                  attrs: { type: "text", id: "email" },
-                  domProps: { value: _vm.registerForm.email },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.registerForm, "email", $event.target.value)
-                    },
-                  },
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "password" } }, [
-                  _vm._v("Password"),
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.registerForm.password,
-                      expression: "registerForm.password",
-                    },
-                  ],
-                  staticClass: "form__item",
-                  attrs: { type: "password", id: "password" },
-                  domProps: { value: _vm.registerForm.password },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.registerForm,
-                        "password",
-                        $event.target.value
-                      )
-                    },
-                  },
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "password-confirmation" } }, [
-                  _vm._v("Password (confirm)"),
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.registerForm.password_confirmation,
-                      expression: "registerForm.password_confirmation",
-                    },
-                  ],
-                  staticClass: "form__item",
-                  attrs: { type: "password", id: "password-confirmation" },
-                  domProps: { value: _vm.registerForm.password_confirmation },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.registerForm,
-                        "password_confirmation",
-                        $event.target.value
-                      )
-                    },
-                  },
-                }),
-                _vm._v(" "),
-                _vm._m(1),
-              ]
-            ),
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.registerForm.email,
+                  expression: "registerForm.email",
+                },
+              ],
+              staticClass: "form__item",
+              attrs: { type: "text", id: "email" },
+              domProps: { value: _vm.registerForm.email },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.registerForm, "email", $event.target.value)
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "password" } }, [_vm._v("Password")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.registerForm.password,
+                  expression: "registerForm.password",
+                },
+              ],
+              staticClass: "form__item",
+              attrs: { type: "password", id: "password" },
+              domProps: { value: _vm.registerForm.password },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.registerForm, "password", $event.target.value)
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "password-confirmation" } }, [
+              _vm._v("Password (confirm)"),
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.registerForm.password_confirmation,
+                  expression: "registerForm.password_confirmation",
+                },
+              ],
+              staticClass: "form__item",
+              attrs: { type: "password", id: "password-confirmation" },
+              domProps: { value: _vm.registerForm.password_confirmation },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.registerForm,
+                    "password_confirmation",
+                    $event.target.value
+                  )
+                },
+              },
+            }),
+            _vm._v(" "),
+            _vm._m(1),
           ]
         ),
       ]
@@ -5508,7 +5497,7 @@ var render = function () {
             _c(
               "a",
               {
-                staticClass: "button",
+                staticClass: "button backC",
                 attrs: { href: "/photos/" + _vm.photo.id + "/download" },
               },
               [
@@ -5525,7 +5514,7 @@ var render = function () {
               _vm.photo.comments.length > 0
                 ? _c(
                     "ul",
-                    { staticClass: "photo-detail__comments" },
+                    { staticClass: "photo-detail__comments com" },
                     _vm._l(_vm.photo.comments, function (comment, index) {
                       return _c(
                         "li",
@@ -5682,15 +5671,19 @@ var render = function () {
       _c(
         "div",
         { staticClass: "grid" },
-        _vm._l(_vm.photos, function (photo) {
-          return _c("Photo", {
-            key: photo.id,
-            staticClass: "grid__item",
-            attrs: { item: photo },
-            on: { like: _vm.onLikeClick },
-          })
-        }),
-        1
+        [
+          _c("Message"),
+          _vm._v(" "),
+          _vm._l(_vm.photos, function (photo) {
+            return _c("Photo", {
+              key: photo.id,
+              staticClass: "grid__item",
+              attrs: { item: photo },
+              on: { like: _vm.onLikeClick },
+            })
+          }),
+        ],
+        2
       ),
       _vm._v(" "),
       _c("Pagination", {
@@ -23365,7 +23358,7 @@ var routes = [{
   //  :id の値が <PhotoDetail> コンポーネントに props として渡される
   props: true
 }, {
-  path: '/LoginAndRegister',
+  path: '/login',
   component: _pages_LoginAndRegister_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
   beforeEnter: function beforeEnter(to, from, next) {
     if (_store__WEBPACK_IMPORTED_MODULE_7__["default"].getters['auth/check']) {

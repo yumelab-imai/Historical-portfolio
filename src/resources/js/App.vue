@@ -4,7 +4,8 @@
     <header>
       <Sidebar />
     </header>
-    <main>
+    <main class="backmanage">
+        <!-- ON-Off式の写真投稿フォーム -->
         <PhotoForm />
       <div class="container">
         <RouterView />
