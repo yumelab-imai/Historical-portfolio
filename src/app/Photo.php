@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class Photo extends Model
 {
 
-    protected $perPage = 5; // この値を少なくすれば動作確認しやすい
+    protected $perPage = 6; // この値を少なくすれば動作確認しやすい
 
 // プライマリキーの型を決定
     protected $keyType = 'string';
