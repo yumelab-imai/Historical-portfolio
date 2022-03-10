@@ -19,6 +19,9 @@ jobs:
           working_directory: src
           command: npm run dev
       - run:
+          working_directory: src
+          command: sudo php artisan key:generate
+      - run:
           name: php test
           working_directory: src
           command: vendor/bin/phpunit
