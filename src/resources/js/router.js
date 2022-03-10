@@ -38,7 +38,7 @@ const routes = [
     props: true
   },
   {
-    path: '/LoginAndRegister',
+    path: '/login',
     component: LoginAndRegister,
     beforeEnter (to, from, next) {
         if (store.getters['auth/check']) {
@@ -49,6 +49,7 @@ const routes = [
         }
     }
   },
+
   {
     path: '/500',
     component: SystemError

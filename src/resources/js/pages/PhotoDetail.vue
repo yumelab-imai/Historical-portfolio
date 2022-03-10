@@ -16,7 +16,7 @@
                 <i class="icon ion-md-heart"></i>{{ photo.likes_count }}
             </button>
             <!-- ダウンロードボタン -->
-            <a :href="`/photos/${photo.id}/download`" class="button">
+            <a :href="`/photos/${photo.id}/download`" class="button backC">
                 <i class="icon ion-md-arrow-round-down"></i>Download Photo
             </a>
         </div>
@@ -28,7 +28,7 @@
             </h2>
             <!-- コメント一覧機能 (コメントが『ある場合->ない場合』で if 文で分ける) -->
             <div>
-                <ul v-if="photo.comments.length > 0" class="photo-detail__comments">
+                <ul v-if="photo.comments.length > 0" class="photo-detail__comments com">
                 <!-- ある場合 -->
                 <li
                     v-for="(comment, index) in photo.comments"
@@ -66,7 +66,7 @@
                     <li v-for="msg in commentErrors.content" :key="msg">{{ msg }}</li>
                     </ul>
                 </div>
-                    <textarea class="form__item" v-model="commentContent"></textarea>
+                    <textarea placeholder="コメントを記入" class="form__item backA" v-model="commentContent"></textarea>
                 <div class="form__button">
                     <button type="submit" class="button button--inverse">submit comment</button>
                 </div>

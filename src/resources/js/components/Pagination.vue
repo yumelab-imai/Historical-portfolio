@@ -5,14 +5,14 @@
     <RouterLink
         v-if="! isFirstPage"
         :to="`/?page=${currentPage - 1}`"
-        class="button"
+        class="button pagenation"
     >
         &laquo; prev
     </RouterLink>
     <RouterLink
         v-if="! isLastPage"
         :to="`/?page=${currentPage + 1}`"
-        class="button"
+        class="button pagenation"
     >
         next &raquo;
     </RouterLink>

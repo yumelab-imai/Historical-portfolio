@@ -17,24 +17,25 @@
             <div class="big">Post</div>
         </button>
         <!-- ログアウトボタン -->
-        <RouterLink class="navbar__brand" to="/">
+        <RouterLink class="navbar__brand" to="/login">
         <Footer />
         </RouterLink>
     </div>
     <!-- ログアウトしている場合 -->
     <div v-else class="navbar__item">
         <!-- ホームボタン -->
-        <div class="upspace">
-            <RouterLink class="navbar__brand home-name" to="/">
-                <i class="fa fa-home"></i>
+        <div class="upspace ">
+            <RouterLink class="navbar__brand home-name " to="/">
+                <i class="fa fa-home lay"></i>
             </RouterLink>
             <div>
-                Home<br>(一部の機能制限)
+                <div class="lay3">Home</div><br>(一部の機能制限)
             </div>
         </div>
         <!-- ログイン(登録)ボタン -->
-        <RouterLink class="button button--link bigupspace" to="/LoginAndRegister">
-            <i class="fa-solid fa-door-closed logout"></i><br>Login/Register
+        <RouterLink class="button button--link bigupspace" to="/login">
+            <i class="fa-solid fa-door-closed logout lay"></i><br>
+            <div class="lay2">Login/Register</div>
         </RouterLink>
     </div>
 </nav>

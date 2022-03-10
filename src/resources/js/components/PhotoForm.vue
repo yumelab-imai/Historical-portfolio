@@ -14,8 +14,9 @@
             <ul v-if="errors.photo">
                 <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
             </ul>
-                <Message />
         </div>
+        <!-- アプリケーションメッセージ -->
+        <Message />
 
         <!-- API(FileReader API FormData API)を使用してファイルの読み込み、データの送信、プレビュー機能を実装 -->
         <div>
@@ -129,11 +130,22 @@ export default {
             // 引数の id を受け取る処理
             // const response = await axios.get('/api/', )
             // 完了後のルーティング
-// <RouterLink
-//     class="photo__overlay"
-//     :to="`/photos/${item.id}`"
-// >
+            // <RouterLink
+            //     class="photo__overlay"
+            //     :to="`/photos/${item.id}`"
+            // >
+
+            // if(this.$route.path.match(/\//)){
+            //     this.fetchPhotos ()
+            // }else{
+            // this.$router.push(`/`).catch(() => {})
+            // }
+
+            if(false){
+                return false
+            }else{
             this.$router.push(`/`).catch(() => {})
+            }
         },
 
         // クリア

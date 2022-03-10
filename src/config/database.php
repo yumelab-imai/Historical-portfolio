@@ -35,6 +35,11 @@ return [
 
     'connections' => [
 
+        'sqlite_testing' => [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ],
 
         'sqlite' => [
             'driver' => 'sqlite',
@@ -44,11 +49,7 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
-        'sqlite_testing' => [
-        'driver' => 'sqlite',
-        'database' => ':memory:',
-        'prefix' => '',
-        ],
+
 
         'mysql' => [
             'driver' => 'mysql',

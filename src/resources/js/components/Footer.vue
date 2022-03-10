@@ -7,8 +7,6 @@
 </template>
 
 
-
-
 <script>
 import { mapState, mapGetters } from 'vuex'
 
@@ -27,7 +25,7 @@ export default {
             await this.$store.dispatch('auth/logout')
 
             if (this.apiStatus) {
-                this.$router.push('/LoginAndRegister')
+                this.$router.push('/login')
                                                         }
                                                             }
     }
