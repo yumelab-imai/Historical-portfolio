@@ -30,9 +30,10 @@ class RegisterApiTest extends TestCase
         // 　→　@registeredが必要→registeredを書き込む。これによって$dataが登録用データとして送られる
         // RegisterController で registered メソッドの中身をオーバーライド
         // $dataを送る
+        // dd($data);
         $response = $this->json('POST', route('register'), $data);
 
-
+        // dd($response);
         $user = User::first();
         $this->assertEquals($data['name'], $user->name);
 

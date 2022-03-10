@@ -256,7 +256,7 @@ img {
 
 .photo-detail__commentItem {
   border-bottom: 1px solid #dedede;
-  margin-bottom: 1.5rem;
+  /* margin-bottom: 1.5rem; */
   padding: 0 0 1.5rem 0;
 }
 
@@ -721,6 +721,10 @@ html
 
 .backC{
     background-color: #f9fcfb;
+}
+
+.backA{
+    background-color: #edf8ea;
 }
 
 .com{

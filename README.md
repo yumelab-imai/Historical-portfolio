@@ -89,12 +89,12 @@ https://qiita.com/nasuB7373/items/0e507abad2017976c407
   - GitHub Desktop
   - GitHub
 
-- GitHub の利用において
+- GitHub や CircleCi の利用において
   - master ブランチと feature ブランチの二つを用意して作業を進める
   - 機能を追加する際に Issure を利用
   - feature ブランチ でtestが通らない場合、master ブランチにマージできないように設定
+  - CircleCi のテスト結果を Slack に通知
 
-  
 
 ## AWS 構成図
 

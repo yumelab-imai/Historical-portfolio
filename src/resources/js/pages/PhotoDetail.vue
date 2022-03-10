@@ -66,7 +66,7 @@
                     <li v-for="msg in commentErrors.content" :key="msg">{{ msg }}</li>
                     </ul>
                 </div>
-                    <textarea class="form__item" v-model="commentContent"></textarea>
+                    <textarea placeholder="コメントを記入" class="form__item backA" v-model="commentContent"></textarea>
                 <div class="form__button">
                     <button type="submit" class="button button--inverse">submit comment</button>
                 </div>

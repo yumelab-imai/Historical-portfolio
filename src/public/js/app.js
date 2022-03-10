@@ -2054,8 +2054,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])({
@@ -5599,7 +5597,8 @@ var render = function () {
                           expression: "commentContent",
                         },
                       ],
-                      staticClass: "form__item",
+                      staticClass: "form__item backA",
+                      attrs: { placeholder: "コメントを記入" },
                       domProps: { value: _vm.commentContent },
                       on: {
                         input: function ($event) {
