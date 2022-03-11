@@ -117,11 +117,6 @@ const actions = {
 
 
   // ログインユーザーチェック
-//   async currentUser (context) {
-//     const response = await axios.get('/api/user')
-//     const user = response.data || null
-//     context.commit('setUser', user)
-//   }
   async currentUser (context) {
     context.commit('setApiStatus', null)
     const response = await axios.get('/api/user')

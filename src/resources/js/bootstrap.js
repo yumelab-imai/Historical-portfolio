@@ -17,8 +17,15 @@ window.axios.interceptors.request.use(config => {
   return config
 })
 
+
+
 // axios の responseインターセプターにまとめる
 window.axios.interceptors.response.use(
   response => response,
   error => error.response || error
 )
+
+const instance = axios.create({
+  baseURL: 'https://www.laravelvueport.link',
+  timeout: 5000
+})
