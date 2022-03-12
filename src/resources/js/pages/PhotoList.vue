@@ -35,7 +35,7 @@ export default {
         page: {
         type: Number,
         // false->true に変更
-        required: true,
+        required: false,
         default: 1
                         }
     },
