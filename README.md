@@ -15,7 +15,6 @@ https://instagram.com/masa_626_/
 **食べログに特化した SNS アプリです。**
 
 
-
 # アプリケーションの制作経緯  
 前々からインスタグラムに上げられるような飲食店での食事の写真のみを集めたSNSアプリがあったらいいなという考えから制作しました。インスタグラムのような直感的にわかりやすい機能を実装したり、Google Mapのレビューのように抵抗感なく気軽にコメントを書ける機能を兼ね備えました。アプリを使用することで少しでも『この店に行ってみたい！』『写真を見ていて楽しい！』『この料理美味しそうだなぁ』と思ってもらえるようなWebアプリを作レタラと思います。
 まだ途中なのですが長期的には GoogleMap やインスタグラムでの食事関連のもの以上に『この店に行ってみたい！』と思ってもらえるようなアプリを制作できたらと考えています。
@@ -101,6 +100,8 @@ https://qiita.com/nasuB7373/items/0e507abad2017976c407
 ## AWS 構成図
 
 
+![AWS-ER](https://user-images.githubusercontent.com/93495976/158013902-1ffd9fab-9069-4fa8-9123-dd0428ea287c.png)
+
 
 
 
@@ -183,8 +184,8 @@ https://qiita.com/nasuB7373/items/0e507abad2017976c407
 ## DB 設計
 
 ### ER 図
+![er drawio](https://user-images.githubusercontent.com/93495976/158013946-d3934509-480a-40d0-b8b8-f00a99c86fd5.png)
 
-![AsaKotsu_ERD](https://user-images.githubusercontent.com/58071320/132526765-3cf6733f-b263-4051-86e9-de32d0000602.png)
 
 ### 各テーブルについて
 
