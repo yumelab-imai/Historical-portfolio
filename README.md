@@ -94,6 +94,8 @@ https://qiita.com/nasuB7373/items/0e507abad2017976c407
   - 機能を追加する際に Issure を利用
   - feature ブランチ でtestが通らない場合、master ブランチにマージできないように設定
   - CircleCi のテスト結果を Slack に通知
+  - Notion でこれはいいと感じた記事を管理
+  - Notion でこれはいいと感じた記事を管理
 
 
 ## AWS 構成図

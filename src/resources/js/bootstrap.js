@@ -5,6 +5,8 @@ import { getCookieValue } from './util'
 // axiosは、HTTP通信を簡単に行うことができるJavascriptライブラリ
 window.axios = require('axios');
 
+axios.defaults.withCredentials = true
+
 // Ajaxリクエストであることを示すように変更（ヘッダーを付与することによって）
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -17,6 +19,9 @@ window.axios.interceptors.request.use(config => {
   return config
 })
 
+export const userApi = axios.create({
+  baseURL: 'https://www.laravelvueport.link'
+})
 
 
 // axios の responseインターセプターにまとめる
@@ -25,7 +30,7 @@ window.axios.interceptors.response.use(
   error => error.response || error
 )
 
-const instance = axios.create({
-  baseURL: 'https://www.laravelvueport.link',
-  timeout: 5000
-})
+// const instance = axios.create({
+//   baseURL: 'https://www.laravelvueport.link',
+//   timeout: 5000
+// })
