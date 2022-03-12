@@ -28,7 +28,7 @@ const routes = [
     // route.query = ?page=7
     const page = route.query.page
     // test()メソッド・・・正規表現の文字列との一致を調べるため
-    return { page: /^[1-9][0-9]*$/.test(page) ? page  : 1 }
+    return { page: /^[1-9][0-9]*$/.test(page) ? page * 1  : 1 }
   }
   },
   {
