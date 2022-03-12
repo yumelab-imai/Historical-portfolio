@@ -100,8 +100,14 @@ https://qiita.com/nasuB7373/items/0e507abad2017976c407
 
 ## AWS 構成図
 
-![AWS_Diagram](https://user-images.githubusercontent.com/58071320/98756993-eed4d600-240e-11eb-8a3a-141290e77fc9.png)
-![Uploading AWS-ER.png…]()
+￼
+
+
+
+
+
+
+
 ## 機能一覧
 
 - **一般ユーザー登録関連**
