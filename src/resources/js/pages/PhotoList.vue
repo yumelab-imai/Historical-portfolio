@@ -33,7 +33,8 @@ export default {
     // ルーターから渡される page プロパティを受け取るため
     props: {
         page: {
-        type: Number,
+        // type: Number,
+        type: String,
         // false->true に変更
         required: false,
         default: 1
