@@ -82,7 +82,8 @@ import { OK, CREATED, UNPROCESSABLE_ENTITY } from '../util'
 export default {
     props: {
         id: {
-        type: String,
+        // type: String,
+        type: Int,
         required: true
                         }
     },
