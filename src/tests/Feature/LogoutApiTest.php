@@ -28,7 +28,7 @@ class LogoutApiTest extends TestCase
                          ->json('POST', route('logout'));
 
         $response->assertStatus(200);
-        
+
         // ユーザーが認証されていないことを確認
         $this->assertGuest();
     }
