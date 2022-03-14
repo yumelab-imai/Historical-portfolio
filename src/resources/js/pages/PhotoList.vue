@@ -34,7 +34,7 @@ export default {
     props: {
         page: {
         // type: Number,
-        type: String,
+        type: Number,
         // false->true に変更
         required: false,
         default: 1

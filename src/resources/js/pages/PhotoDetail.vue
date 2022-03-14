@@ -20,6 +20,14 @@
                 <i class="icon ion-md-arrow-round-down"></i>Download Photo
             </a>
         </div>
+        <div>
+            <!-- 前ページに戻るボタン -->
+            <RouterLink class="navbar__brand home-name" to="/">
+                <button class="button photo-detail__title pagenation">
+                    &laquo; Backward Button
+                </button>
+            </RouterLink>
+        </div>
         <!-- 写真詳細機能 -->
         <div>
             <!-- コメント上のタイトル（コメント一覧とか） -->
