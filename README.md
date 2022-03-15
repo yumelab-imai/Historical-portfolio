@@ -40,8 +40,11 @@ https://instagram.com/masa_626_/
 - ページネーション機能 (写真６枚ごと)
 - エラーハンドリング機能
 
-## 使用画面のイメージ
-![firstTime](https://user-images.githubusercontent.com/93495976/158014699-74fb7ba7-4ab5-4577-af93-be6a95d71ae3.gif)
+## 使用画面のイメージ  
+![academic drawio (2)](https://user-images.githubusercontent.com/93495976/158488933-d1ea95d2-a2a7-4dbc-9bef-5568a93f8b06.png)
+
+
+
 
 ## 使用技術について
 
