@@ -17,7 +17,7 @@
             <div class="big">Post</div>
         </button>
         <!-- ログアウトボタン -->
-        <RouterLink class="navbar__brand" to="/login">
+        <RouterLink v-if="home" class="navbar__brand" to="/login">
         <Footer />
         </RouterLink>
     </div>
@@ -59,6 +59,14 @@ export default {
         isLogin () {
         return this.$store.getters['auth/check']
                                                     },
+        home () {
+            // return this.$store.getters['auth/check2']
+            if(this.$route.path === '/'){
+                return true
+            }else{
+                return false
+            }
+                                                    },
         username () {
         return this.$store.getters['auth/username']
                                                     }
@@ -67,7 +75,16 @@ export default {
     methods: {
         onClick() {
             this.$store.commit('turn/change')
-                                                }
+                                                },
+        // 未実装
+        // ckeck2() {
+            // // 正規表現の型
+            // const reg = /photo/;
+            // // URLを所得
+            // const url = URL所得
+            // return reg.test(url);
+            // return this.$route.path === '/photos'
+                                                // }
     }
 }
 </script>
