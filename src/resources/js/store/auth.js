@@ -2,6 +2,7 @@ import { OK, CREATED, UNPROCESSABLE_ENTITY } from '../util'
 
 const state = {
     user: null,
+    // userHome: true,
     apiStatus: null,
     loginErrorMessages: null,
     registerErrorMessages: null
@@ -10,6 +11,7 @@ const state = {
 // ステートそのものではなくステートを元に演算した結果が欲しい場合はゲッターのちょうど良い使いどころ
 const getters = {
   check: state => !! state.user,
+//   check2: state => !! state.userHome,
   username: state => state.user ? state.user.name : ''
 }
 
@@ -19,6 +21,9 @@ const mutations = {
     setUser (state, user) {
         state.user = user
     },
+    // setUserHome (state, userHome) {
+    //     state.userHome = userHome
+    // },
     setApiStatus (state, status) {
         state.apiStatus = status
     },
@@ -32,6 +37,7 @@ const mutations = {
 
 // 非同期処理でなければいけなく、その後ミューテーションを呼び出してステートを更新する
 // 「アクション→コミットでミューテーション呼び出し→ステート更新」というパターンはよく使う
+// context は payload のようなもので特に意味はない
 const actions = {
 // 会員登録
     async register (context, data) {

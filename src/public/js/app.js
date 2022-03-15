@@ -2531,6 +2531,14 @@ __webpack_require__.r(__webpack_exports__);
     isLogin: function isLogin() {
       return this.$store.getters['auth/check'];
     },
+    home: function home() {
+      // return this.$store.getters['auth/check2']
+      if (this.$route.path === '/') {
+        return true;
+      } else {
+        return false;
+      }
+    },
     username: function username() {
       return this.$store.getters['auth/username'];
     }
@@ -2538,7 +2546,16 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onClick: function onClick() {
       this.$store.commit('turn/change');
-    }
+    } // 未実装
+    // ckeck2() {
+    // // 正規表現の型
+    // const reg = /photo/;
+    // // URLを所得
+    // const url = URL所得
+    // return reg.test(url);
+    // return this.$route.path === '/photos'
+    // }
+
   }
 });
 
@@ -5043,12 +5060,14 @@ var render = function () {
               ]
             ),
             _vm._v(" "),
-            _c(
-              "RouterLink",
-              { staticClass: "navbar__brand", attrs: { to: "/login" } },
-              [_c("Footer")],
-              1
-            ),
+            _vm.home
+              ? _c(
+                  "RouterLink",
+                  { staticClass: "navbar__brand", attrs: { to: "/login" } },
+                  [_c("Footer")],
+                  1
+                )
+              : _vm._e(),
           ],
           1
         )
@@ -23450,6 +23469,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var state = {
   user: null,
+  // userHome: true,
   apiStatus: null,
   loginErrorMessages: null,
   registerErrorMessages: null
@@ -23459,6 +23479,7 @@ var getters = {
   check: function check(state) {
     return !!state.user;
   },
+  //   check2: state => !! state.userHome,
   username: function username(state) {
     return state.user ? state.user.name : '';
   }
@@ -23469,6 +23490,9 @@ var mutations = {
   setUser: function setUser(state, user) {
     state.user = user;
   },
+  // setUserHome (state, userHome) {
+  //     state.userHome = userHome
+  // },
   setApiStatus: function setApiStatus(state, status) {
     state.apiStatus = status;
   },
@@ -23480,6 +23504,7 @@ var mutations = {
   }
 }; // 非同期処理でなければいけなく、その後ミューテーションを呼び出してステートを更新する
 // 「アクション→コミットでミューテーション呼び出し→ステート更新」というパターンはよく使う
+// context は payload のようなもので特に意味はない
 
 var actions = {
   // 会員登録
