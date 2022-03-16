@@ -1,10 +1,12 @@
+閲覧いただきありがとうございます。
+
 # URL 一覧  
 
 - **ポートフォリオ (PC専用)**  
 サイトURL  
 https://www.laravelvueport.link/login  
 ポートフォリオ動画(２分)  
-インスタURL
+https://www.instagram.com/p/CbJUAK3hNEb/
 
 - **GitHub**  
 https://github.com/Masanarea/portfolio.git
@@ -43,7 +45,8 @@ https://instagram.com/masa_626_/
 ## 使用画面のイメージ  
 ![academic drawio (2)](https://user-images.githubusercontent.com/93495976/158488933-d1ea95d2-a2a7-4dbc-9bef-5568a93f8b06.png)
 
-
+動画版はこちらから
+https://www.instagram.com/p/CbJUAK3hNEb/
 
 
 ## 使用技術について
