@@ -32,7 +32,7 @@ https://instagram.com/masa_626_/
 
 1. 現場で使われやすいモダンな技術を取り入れる(AWS,Docker等)
 1. ページ表示速度で不快感を与えないようにする(0.7秒で初期画面の表示)
-1. アプリ制作を通して少しでも開発の流れを理解して行きながら自分の制作したいものを作る
+1. アプリ制作を通して少しでも開発の流れを理解して行きながら、『自分の制作したいもの』を作る
 
 このアプリには Instagram のような写真投稿、コメント、いいね機能のある SNS ですが、
 その他に以下のような特徴のあるアプリです。
@@ -119,6 +119,7 @@ https://capeyes.hatenablog.com/entry/2015/04/26/091150
   - **AWS** ( EC2, ALB, ACM, S3, RDS, Route53, VPC, EIP, IAM )
 
 - **その他使用ツール**
+  - Intelチップ搭載 MacBook Air / 　MacOS version 12.1 (ツールではありませんが) 
   - Visual Studio Code
   - SourceTree(コマンドでGitを使うこともありましたが、主に SourceTree を使用)
   - Slack
