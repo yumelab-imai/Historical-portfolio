@@ -277,3 +277,4 @@ import { OK } from '../util'
 status
 
 エラー機能
+
