@@ -1,19 +1,26 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use App\Model;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Model::class, function (Faker $faker) {
-    return [
-        //
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Comment>
+ */
+class CommentFactory extends Factory
+{
+    protected $model = Comment::class;
 
-$factory->define(App\Comment::class, function (Faker $faker) {
-    return [
-        'content' => substr($faker->text, 0, 500),
-        'user_id' => fn() => factory(App\User::class)->create()->id,
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'content' => substr($this->faker->text, 0, 500),
+            'user_id' => fn () => \App\User::factory()->create()->id,
+        ];
+    }
+}

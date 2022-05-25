@@ -4,8 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+// 追加
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Comment extends Model
 {
+    // 追加
+    use HasFactory;
+    
     /** JSONに含める属性 */
     protected $visible = [
         'author', 'content', self::UPDATED_AT,

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 // 追加
 use Illuminate\Support\Str;
+use App\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Model>

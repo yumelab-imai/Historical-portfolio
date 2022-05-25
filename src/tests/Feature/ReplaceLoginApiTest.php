@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -28,8 +29,7 @@ class ReplaceLoginApiTest extends TestCase
     {
         $response = $this->actingAs($this->user)->json('GET', route('user'));
 
-        $response
-            ->assertStatus(200)
+        $response->assertStatus(200)
             ->assertJson([
                 'name' => $this->user->name,
             ]);

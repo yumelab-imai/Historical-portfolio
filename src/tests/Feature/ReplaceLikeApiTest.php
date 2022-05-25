@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
-use App\Photo;
-use App\User;
-
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class LikeApiTest extends TestCase
+use App\Photo;
+use App\User;
+
+class ReplaceLikeApiTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -17,9 +17,10 @@ class LikeApiTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = factory(User::class)->create();
+        $this->user = \App\User::factory()->create();
 
-        factory(Photo::class)->create();
+        // factory(Photo::class)->create();
+        $this->user = \App\User::factory()->create();
         $this->photo = Photo::first();
     }
 

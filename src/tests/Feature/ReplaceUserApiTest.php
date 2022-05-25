@@ -2,12 +2,14 @@
 
 namespace Tests\Feature;
 
-use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class UserApiTest extends TestCase
+// 追加しました（２２０２/０５/２３）
+use App\User;
+
+class ReplaceUserApiTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -16,7 +18,7 @@ class UserApiTest extends TestCase
         parent::setUp();
 
         // テストユーザー作成
-        $this->user = factory(User::class)->create();
+        $this->user = \App\User::factory()->create();
     }
 
     /**
