@@ -32,8 +32,8 @@ jobs:
           command: vendor/bin/phpunit
   deploy:
     docker:
-      - image: circleci/php:7.4-zts-buster-node-browsers-legacy
-      - image: cimg/php:8.1.5
+      # - image: circleci/php:7.4-zts-buster-node-browsers-legacy
+      - image: cimg/php:8.0.19-node
     steps:
       - add_ssh_keys
       - run:
