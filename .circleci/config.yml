@@ -15,7 +15,8 @@ jobs:
           command: composer install -n --prefer-dist
       - run:
           working_directory: src
-          command: npm ci
+          # command: npm ci
+          command: npm install
       - run:
           working_directory: src
           command: npm run dev
