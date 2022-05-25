@@ -1,4 +1,5 @@
-FROM php:7.4.1-fpm
+# FROM php:7.4.1-fpm
+FROM php:8.1-fpm
 
 # COPY php.ini
 COPY ./docker/php/php.ini /usr/local/etc/php/php.ini

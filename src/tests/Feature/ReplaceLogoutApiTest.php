@@ -2,12 +2,14 @@
 
 namespace Tests\Feature;
 
-use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class LogoutApiTest extends TestCase
+// 追加しました（２２０２/０５/２３）
+use App\User;
+
+class ReplaceLogoutApiTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -16,7 +18,7 @@ class LogoutApiTest extends TestCase
         parent::setUp();
 
         // テストユーザー作成
-        $this->user = factory(User::class)->create();
+        $this->user = \App\User::factory()->create();
     }
 
     /**
@@ -25,7 +27,7 @@ class LogoutApiTest extends TestCase
     public function should_認証済みのユーザーをログアウトさせる()
     {
         $response = $this->actingAs($this->user)
-                         ->json('POST', route('logout'));
+            ->json('POST', route('logout'));
 
         $response->assertStatus(200);
 

@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
-use App\Photo;
-use App\User;
-
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class AddCommentApiTest extends TestCase
+use App\Photo;
+use App\User;
+
+class ReplaceAddCommentApiTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -18,7 +18,7 @@ class AddCommentApiTest extends TestCase
         parent::setUp();
 
         // テストユーザー作成
-        $this->user = factory(User::class)->create();
+        $this->user = \App\User::factory()->create();
     }
 
     /**
@@ -26,7 +26,8 @@ class AddCommentApiTest extends TestCase
      */
     public function should_コメントを追加できる()
     {
-        factory(Photo::class)->create();
+        // factory(Photo::class)->create();
+        \App\Photo::factory()->create();
         $photo = Photo::first();
 
         $content = 'sample content';
@@ -52,5 +53,4 @@ class AddCommentApiTest extends TestCase
         // 内容がAPIでリクエストしたものであること
         $this->assertEquals($content, $comments[0]->content);
     }
-
 }

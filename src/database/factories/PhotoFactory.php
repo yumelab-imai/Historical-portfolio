@@ -1,23 +1,33 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-// use App\Model;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+// 追加
 use Illuminate\Support\Str;
+use App\Photo;
 
-// $factory->define(Model::class, function (Faker $faker) {
-//     return [
-//         //
-//     ];
-// });
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Photo>
+ */
+class PhotoFactory extends Factory
+{
+    protected $model = Photo::class;
 
-$factory->define(App\Photo::class, function (Faker $faker) {
-    return [
-        'id' => Str::random(12),
-        'user_id' => fn() => factory(App\User::class)->create()->id,
-        'filename' => Str::random(12) . '.jpg',
-        'created_at' => $faker->dateTime(),
-        'updated_at' => $faker->dateTime(),
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'id' => Str::random(12),
+            'user_id' => fn () => \App\User::factory()->create()->id,
+            'filename' => Str::random(12) . '.jpg',
+            'created_at' => $this->faker->dateTime(),
+            'updated_at' => $this->faker->dateTime(),
+        ];
+    }
+}

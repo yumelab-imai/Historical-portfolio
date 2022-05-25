@@ -9,8 +9,13 @@ use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Auth;
 
+// 追加
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Photo extends Model
 {
+    // 追加
+    use HasFactory;
 
     protected $perPage = 6; // この値を少なくすれば動作確認しやすい
 
