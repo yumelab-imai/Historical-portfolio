@@ -20,7 +20,7 @@ class ReplaceLikeApiTest extends TestCase
         $this->user = \App\User::factory()->create();
 
         // factory(Photo::class)->create();
-        $this->user = \App\User::factory()->create();
+        \App\Photo::factory()->create();
         $this->photo = Photo::first();
     }
 
@@ -29,6 +29,10 @@ class ReplaceLikeApiTest extends TestCase
      */
     public function should_いいねを追加できる()
     {
+        // エラー原因調査
+        // dd($this->photo);
+        // 結果/null
+
         $response = $this->actingAs($this->user)
             ->json('PUT', route('photo.like', [
                 'id' => $this->photo->id,
