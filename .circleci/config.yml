@@ -2,7 +2,8 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/php:7.4-zts-buster-node-browsers-legacy
+      # - image: circleci/php:7.4-zts-buster-node-browsers-legacy
+      - image: cimg/php:8.1.5
     steps:
       - checkout
       - run: sudo composer
@@ -31,6 +32,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/php:7.4-zts-buster-node-browsers-legacy
+      - image: cimg/php:8.1.5
     steps:
       - add_ssh_keys
       - run:
