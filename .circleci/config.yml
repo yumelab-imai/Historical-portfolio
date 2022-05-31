@@ -12,7 +12,8 @@ jobs:
           command: composer update
       - run:
           working_directory: src
-          command: composer install -n --prefer-dist
+          # command: composer install -n --prefer-dist
+          command: composer install --ignore-platform-reqs
       - run:
           working_directory: src
           # command: npm ci

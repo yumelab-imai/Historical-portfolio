@@ -25,7 +25,7 @@ class Photo extends Model
 // IDの桁数を決定
     const ID_LENGTH = 12;
 
-// デフォルトでは含まれないが$appends などで明示的に追加
+// デフォルトでは含まれないが$appendsなどで明示的に追加
     protected $appends = [
         'url', 'likes_count', 'liked_by_user',
     ];
