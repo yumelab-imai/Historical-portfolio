@@ -19,7 +19,7 @@ axiosがCookieからCSRFトークン(暗号化したもの)を自動的に取得
 VerifyCsrfTokenクラスで主にやってくれている
 <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
-<title>LaraVueApp</title>
+<title>LaraVueAppあ</title>
 <!-- Scripts -->
 {{-- Laravel 5.5以降、deferがあるとjavascriptの読み込みは行うが、実行はHTMLのロードが完了した後に行われる --}}
 <script src="{{ mix('js/app.js') }}" defer></script>
