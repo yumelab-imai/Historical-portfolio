@@ -44,7 +44,7 @@ jobs:
             ssh -o StrictHostKeyChecking=no -t ec2-user@46.51.248.13 "cd portfolio && \
             git pull origin master && \
             cd src && \
-            composer install -n --no-dev --prefer-dist && \
+            composer install --ignore-platform-reqs && \
             npm install && \
             npm run dev && \
             php artisan migrate --force && \
