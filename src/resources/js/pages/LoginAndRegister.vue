@@ -38,6 +38,7 @@
             <!-- 追加（20220623） -->
             <div v-if="view_message ">
                 <li>{{ view_message }}</li>
+                <li>SAO progressive</li>
             </div>
         </form>
     </div>
