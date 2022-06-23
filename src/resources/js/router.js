@@ -40,6 +40,16 @@ const routes = [
   {
     path: '/login',
     component: LoginAndRegister,
+    /**
+     * @param route
+     * @return array { page: 7 }
+     */
+    props: route => {
+    // route.query = ?page=7
+    const page = route.query.page
+    // test()メソッド・・・正規表現の文字列との一致を調べるため
+    return { view_message: "composer message!" }
+  },
     beforeEnter (to, from, next) {
         if (store.getters['auth/check']) {
         next('/')
