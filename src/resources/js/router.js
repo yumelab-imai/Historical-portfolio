@@ -49,7 +49,7 @@ const routes = [
     const page = route.query.page
     // test()メソッド・・・正規表現の文字列との一致を調べるため
     return { view_message: "composer message!" }
-  }
+  },
     beforeEnter (to, from, next) {
         if (store.getters['auth/check']) {
         next('/')
