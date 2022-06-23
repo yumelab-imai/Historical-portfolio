@@ -35,6 +35,10 @@
             <div class="form__button">
             <button type="submit" class="button button--inverse">login</button>
             </div>
+            <!-- 追加（20220623） -->
+            <div v-if="view_message ">
+                <li>{{ view_message }}</li>
+            </div>
         </form>
     </div>
     <!-- 登録画面 -->
