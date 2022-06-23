@@ -29,6 +29,11 @@
             </div>
             <!-- ログインフォーム一覧 -->
             <label for="login-email">Email</label>
+            <label for="login-email">{{ view_message }}</label>
+            <label for="login-email">SAO progressive</label>
+                            <li>{{ view_message }}</li>
+                <li>SAO progressive</li>
+
             <input type="text" class="form__item" id="login-email" v-model="loginForm.email">
             <label for="login-password">Password</label>
             <input type="password" class="form__item" id="login-password" v-model="loginForm.password">
@@ -36,10 +41,6 @@
             <button type="submit" class="button button--inverse">login</button>
             </div>
             <!-- 追加（20220623） -->
-            <div v-if="view_message ">
-                <li>{{ view_message }}</li>
-                <li>SAO progressive</li>
-            </div>
         </form>
     </div>
     <!-- 登録画面 -->
