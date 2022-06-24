@@ -177,7 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //  追加(20220623)
-        App\Providers\HelloServiceProvider::class,
+        App\Providers\PracticeServiceProvider::class,
 
     ],
 
