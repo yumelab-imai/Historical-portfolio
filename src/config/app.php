@@ -176,6 +176,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //  追加(20220623)
+        App\Providers\PracticeServiceProvider::class,
+
     ],
 
     /*
