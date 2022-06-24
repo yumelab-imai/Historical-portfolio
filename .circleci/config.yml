@@ -48,7 +48,10 @@ jobs:
             npm install && \
             npm run dev && \
             php artisan migrate --force && \
-            php artisan config:cache"
+            php artisan config:cache && \
+            php artisan cache:clear && \
+            php artisan route:clear && \
+            php artisan config:clear "
 
 workflows:
   version: 2
