@@ -106,8 +106,8 @@ https://capeyes.hatenablog.com/entry/2015/04/26/091150
 
 - **バックエンド**
 
-  - **PHP 7.4.1**
-  - **Laravel 6.20.26**
+  - **PHP 7.4.1(→ 8.0.16　Now)**
+  - **Laravel 6.20.26(→ 9.17.0　Now)**
   - **PHPUnit 9.5.16**
 
 - **インフラ**
