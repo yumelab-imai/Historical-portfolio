@@ -2,7 +2,7 @@
 
 # URL 一覧  
 
-- **ポートフォリオ (PC専用)**  
+- **実務未経験の時に作成したポートフォリオ (PC専用)**  
 サイトURL  
 https://www.laravelvueport.link/login  
 ポートフォリオ動画(２分)  
