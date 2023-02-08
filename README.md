@@ -12,7 +12,7 @@ https://www.instagram.com/p/CbJUAK3hNEb/
 https://github.com/Masanarea/portfolio.git
 
 - **Instagram(ポートフォリオ以外の Web アプリ作品投稿、アウトプット用)**  
-https://instagram.com/masa_626_/
+https://instagram.com/masa_344_/
 
 
 # アプリケーション概要  
