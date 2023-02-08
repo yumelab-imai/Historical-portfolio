@@ -28,11 +28,7 @@
             </ul>
             </div>
             <!-- ログインフォーム一覧 -->
-            <label for="login-email">Email(P)</label>
-            <label for="login-email">{{$view_message}}</label>
-            <label for="login-email">SAO progressive</label>
-                <li>{{$view_message}}</li>
-                <li>SAO progressive</li>
+            <label for="login-email">Email</label>
             <input type="text" class="form__item" id="login-email" v-model="loginForm.email">
             <label for="login-password">Password</label>
             <input type="password" class="form__item" id="login-password" v-model="loginForm.password">
